@@ -1,0 +1,32 @@
+span.dynamic,
+a.dynamic {
+  border-bottom: 1px dashed rgba(40,40,40,.33);
+  color: #282828;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+}
+
+a.link__black,
+a.link__black:visited {
+  color: #282828;
+}
+
+span.link__green,
+a.link__green,
+a.link__green:visited {
+  color: #007300;
+  border-color: rgba(0,115,0,.45);
+}
+
+span.link__yellow,
+a.link__yellow,
+a.link__yellow:visited {
+  color: #f6a000;
+  border-bottom: 1px dashed  #f6a000;
+}
+
+span.link__black,
+a.link__black {
+  color: #282828;
+}

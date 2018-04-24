@@ -1,0 +1,11 @@
+.catalog__menu {
+
+}
+
+.catalog__popup-tab {
+  display: none;
+}
+
+.catalog__popup-tab--active {
+  display: block;
+}
