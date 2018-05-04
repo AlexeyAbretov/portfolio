@@ -1,0 +1,27 @@
+{
+  "name": "tv-change-popup",
+  "scripts": {
+    "build": "npm run clean && webpack --progress --colors",
+    "build:prod": "npm run clean && set NODE_ENV=production&& webpack -p --progress --colors",
+    "clean": "rimraf output"
+  },
+  "devDependencies": {
+    "numeral": "1.5.3",
+    "rimraf": "2.6.1",
+    "ts-loader": "0.9.5",
+    "typescript": "2.0.6",
+    "typings": "1.4.0",
+    "webpack": "1.13.3"
+  },
+  "dependencies": {
+    "classnames": "2.2.5",
+    "jquery": "3.1.1",
+    "linq": "3.0.5",
+    "react": "15.3.2",
+    "react-dom": "15.3.2"
+  },
+  "version": "1.0.0",
+  "author": "Alexey Abretov",
+  "license": "ISC",
+  "description": "task 79250"
+}
