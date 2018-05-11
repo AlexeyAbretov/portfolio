@@ -1,0 +1,23 @@
+
+.upper 
+{
+    text-transform: uppercase;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+nav
+{
+    padding: 0;
+    margin: 0;
+}
+
+.clearfix:after {
+    content: '';
+    width: 100%;
+    clear: both;
+    display: table;
+}

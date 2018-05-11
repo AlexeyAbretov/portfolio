@@ -1,0 +1,40 @@
+.kitty
+{
+    padding: 20px;
+    background: orange;
+    position: absolute;
+    margin: 10px;
+    box-shadow: 10px 10px black;
+    box-sizing: border-box;
+}
+
+.kitty:hover {
+    border: 1px solid #777;
+    height: 350px;
+    width: 350px;
+    z-index: 10;
+}
+
+.wrapper
+{
+    position: relative;
+    float: left;
+    height: 250px;
+    width: 250px;
+}
+
+.kitty img
+{
+    width: 100%;
+    height: auto;
+}
+
+.kitty img:hover{
+}
+
+.clearfix:after
+{
+    content: "";
+    clear: both;
+    display: block;
+}

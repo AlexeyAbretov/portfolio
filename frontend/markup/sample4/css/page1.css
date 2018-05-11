@@ -1,0 +1,67 @@
+body{
+    background: grey;
+}
+.red
+{
+    color: red;
+}
+
+.yellow{
+    color: yellow;
+    font-weight: bold;
+}
+
+.container
+{
+    width: 400px;
+    height: 400px;
+    background: blue;
+    margin: 100px auto 0 auto;
+
+}
+
+.q1
+{
+    width: 200px;
+    height: 200px;
+    background: purple;
+}
+
+.q2
+{
+    width: 100px;
+    height: 200px;
+    background: red;
+    position: relative;
+    box-shadow: 10px 10px 10px 0 black;
+    border-radius: 50%;
+}
+
+.q3
+{
+    width: 100px;
+    height: 100px;
+    background: yellow;
+    position: relative;
+    top: 10px;
+}
+
+.rectangle
+{
+    width: 400px;
+    height: 200px;
+    background: #154;
+    border-radius: 100%;
+    box-shadow: 10px 10px 10px 0 white;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    z-index: 50;
+    transition: width 1s;
+    transition: height: 1s;
+}
+
+.rectangle:hover{
+    width: 500px;
+    height: 300px;
+}

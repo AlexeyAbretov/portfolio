@@ -1,0 +1,23 @@
+.b-page
+{
+    width:100%;
+    margin:0;
+    background-color:#f7f7f7;
+    background:url("../img/bg.png");
+    font-family:Oswald,Tahoma;
+    font-size:12px;
+}
+
+.b-page__head-line
+{
+    background-color:#7e7e7e;
+    height:5px;
+    width:100%;
+}
+
+.b-page__line
+{
+    width: 960px;
+    margin: 0 auto;
+    margin-top:27px;    
+}
