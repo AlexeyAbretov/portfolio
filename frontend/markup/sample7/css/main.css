@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "LoveloBlack";
+    src: url("../assets/LoveloBlack.otf");
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    margin:  0;
+    padding: 0;
+    background: url('../assets/bg.png');
+    font-family: LoveloBlack, Arial;
+    color:  #74848a;
+}

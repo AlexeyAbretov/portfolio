@@ -1,30 +1,4 @@
-@font-face {
-    font-family: "LoveloBlack";
-    src: url("../assets/LoveloBlack.otf");
-}
-
-.clearfix:after {
-    content: '';
-    width: 100%;
-    clear: both;
-    display: table;
-}
-
-body {
-    height: 960px;
-    width: 100%;
-    margin:  0;
-    padding: 0;
-    background: url('../assets/bg.png');
-    font-family: LoveloBlack, Arial;
-    overflow: hidden;
-    color:  #74848a;
-}
-
-.login-form {
-    background: url('../assets/notepad.png') no-repeat center top / auto;
-    width: 378px;
-    height: 430px;
+.login-form_center {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -32,83 +6,14 @@ body {
     -webkit-transform: translate(-50%, -50%);
 }
 
-.login-form__title {
-    font-size: 18px;
-    font-weight: 900;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.login-form__button {  
-    box-sizing: border-box;
-    width: 240px;
-    height: 40px;
-    background: url('../assets/btn.png') no-repeat center top / auto;
-    font-family: Arial;
-    color:  #ffffff;
-    font-size: 14px;
-    font-weight: 700;
-    text-align: center;
-    padding: 10px;
-}
-
-.login-form__input {
-    box-sizing: border-box;
-    border-radius: 5px;
-    border-style: solid;
-    border-width: 1px;
-    border: 1px solid hsla(0,0%,67%,.45);
-    background: -webkit-linear-gradient(90deg, rgba(112, 108, 108, 0) 0%, rgba(0, 0, 0, 0.0588235) 100%);
-    background: -moz-linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.0588235) 100%);
-    background: -o-linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.0588235) 100%);
-    background: -ms-linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.0588235) 100%);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.0588235) 100%);
-    width: 240px;
-    height: 40px;
-    font-family: Arial;
-    color:  #797979;
-    font-size: 14px;
-    font-weight: 400;
-    text-align: center;
-}
-
-.login-form__link {
-    font-family: Arial;
-    font-size: 12px;
-    font-weight: 400;
-    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.75);
-    cursor: pointer;
+.login-form__link_left {
     float: left;
     width: 50%;
 }
 
-.login-form__link_forgot_username {
-    text-align: left;
-    color: #74848a;
-}
-
-.login-form__link_forgot_password {
-    text-align: left;
-    text-decoration: underline;
-    color: #e86b69;
-}
-
-.login-form__row {
-    padding: 0;
-    width: 240px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.login-form__row_title {
-    margin-bottom: 17px;
-    margin-top: 85px;
-}
-
-.login-form__row_password {
-    margin-top: 16px;
-}
-
-.login-form__row_forgot, .login-form__row_button {
-    margin-top: 21px;
+.clearfix:after {
+    content: '';
+    width: 100%;
+    clear: both;
+    display: table;
 }
