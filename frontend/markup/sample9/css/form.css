@@ -1,0 +1,236 @@
+.login-form {
+    background-color:  #f1f1f1;
+    box-shadow: 0px 0px 4px 4px rgba(216, 216, 216, 0.32);
+    width: 469px;
+    height: 473px;
+    border-radius: 5px;
+}
+
+.login-form__row {
+    padding: 0;
+    width: 409px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login_form__title {
+    height: 64px;
+    text-align: center;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    padding-top: 11px;
+}
+
+.login_form__title_super {
+    color:  #7a7a7a;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.login_form__title_sub {
+    color:  #383838;
+    font-size: 13.12px;
+    font-weight: 400;
+}
+
+.login_form__social {
+    height: 50px;
+}
+
+.login-form__row_social {
+    margin-top: 29px;
+}
+
+.login-form_row__title {
+    color:  #6a6a6a;
+    font-size: 13.12px;
+    font-weight: 600;
+}
+
+.social_button {
+    box-sizing: border-box;
+    padding-top: 5px;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    border-color:  #4f77b0;
+    width: 196px;
+    height: 34px;
+    cursor: pointer;
+}
+
+.social_button_twitter {
+    background: url('../assets/twitter_btn.png') no-repeat ;
+}
+
+.social__twitter_button_margin {
+    margin-right: 13px
+}
+
+.social__twitter_button_relative {
+    position: relative;
+}
+
+.social_buttons {
+    margin-top: 10px;
+}
+
+.social__facebook_button {
+    background: url('../assets/facebook_btn.png') no-repeat;
+}
+
+.social_button__img {
+    position: absolute;
+    top: 5px;
+    left: 8px;
+}
+
+.social_button__text {
+    font-family: OpenSans;
+    color:  #ffffff;
+    font-size: 14.65px;
+    font-weight: 400;
+    margin-left: 40px;
+}
+
+.social_button__text_bold {
+    font-size: 14.65px;
+    font-weight: 700;
+}
+
+.login-form__row_login {
+    color:  #6a6a6a;
+    font-size: 13.12px;
+    font-weight: 600;
+    margin-top: 57px;
+}
+
+.login-form__row_user {
+    margin-top: 10px;
+    position: relative;
+}
+
+.login-form__row_password {
+    margin-top: 20px;
+    position: relative;
+}
+
+.login-form__row_img {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+}
+
+.login-form__row_img_password {
+    top: 20px;
+}
+
+.login-form__row_actions {
+    margin-top: 19px;
+}
+
+.login-form__input {
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 2px;
+    border-color:  #e0e0e0;
+    box-sizing: border-box;
+    color:  #cccccc;
+    font-size: 17.09px;
+    font-weight: 400;
+    width: 409px;
+    height: 52px;
+    color:  #bdbdbd;
+    line-height: 20px;
+    text-align: left;
+    padding-left: 17px;
+}
+
+.checkbox {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    color:  #6b6b6b;
+    font-size: 13.12px;
+    font-weight: 600;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding-top: 6px;
+  }
+  
+  .checkbox__input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .checkbox__checkmark {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background: url(../assets/checkbox.png) no-repeat;
+  }
+
+  .checkbox__checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .checkbox input:checked ~ .checkbox__checkmark:after {
+    display: block;
+  }
+  
+  .checkbox .checkbox__checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .login_button {
+    background: url(../assets/login_btn.png) no-repeat;
+    width: 90px;
+    height: 36px;
+    float: right;
+    color:  #ffffff;
+    font-size: 16.97px;
+    font-weight: 600;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 7px;
+    cursor: pointer;
+  }
+
+  .login-form__row_forgot {
+    margin-top: 21px;
+}
+
+.login-form__link {
+    color:  #262626;
+    font-size: 13.12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.login-form__link_forgot_registry {
+    float: right;
+}
+
+.login-form__link_forgot_password {
+    float: left;
+}
+
+.login-form__link_forgot_registry_grey{
+    color:  #6b6b6b;
+}

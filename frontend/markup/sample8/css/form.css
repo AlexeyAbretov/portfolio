@@ -67,13 +67,7 @@
     position: relative;
 }
 
-.login-form__row_email_img {
-    position: absolute;
-    top: 7px;
-    right: 10px;
-}
-
-.login-form__row_password_img {
+.login-form__row_img {
     position: absolute;
     top: 7px;
     right: 10px;
@@ -111,7 +105,7 @@
     line-height: 20px;
 }
 
-.login-form__row_button {
+.login-form__button {
     font-family: Roboto;
     color:  #ffffff;
     font-size: 16px;

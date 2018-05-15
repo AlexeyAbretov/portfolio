@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PSD макет формы входа с кнопками Twitter и Facebook</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="login-form login-form_center">
+        <div class="login-form__row login_form__title">
+            <span class="login_form__title_super">welcome</span>
+            <br/>
+            <span class="login_form__title_sub">log in</span>
+        </div>
+        <div class="login-form__row login-form__row_social login_form__social">
+            <div class="login-form_row__title">Login with a social network:</div>
+            <div class="social_buttons">
+                <div class="social_button social_button_twitter social__button_left social__twitter_button_margin social__twitter_button_relative">
+                    <img src="assets/t_logo.png" alt="" class="social_button__img">
+                    <span class="social_button__text">
+                        Connect with
+                        <span class="social_button__text_bold">Twitter</span>
+                    </span>
+                </div>
+                <div class="social_button social__facebook_button social__button_left social__twitter_button_relative">
+                    <img src="assets/f_logo.png" alt="" class="social_button__img">
+                    <span class="social_button__text">
+                        Connect with
+                        <span class="social_button__text_bold">Facebook</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="login-form__row login-form__row_login">
+            <div class="login-form_row__title">Login with registred details:</div>
+        </div>
+        <div class="login-form__row login-form__row_user">
+            <img src="assets/user.png" alt="" srcset="" class="login-form__row_img">
+            <input class="login-form__input" placeholder="Username" />
+        </div>
+        <div class="login-form__row login-form__row_password">
+            <img src="assets/key.png" alt="" srcset="" class="login-form__row_img login-form__row_img_password">
+            <input class="login-form__input" type="password" placeholder="Password" />
+        </div>
+        <div class="login-form__row login-form__row_actions clearfix">
+            <label class="checkbox checkbox_left">Keep me signed in
+                <input type="checkbox" class="checkbox__input" />
+                <span class="checkbox__checkmark"></span>
+            </label>
+            <div class="login_button">
+                Log In
+            </div>
+        </div>
+        <div class="login-form__row login-form__row_forgot clearfix">
+            <div class="login-form__link login-form__link_forgot_password">Forgotten your Password?</div>
+            <div class="login-form__link login-form__link_forgot_registry">
+                <span class="login-form__link_forgot_registry_grey">Don't have an account?</span> Register Now</div>
+        </div>
+    </div>
+</body>
+
+</html>
