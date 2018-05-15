@@ -1,5 +1,5 @@
 export default (url, options) => {
-  const fetchOptions = { ...options } || {};
+  const fetchOptions = options || {};
   fetchOptions.credentials = 'same-origin';
   fetchOptions.headers = {
     'Content-Type': 'application/json',
