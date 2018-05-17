@@ -21,8 +21,8 @@ export const titleSelector = createSelector(
     const { data = {} } = openedLegalPopup;
 
     const preset = presets.find(x => x.id === data.presetId);
-    return (options.legalPopupTitle || '#name#').replace(
-      '#name#',
+    return (options.legalPopupTitle || '{0}').replace(
+      '{0}',
       (preset || {}).name
     );
   }
@@ -35,13 +35,11 @@ export const descriptionSelector = createSelector(
       return '';
     }
 
-    const openedLegalPopup = opened
-      .find(x => x.name === PopupNames.Legal);
+    const openedLegalPopup = opened.find(x => x.name === PopupNames.Legal);
 
     const { data = {} } = openedLegalPopup;
 
-    const preset = presets
-      .find(x => x.id === data.presetId);
+    const preset = presets.find(x => x.id === data.presetId);
 
     return (preset || {}).description;
   }

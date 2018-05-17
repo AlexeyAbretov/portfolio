@@ -9,15 +9,15 @@ import {
 } from 'logic';
 
 const map = ({ row, service, options } = {}) => {
-  if (!service || !row) {
+  if (!row) {
     return row;
   }
 
   return {
     ...row,
-    value: !service.isConnected && options.wifiRentTitle ?
-      options.wifiRentTitle :
-      service.name
+    value: service ?
+      (options.phoneTitle || service.name) :
+      ''
   };
 };
 
@@ -27,28 +27,30 @@ const selector = ({ preset } = {}) => createSelector(
     const services = (preset.services || [])
       .sort(priceSort);
 
-    let service = services
-      .find(x => x.type === ServiceTypes.WifiRent &&
+    let phone = services
+      .find(x => x.type === ServiceTypes.Phone &&
         x.isConnected);
 
-    if (service) {
-      return service;
+    if (phone) {
+      return phone;
     }
 
-    service = services
-      .find(x => x.type === ServiceTypes.WifiRent &&
+    phone = services
+      .find(x => x.type === ServiceTypes.Phone &&
         (x.isRequired || x.isPreInclude));
 
-    if (service) {
-      return service;
+    if (phone) {
+      return phone;
     }
 
-    service = services
-      .find(x => x.type === ServiceTypes.WifiRent &&
-        x.isAllow);
+    if (!preset.isConnected) {
+      phone = services
+        .find(x => x.type === ServiceTypes.Phone &&
+          x.isAllow);
 
-    if (service) {
-      return service;
+      if (phone) {
+        return phone;
+      }
     }
 
     return null;

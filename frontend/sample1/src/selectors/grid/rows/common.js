@@ -14,10 +14,31 @@ const selector = ({ preset, type } = {}) => createSelector(
     const services = (preset.services || [])
       .sort(priceSort);
 
-    const service = services
-      .find(w => w.type === type);
+    let service = services
+      .find(x => x.type === type &&
+        x.isConnected);
 
-    return service;
+    if (service) {
+      return service;
+    }
+
+    service = services
+      .find(x => x.type === type &&
+        (x.isRequired || x.isPreInclude));
+
+    if (service) {
+      return service;
+    }
+
+    service = services
+      .find(x => x.type === type &&
+        x.isAllow);
+
+    if (service) {
+      return service;
+    }
+
+    return null;
   }
 );
 

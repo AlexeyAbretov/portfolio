@@ -10,7 +10,7 @@ import {
     getConnectedServices
 } from 'selectors';
 
-const getNote = createSelector(
+export const getNote = createSelector(
     [getCurrentPreset, getConnectedServices, getOptions],
     (currentPreset, services, options) => {
       if (currentPreset.isConnected) {
@@ -22,8 +22,8 @@ const getNote = createSelector(
 
       if (bundle) {
         return (options.bundleNote || '')
-            .replace('#name#', bundle.name)
-            .replace('#url#', bundle.url);
+            .replace('{0}', bundle.name)
+            .replace('{1}', bundle.url);
       }
 
       const other = services
@@ -36,4 +36,10 @@ const getNote = createSelector(
         '';
     });
 
-export default getNote;
+export const getInfoText = createSelector(
+    [getOptions],
+    options => options.infoText);
+
+export const getTitle = createSelector(
+    [getOptions],
+    options => options.title);

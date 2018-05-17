@@ -8,6 +8,7 @@ import {
 
 export const getOptions = state => (state || {}).options || {};
 export const getPresets = state => (state || {}).presets || [];
+export const getServices = state => ((state || {}).services || []).items || [];
 export const getState = state => state || {};
 
 export const getPopups = createSelector(
@@ -26,6 +27,11 @@ export const getCurrentPreset = createSelector(
   [getPresets],
   presets => presets
     .find(x => x.isConnected) || {});
+
+export const getConnectedServices = createSelector(
+  [getServices],
+  services => services
+    .filter(x => x.isConnected));
 
 export const getPresetServices = createSelector(
   [getPresets],

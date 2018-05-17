@@ -10,13 +10,10 @@ import {
 import {
   ServiceTypes,
   GridRowStatus,
-  GridRowType,
-  MappingState
+  GridRowType
 } from 'consts';
 
-import {
-  getAvailableMappings
-} from 'selectors/mappings';
+import applyDecorators from './decorators';
 
 import internet from './internet';
 import tv from './tv';
@@ -24,6 +21,7 @@ import wifi from './wifi';
 import antivir from './antivir';
 import console from './console';
 import vsu from './vsu';
+import phone from './phone';
 
 import common from './common';
 
@@ -36,7 +34,8 @@ const mappers = {
   [ServiceTypes.Kasper]: antivir,
   [ServiceTypes.DrWeb]: antivir,
   [ServiceTypes.TvConsole]: console,
-  [ServiceTypes.Vsu]: vsu
+  [ServiceTypes.Vsu]: vsu,
+  [ServiceTypes.Phone]: phone
 };
 
 export const getRow = ({
@@ -51,112 +50,15 @@ export const getRow = ({
     (service.isPreInclude || service.isRequired) ?
       GridRowStatus.Default :
       GridRowStatus.Allow,
-  image: service.isConnected && service.hasGift ?
+  image: service.hasGift ?
     options.giftIcon :
     ''
 });
 
-const changesDecorator = ({ row, preset, changes } = {}) => {
-  if (!changes[preset.id] ||
-    preset.isConnected) {
-    return row;
-  }
-
-  const added = (changes[preset.id] || {}).added || [];
-  const removed = (changes[preset.id] || {}).removed || [];
-
-  const service = (preset.services || [])
-    .find(x => x.id === row.id);
-
-  if (service.isAllow) {
-    return {
-      ...row,
-      status: added
-        .find(x => x.id === row.id) ?
-        GridRowStatus.Default :
-        GridRowStatus.Allow
-    };
-  } else if (service.isRequired ||
-    service.isPreInclude) {
-    return {
-      ...row,
-      status: removed
-        .find(x => x.id === row.id) ?
-        GridRowStatus.Allow :
-        GridRowStatus.Default
-    };
-  }
-
-  return row;
-};
-
-const connectedPresetDecorator = ({ row, preset } = {}) => {
-  if (preset.isConnected) {
-    if (row.status === GridRowStatus.Allow) {
-      return null;
-    }
-
-    return {
-      ...row,
-      type: GridRowType.Inline
-    };
-  }
-
-  return row;
-};
-
-const mappingsDecorator = ({ row, preset, service, mappings } = {}) => {
-  if (preset.isConnected || !row) {
-    return row;
-  }
-
-  const serviceState = (mappings[preset.id] || {})[service.id];
-
-  if (!serviceState) {
-    return row;
-  }
-
-  if ((serviceState === MappingState.Change ||
-    serviceState === MappingState.Select) &&
-    (service.isPreInclude || service.isRequired)) {
-    return row;
-  }
-
-  if ((serviceState === MappingState.Change ||
-    serviceState === MappingState.Select) &&
-    service.isAllow) {
-    return {
-      ...row,
-      status: GridRowStatus.Connected
-    };
-  }
-
-  if (serviceState === MappingState.Delete) {
-    const anotherServices = (preset.services || [])
-      .filter(x => x.type === service.type &&
-        x.id !== service.id);
-
-    const withDeleteStatus = anotherServices
-      .filter(x => (mappings[preset.id] || {})[x.id] === MappingState.Delete);
-
-    if (anotherServices.length &&
-      anotherServices.length !== withDeleteStatus.length) {
-      return {
-        ...row,
-        status: GridRowStatus.Allow
-      };
-    }
-
-    return null;
-  }
-
-  return row;
-};
-
 export default ({ preset } = {}) => {
   const selector = createSelector(
-    [getPresetItemsOrder, getState, getChanges, getChanges, getOptions, getAvailableMappings],
-    (order, state, serviceChanges, changes, options, mappings) => {
+    [getPresetItemsOrder, getState, getChanges, getOptions],
+    (order, state, changes, options) => {
       let rows = [];
       order.forEach((x) => {
         const mapper = mappers[x.key];
@@ -175,16 +77,11 @@ export default ({ preset } = {}) => {
             service, options
           });
 
-          row = changesDecorator({
-            row, preset, changes: serviceChanges
-          });
-
-          row = connectedPresetDecorator({
-            row, preset
-          });
-
-          row = mappingsDecorator({
-            row, preset, service, mappings
+          row = applyDecorators({
+            state,
+            row,
+            preset,
+            service
           });
 
           if (!row) {
@@ -196,7 +93,8 @@ export default ({ preset } = {}) => {
               row,
               service,
               options,
-              changes
+              changes,
+              preset
             });
           }
 

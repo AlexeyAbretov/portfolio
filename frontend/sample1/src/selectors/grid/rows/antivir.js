@@ -14,6 +14,18 @@ const types = [
   ServiceTypes.DrWeb
 ];
 
+const map = ({ row, service, options } = {}) => {
+  if (!service || !row) {
+    return row;
+  }
+
+  return {
+    ...row,
+    value: !service.isConnected && options.antivirTitle ?
+      options.antivirTitle :
+      service.name
+  };
+};
 const selector = ({ preset, rows } = {}) => createSelector(
   [],
   () => {
@@ -56,5 +68,5 @@ const selector = ({ preset, rows } = {}) => createSelector(
 
 export default {
   selector,
-  map: ({ row } = {}) => row
+  map
 };

@@ -8,22 +8,44 @@ import {
   priceSort
 } from 'logic';
 
-const map = ({ row, service, options } = {}) => {
+import {
+  getPluralFormFormatted
+} from 'utils';
+
+const map = ({ row, service, options, preset } = {}) => {
   if (!row) {
     return row;
   }
 
+  if (!service.isConnected) {
+    return {
+      ...row,
+      value: service ?
+        (options.tvConsoleTitle || service.name) :
+        ''
+    };
+  }
+
+  const counts = ((preset || {}).services || [])
+    .filter(x => x.type === ServiceTypes.TvConsole &&
+      x.isConnected)
+    .length;
+
   return {
     ...row,
-    value: service ?
-      (options.tvConsoleTitle || service.name) :
-      ''
+    value: options.tvConsoleWordForms ?
+      getPluralFormFormatted(options.tvConsoleWordForms, counts) :
+      `${counts} ${service.name}`
   };
 };
 
-const selector = ({ preset } = {}) => createSelector(
+const selector = ({ preset, rows } = {}) => createSelector(
   [],
   () => {
+    if ((rows || []).find(x => x.key === ServiceTypes.TvConsole)) {
+      return null;
+    }
+
     const services = (preset.services || [])
       .sort(priceSort);
 
