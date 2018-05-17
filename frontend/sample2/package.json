@@ -1,0 +1,40 @@
+{
+  "name": "home-request-lite",
+  "version": "1.0.0",
+  "description": "Новая страница с облегченной заявкой, tfs - 111239, тз - http://arch.vimpelcom.ru/pages/viewpage.action?pageId=20664461",
+  "main": "index.js",
+  "scripts": {
+    "build:dev": "set NODE_ENV=development && webpack --config webpack.dev.config.js --progress --colors",
+    "build:prod": "set NODE_ENV=production && webpack --config webpack.prod.config.js --progress --colors",
+    "build:fake": "set NODE_ENV=fake && webpack --config webpack.fake.config.js --progress --colors"
+  },
+  "author": "Alexey Abretov",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-transform-es2015-template-literals": "^6.22.0",
+    "babel-plugin-transform-regenerator": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "expose-loader": "0.7.3",
+    "ifdef-loader": "^2.0.3",
+    "webpack": "3.8.1"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "isomorphic-fetch": "^2.2.1",
+    "react": "16.0.0",
+    "react-dom": "16.0.0",
+    "react-redux": "5.0.6",
+    "react-text-mask": "^5.0.2",
+    "redux": "3.7.2",
+    "redux-saga": "0.16.0",
+    "whatwg-fetch": "^2.0.3"
+  }
+}
