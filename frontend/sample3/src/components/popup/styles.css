@@ -1,0 +1,363 @@
+
+.lk-internet__popup {
+  text-align: left;
+  font-size: 15px;
+}
+
+.lk-internet__popup-title {
+    margin: 23px 0 34px;
+    font-size: 50px;
+    line-height: 1.12;
+    font-family: 'Officina Serif';
+    font-weight: 400;
+}
+
+.lk-internet__popup-title--centered {
+  text-align: center;
+}
+
+.lk-page-popup__title-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 15px;
+}
+
+.lk-internet__popup-title-note {
+  font-family: 'Officina Serif';
+  font-weight: 400;
+  font-size: 17px;
+  color: #282828;
+  margin-bottom: 32px;
+}
+
+.lk-internet__popup-title-note--centered {
+  text-align: center;
+}
+
+.lk-internet__popup-subtitle {
+  font-size: 30px;
+  font-family: 'Officina Serif';
+  font-weight: 400;
+  color: #282828;
+}
+
+.lk-internet__popup-subtitle--centered {
+  text-align: center;
+}
+
+.lk-internet__row--popup-layout {
+  position: relative;
+}
+
+.lk-internet__row--popup-layout-first {
+  border-top: 1px solid rgba(170, 170, 170, .45);
+}
+
+.lk-internet__row--popup-layout-nobottomborder {
+  border-bottom: 0;
+}
+
+.lk-internet__cell--popup-left-common {
+  width: 62px;
+}
+
+.lk-internet__cell--popup-middle {
+  width: 400px;
+}
+
+.lk-internet__cell--popup-middle-wide {
+  width: 450px;
+}
+
+.lk-internet__cell--popup-right {
+  text-align: right;
+}
+
+.lk-internet__cell--popup-single-padded {
+  padding-left: 62px;
+  padding-right: 143px;
+}
+
+.lk-internet__popup .lk-internet__tile-cost--large,
+.lk-internet__popup .lk-internet__option-name--large,
+.lk-internet__tile-cost--large,
+.lk-internet__option-name--large {
+  font-size: 21px;
+}
+
+.lk-internet__popup-btn-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.lk-internet__popup-btn-container--padded {
+  padding: 0 160px 0 62px;
+}
+
+.lk-internet__popup-btn-container--wide-btn > div,
+.lk-internet__popup-btn-container--wide-btn button {
+  width: 100%;
+}
+
+.lk-internet__popup-btn-big {
+  height: 52px;
+  padding: 0 30px;
+  border-radius: 26px;
+  font-size: 21px;
+  line-height: 52px;
+}
+
+.lk-internet__popup-btn-big:before {
+  border-radius: 26px;
+}
+
+.lk-internet__popup-btn-big:disabled {
+  border-radius: 31px;
+}
+
+.lk-internet__popup-btn-container--wide-btn .lk-internet__popup-btn-big {
+  width: 100%;
+}
+
+.lk-internet__popup-btn {
+  width: 100%;
+}
+
+.lk-internet__popup-clarification {
+  font-size: 17px;
+  color: #282828;
+  margin-top: 28px;
+  text-align: center;
+}
+
+.lk-internet__popup-option-description {
+  font-size: 17px;
+}
+
+.lk-internet__popup-inline-dynamic {
+  margin-left: 18px;
+}
+
+.lk-page-popup__form-row {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.lk-page-popup__form-row + .lk-page-popup__relocation-form--houses-flats-rows,
+.lk-page-popup__form-row + .lk-page-popup__form-row {
+  margin-top: 30px;
+}
+
+.lk-page-popup__form-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.lk-page-popup__form-row--va-top .lk-page-popup__form-cell {
+  vertical-align: top;
+}
+
+.lk-page-popup__relocation-form {
+  width: 402px;
+  margin: auto;
+  margin-top: 27px;
+  max-width: 100%;
+}
+
+.lk-page-popup__relocation-form .lk-page-popup__form-cell:first-child {
+  width: 160px;
+}
+
+.lk-page-popup__relocation-form .lk-internet__popup-btn-container {
+  margin: 45px -20px 0;
+}
+
+.lk-page-popup__btn-back {
+  position: absolute;
+  left: 23px;
+  top: 20px;
+}
+
+.lk-page-popup__btn-back a {
+  color: #787878;
+}
+
+.lk-page-popup__btn-back-icon {
+  margin-right: 8px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.lk-page-popup__submit-request-form {
+  width: 445px;
+  margin: auto;
+}
+
+.lk-page-popup__submit-request-form .lk-page-popup__form-cell:first-child {
+  width: 230px;
+}
+
+.submit-popup__input {
+  margin-right: 18px;
+}
+
+.submit-popup__input-link {
+  margin-top: 8px;
+  font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
+  font-size: 13px;
+}
+
+.lk-popup__input-error {
+  font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
+  color: #e13539;
+  font-size: 13px;
+}
+
+.lk-page-popup__request-number-form {
+  width: 433px;
+  margin: auto;
+}
+
+.lk-page-popup__request-number-form .lk-page-popup__form-cell:first-child {
+  width: 171px;
+}
+
+.lk-page-popup__rrequest-number-form .submit-popup__input {
+  margin-right: 21px;
+}
+
+.lk-page-popup__input-120 {
+  width: 120px;
+}
+
+.lk-page-popup__input-60 {
+  width: 60px;
+}
+
+.lk-page-popup__range-slider-top-values {
+  height: 26px;
+  position: relative;
+  margin: 14px 15px 0;
+}
+.lk-page-popup__range-slider-top-value {
+  position: absolute;
+  white-space: nowrap;
+  color: #282828;
+  font-size: 13px;
+  font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
+}
+
+
+
+@media only screen and (max-width: 1023px) {
+  .lk-internet__popup-title {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .lk-internet__popup-title-note {
+    width: auto;
+  }
+
+  .lk-internet__popup-subtitle {
+    font-size: 21px;
+  }
+
+  .lk-internet__cell--popup-left-common {
+    width: 24%;
+  }
+
+  .lk-internet__cell--popup-middle,
+  .lk-internet__cell--popup-middle-wide {
+    width: 52%;
+  }
+  
+  .lk-internet__cell--popup-single-padded,
+  .lk-internet__popup-btn-container--padded {
+    padding: 0;
+  }
+
+  .lk-internet__popup-option-description {
+    font-size: 15px;
+    font-family: 'Officina Serif';
+    font-weight: 400;
+  }
+  
+  .lk-page-popup__range-slider-note,
+  .lk-internet__popup .lk-internet__tile-cost--large,
+  .lk-internet__popup .lk-internet__option-name--large {
+    font-size: 15px;
+    font-family: 'Officina Serif';
+    font-weight: 400;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  /*forms*/
+  
+  .lk-page-popup__form-row,
+  .lk-page-popup__form-cell {
+    display: block;
+  }
+
+  .lk-page-popup__relocation-form .lk-page-popup__form-cell:first-child {
+    width: auto;
+  }
+  
+  .lk-page-popup__relocation-form--houses-flats-rows {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .lk-page-popup__relocation-form--houses-flats-rows .lk-page-popup__form-row {
+    display: table-cell;
+    width: 50%; 
+  }
+
+  .lk-page-popup__relocation-form--houses-flats-rows .lk-page-popup__form-row:first-child {
+    padding-right: 15px;
+  }
+
+  .lk-page-popup__relocation-form--houses-flats-rows .lk-page-popup__form-row:last-child {
+    padding-left: 15px;
+  }
+
+  .lk-page-popup__relocation-form--houses-flats-rows .lk-page-popup__input-120,
+  .lk-page-popup__relocation-form--houses-flats-rows .lk-page-popup__input-60 {
+    width: 100%;  
+  }
+
+  .lk-page-popup__relocation-form  .lk-internet__popup-btn-container {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  .lk-page-popup__form-label {
+    margin-bottom: 5px;
+  }
+
+  .lk-internet__popup-btn-big {
+    font-size: 17px;
+    padding: 0 15px;
+  }
+
+  .lk-page-popup__submit-request-form {
+    width: auto;
+  }
+
+  .lk-page-popup__submit-request-form .lk-page-popup__form-cell:first-child {
+    width: auto;
+    margin-bottom: 30px;
+  }
+
+  .submit-popup__input {
+    margin-right: 0;
+  }
+
+  .lk-page-popup__range-slider-top-value {
+    font-size: 12px;
+  }
+}

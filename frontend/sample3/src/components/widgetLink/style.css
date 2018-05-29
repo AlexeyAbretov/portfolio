@@ -1,0 +1,23 @@
+.widget-link {
+  display: block;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: 'Officina Serif';
+  position: relative;
+  cursor: pointer;
+}
+
+.widget-link_border {
+  padding: 15px 0;
+  border-top: 1px solid rgba(170, 170, 170, .45);
+  border-bottom: 1px solid rgba(170, 170, 170, .45);
+}
+
+.widget-link + .widget-link {
+  border-top: 0;
+}
+
+.widget-link-arrow {
+  transform: rotate(45deg) translateY(40%) scale(.75);
+  margin-top: -5px;
+}

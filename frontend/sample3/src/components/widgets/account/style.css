@@ -1,0 +1,151 @@
+/*.account-widget {
+  margin: 3px;
+  flex-basis: 39%;
+  position: relative;
+  z-index: 1;
+  font-family: 'Officina Serif';
+  padding-bottom: 40px;
+  box-shadow: none;
+}*/
+
+/*.account-widget:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 68px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}*/
+
+/*.account-widget--active:after {
+  background-color: #ffe135;
+}
+
+.account-widget--blocked:after {
+  background-color: #f3f3f3;
+}
+
+.account-widget__header {
+  z-index: 2;
+  height: 68px;
+  margin-top: -30px;
+  padding-top: 24px;
+  box-sizing: border-box;
+}*/
+
+
+.account-widget__header {
+  height: 68px;
+  border-bottom: 1px solid rgba(170, 170, 170, .45);
+  border-radius: 4px;
+  padding: 24px 35px 0;
+  box-sizing: border-box;
+  margin: -30px -35px 0;
+}
+
+.account-widget--active .account-widget__header {
+  background-color: #ffe135;
+}
+
+.account-widget--blocked .account-widget__header {
+  background-color: #f3f3f3;
+}
+
+.account-widget__header-icon {
+  float: right;
+  margin-top: -8px;
+}
+
+
+.account-widget__table {
+  font-size: 15px;
+  margin-top: 45px;
+  margin-bottom: 20px;
+  font-family: 'Officina Serif';
+  width: 100%;
+}
+
+.account-widget__table td {
+  padding-top: 0 !important;
+  padding-bottom: 16px !important;
+  padding-left: 0 !important;
+  padding-right: 7px !important;
+  color: #282828;
+}
+
+.account-widget__table td:first-child {
+  width: 33%;
+  color: #787878;
+}
+
+.account-widget__table-text {
+  display: inline-block;
+  max-width: 135px;
+}
+
+.account-widget__status {
+  position: relative;
+}
+
+.account-widget__status:after {
+  content: '';
+  display: block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: -20px;
+  top: 0;
+}
+
+.account-widget__status--active {
+  color: #007300;
+}
+
+.account-widget__status--active:after {
+  background-image: url('../../../../img/status-ok.png');
+}
+
+.account-widget__status--blocked {
+  color: #787878;
+}
+
+.account-widget__block-info {
+  font-size: 15px;
+  text-align: center;
+}
+
+.account-widget__block-message {
+  display: inline-block;
+  position: relative;
+}
+
+.account-widget__block-message:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  width: 37px;
+  height: 37px;
+  background-image: url('../../../../img/sad-face.png');
+}
+
+@media only screen and (max-width: 1023px) {
+  .account-widget__header {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .account-widget__header {
+    margin: -20px -24px 0;
+  }
+
+  .account-widget__table {
+    /*margin-left: 10px; */
+  }
+}

@@ -1,0 +1,74 @@
+.account-widget,
+.address-widget,
+.contacts-widget,
+.internet-widget,
+.tv-widget,
+.payment-widget {
+  margin: 0 3px 3px 0;
+  flex-basis: 335px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  font-family: 'Officina Serif';
+  padding-bottom: 40px;
+  box-shadow: none;
+}
+
+.account-widget *,
+  .address-widget *,
+  .contacts-widget *,
+  .internet-widget *,
+  .tv-widget *,
+  .payment-widget * {
+    outline: none;
+  }
+
+.address-widget {
+  color: #282828;
+}
+
+.account-widget:nth-child(even),
+.address-widget:nth-child(even),
+.contacts-widget:nth-child(even),
+.internet-widget:nth-child(even),
+.tv-widget:nth-child(even),
+.payment-widget:nth-child(even) {
+  margin-right: 0;
+}
+
+input[type="tel"] {
+  box-sizing: border-box;
+}
+
+.lk-tiles__status-confirmed {
+  color: #007300;
+}
+
+.lk-tiles__status-confirmed-icon {
+  margin-left: 3px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+@media only screen and (max-width: 1023px) {
+  .account-widget,
+  .address-widget,
+  .contacts-widget,
+  .internet-widget,
+  .tv-widget,
+  .payment-widget {
+    margin-bottom: 6px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .account-widget,
+  .address-widget,
+  .contacts-widget,
+  .internet-widget,
+  .tv-widget,
+  .payment-widget {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "target": "ES6",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "paths": {
+      "*": [
+        "*",
+        "src/*"
+      ]
+    },
+    "module": "commonjs"
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "src/**/*.jsx",
+    "node_modules/vendor-react-ui-toolkit/source/*.jsx"
+  ]
+}

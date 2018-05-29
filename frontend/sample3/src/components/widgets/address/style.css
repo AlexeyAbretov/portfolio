@@ -1,0 +1,28 @@
+
+.address-widget__header {
+  z-index: 2;
+  border-bottom: 1px solid rgba(170, 170, 170, .45);
+  padding-bottom: 12px;
+}
+
+.address-widget__address {
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+.address-widget__move-info {
+  background-color: #eaeaea;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+.address-widget__move-cnt {
+  margin-bottom: 15px;
+}
+
+
+@media only screen and (max-width: 1023px) {
+  
+}

@@ -1,0 +1,190 @@
+.lk-internet__tile {
+  font-family: 'Officina Serif';
+  font-weight: 400;
+  margin-left: 243px;
+  width: 673px;
+  background: #fff;
+  padding: 0 36px 44px;
+  box-sizing: border-box;
+  border: 1px solid rgba(170, 170, 170, .45);
+  border-radius: 4px;
+  margin-bottom: 3px; 
+}
+
+.lk-internet__row {
+  border-bottom: 1px solid rgba(170, 170, 170, .45);
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.lk-internet__sub-cell,
+.lk-internet__cell {
+  display: table-cell;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+.lk-internet__cell {
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+.lk-internet__sub-row {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.lk-internet__row--tile-title-row .lk-internet__cell {
+  padding-top: 0;
+  padding-bottom: 0;
+  vertical-align: middle;
+}
+
+.lk-internet__cell--wide {
+  width: 510px;
+}
+
+.lk-internet__cell--left-common {
+  width: 97px;
+}
+
+.lk-internet__cell--left-padded {
+  width: 329px;
+  padding-left: 97px;
+}
+
+.lk-internet__cell--second {
+  width: 410px;
+}
+
+.lk-internet__sub-cell--first {
+  width: 232px;
+}
+
+.lk-internet__sub-cell--second {
+  width: 192px;
+}
+
+h3.lk-internet__tile-title {
+  padding: 23px 7px 13px 0;
+  margin-bottom: 0;
+}
+
+.lk-internet__tile-cost {
+  font-size: 15px;
+  color: #282828;
+  text-align: right;
+}
+
+.lk-internet__option-title {
+  font-size: 15px;
+}
+
+.lk-internet__option-name {
+  font-size: 15px;
+  color: #282828;
+  padding-right: 14px;
+}
+
+.lk-internet__dynamic-wrap {
+  padding-top: 3px;
+  font-size: 15px;
+}
+
+.lk-internet__dynamic.dynamic {
+  border-bottom: 1px dashed rgba(40,40,40,.33);
+  cursor: pointer;
+}
+
+.lk-internet__arrow {
+  display: inline-block;
+  vertical-align: bottom;
+  position: relative;
+  margin-left: 3px;
+}
+
+.lk-internet__dynamic {
+  font-size: 15px;
+  color: #282828;
+}
+
+.lk-internet__option-note,
+.lk-internet__option-description {
+  font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
+  line-height: 1.3;
+}
+
+.lk-internet__device-return-dynamic {
+  margin-top: 18px;
+  font-family: 'Officina Serif';
+}
+
+.lk-internet__sub-button.lk-internet__sub-button button:not(:disabled) {
+  background: linear-gradient(#f8f6f5,#fdfcfb);
+}
+
+
+@media only screen and (max-width: 1023px) {
+  .lk-internet__tile {
+    width: auto;
+    margin-left: 0;
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .lk-internet__cell--left-common {
+    width: 24%;
+  }
+
+  .lk-internet__cell--second {
+    width: 52%;
+  }
+  
+  .lk-internet__sub-cell,
+  .lk-internet__sub-row {
+    display: block;
+  }
+
+  .lk-internet__sub-cell--first,
+  .lk-internet__sub-cell--second {
+    width: auto;
+  }
+
+  .lk-internet__cell--wide {
+    width: 63%;
+  }
+
+  .lk-internet__cell--left-padded {
+    width: auto;
+    padding-left: 0;
+    padding-bottom: 0;
+  }
+  
+  .lk-internet__row--adaptive-layout-block {
+    display: block;
+    padding-bottom: 0;
+    text-align: center;
+  }
+
+  .lk-internet__row--adaptive-layout-block .lk-internet__row--adaptive-layout-block:last-child {
+    padding-bottom: 40px;
+  }
+
+  .lk-internet__option-description {
+    font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
+    font-size: 13px;
+    margin-top: 14px;
+    margin-bottom: 14px;
+  }
+
+  .lk-internet__row--popup-layout .lk-internet__option-name {
+    font-family: 'Officina Serif';
+    font-weight: 400;
+  }
+
+  .lk-internet__option-name {
+    padding-right: 7px;
+  }
+}

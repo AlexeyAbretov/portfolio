@@ -1,0 +1,143 @@
+.button {
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+    vertical-align: middle;
+    zoom: 1;
+}
+
+.button.common input {
+    display: none;
+}
+
+.button input, .button label {
+  font-size: 15px;
+  color: #282828;
+  border-radius: 24px;
+  text-shadow: 0px 1px 1px #fee215;
+  box-shadow: 0px 3px 0px 0px #bc804a;
+  border: 1px solid #f0cda7;
+  border-top-width: 0;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  margin-bottom: 3px;
+  padding: 0 21px;
+  white-space: nowrap;
+  outline: none;
+  height: 36px;
+  line-height: 36px;
+  font-family: 'Officina Serif';
+  font-weight: 400;
+  background: linear-gradient(to bottom, #ffe100 0%, #f7a700 100%);
+  font-weight: 400;
+}
+
+.button label {
+  display: inline-block;
+  margin: 0;
+  height: 32px;
+  line-height: 33px;
+  font-family: 'Officina Serif';
+  font-weight: 400;
+}
+
+.button.common label:hover {
+    background: #f7a700;
+    background: linear-gradient(to bottom,#fefdc4 0%,#fbb600 49%,#ed9f19 77%,#e9b03f 100%);
+    color: #282828
+}
+
+.button.common label:active {
+    box-shadow: inset 0 1px 3px 1px rgba(0,0,0,.3);
+}
+
+.button .label-icon-reload {
+    width: 13px;
+    height: 14px;
+    margin-left: 6px;
+    background: url("../assets/img/reload.png") no-repeat;
+    display: inline-block;
+    zoom:1;
+    vertical-align: middle
+}
+
+.button .label-icon-remove {
+    width: 13px;
+    height: 16px;
+    background: url("../assets/img/icon-delete.png") no-repeat;
+}
+
+.button.sub .label-icon-remove {
+    margin: -5px 5px 0 0;
+}
+
+.button .disabled {
+    line-height: 36px;
+    display: none;
+    border-radius: 24px;
+    background: transparent;
+    border: 1px solid #c8c8c8;
+    font-family: 'Officina Serif';
+    font-weight: 400;
+    font-size: 15px;
+    color: #c8c8c8;
+    white-space: nowrap;
+    padding: 0 20px;
+    height: 34px;
+    cursor: default;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+.button.sub input, .button.sub label {
+    background: linear-gradient(to bottom,rgba(255,255,255,1) 0%,rgba(200,200,200,1) 100%);
+}
+
+.button.sub input
+{
+    display: none;
+}
+
+.button.sub label {
+    font-family: 'Arial';
+    border: 1px solid #c8c8c8;
+    font-size: 12px;
+    border-radius: 12px;
+    margin-bottom: 0;
+    padding: 0 14px;
+    text-shadow: 0 1px 0 #fff;
+    box-shadow: 0 2px 0 0 #fff;
+    cursor: pointer;
+    color: #282828;
+    position: relative;
+}
+
+.button.sub input, .button.sub button {
+    font-family: 'Arial';
+    border: 1px solid #c8c8c8;
+    font-size: 12px;
+    border-radius: 12px;
+    height: 30px;
+    line-height: 28px;
+    margin-bottom: 0;
+    padding: 0 14px;
+    text-shadow: 0 1px 0 #fff;
+    box-shadow: 0 2px 0 0 #fff;
+    cursor: pointer;
+    color: #282828;
+    text-align: center;
+    position: relative;
+    white-space: nowrap;
+}
+
+.button.sub label {
+    line-height: 30px;
+    height: 30px;
+    display: inline-block;
+}
+
+.button.indent {
+    margin-right: 15px;
+}

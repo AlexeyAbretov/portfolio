@@ -1,0 +1,15 @@
+.lk-sidebar {
+  float: left;
+  background: #efefef;
+  width: 237px;
+  padding: 0 45px 0 30px;
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 1023px) {
+  .lk-sidebar {
+    float: none;
+    width: auto;
+    padding: 0;
+  }
+}

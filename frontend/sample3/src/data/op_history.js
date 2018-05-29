@@ -1,0 +1,156 @@
+export default [{
+  id: '9100f2c7-299e-4ff0-a0b8-e127574773a8',
+  date: '08/19/2017 12:10:45',
+  eventName: 'Компенсация',
+  serviceName: null,
+  serviceId: null,
+  serviceType: 0,
+  startBalance: 0.0,
+  changeBalance: 33.0,
+  newBalance: 33.0,
+  type: '3500'
+}, {
+  id: '656bec57-bf4a-42c3-8e9a-119e3a4b521f',
+  date: '08/19/2017 12:10:49',
+  eventName: 'Резерв',
+  serviceName: 'vpdn_NIGHTUNL_L2TP_public',
+  serviceId: 'M106311',
+  serviceType: 6,
+  startBalance: 33.0,
+  changeBalance: -32.0,
+  newBalance: 1.0,
+  type: '7000'
+}, {
+  id: 'be6daa9e-5589-42e9-be39-ca34338e88ae',
+  date: '08/24/2017 08:39:46',
+  eventName: 'Платеж',
+  serviceName: null,
+  serviceId: null,
+  serviceType: 0,
+  startBalance: 1.0,
+  changeBalance: 5555.0,
+  newBalance: 5556.0,
+  type: '3000'
+}, {
+  id: '655557f6-5949-4890-afe4-bc34d36a25fd',
+  date: '08/25/2017 12:04:48',
+  eventName: 'Компенсация',
+  serviceName: null,
+  serviceId: null,
+  serviceType: 0,
+  startBalance: 5556.0,
+  changeBalance: 2323.0,
+  newBalance: 7879.0,
+  type: '3500'
+}, {
+  id: '9e998b46-25eb-446a-8c80-87cdfef35c39',
+  date: '08/25/2017 12:04:48',
+  eventName: 'Резерв',
+  serviceName: 'vpdn_NIGHTUNL_L2TP_public',
+  serviceId: 'M106311',
+  serviceType: 6,
+  startBalance: 7879.0,
+  changeBalance: -32.0,
+  newBalance: 7847.0,
+  type: '7000'
+}, {
+  id: '0f35b24e-8097-416b-b12d-c352b10949ff',
+  date: '08/25/2017 12:04:48',
+  eventName: 'Возврат резерва',
+  serviceName: 'vpdn_NIGHTUNL_L2TP_public',
+  serviceId: 'M106311',
+  serviceType: 6,
+  startBalance: 7847.0,
+  changeBalance: 32.0,
+  newBalance: 7879.0,
+  type: '8000'
+}, {
+  id: '98cae188-8b71-4bcb-9e29-7dd3700ab203',
+  date: '08/25/2017 12:04:48',
+  eventName: 'Абон плата',
+  serviceName: 'vpdn_NIGHTUNL_L2TP_public',
+  serviceId: 'M106311',
+  serviceType: 6,
+  startBalance: 7879.0,
+  changeBalance: -32.0,
+  newBalance: 7847.0,
+  type: '9000'
+}, {
+  id: 'ad09bd09-d502-475b-821e-1ef0bc5669f7',
+  date: '08/25/2017 12:05:56',
+  eventName: 'Разовое списание',
+  serviceName: 'TB_un_pr',
+  serviceId: 'TB00025',
+  serviceType: 8,
+  startBalance: 7847.0,
+  changeBalance: 0.0,
+  newBalance: 7847.0,
+  type: '9300'
+}, {
+  id: '4ee84369-8bf8-476d-9742-3dd940b045db',
+  date: '08/25/2017 12:05:56',
+  eventName: 'Разовое списание',
+  serviceName: 'TB_un_pr',
+  serviceId: 'TB00025',
+  serviceType: 8,
+  startBalance: 7847.0,
+  changeBalance: -30.0,
+  newBalance: 7817.0,
+  type: '9300'
+}, {
+  id: '02440d97-aaee-41b9-bdb5-0b2dcbf38b74',
+  date: '08/25/2017 12:07:16',
+  eventName: 'Компенсация',
+  serviceName: null,
+  serviceId: null,
+  serviceType: 0,
+  startBalance: 7817.0,
+  changeBalance: 23.0,
+  newBalance: 7840.0,
+  type: '3500'
+}, {
+  id: 'f99adc9f-b7ef-4bfe-9dc3-a496cb0be684',
+  date: '08/25/2017 12:07:24',
+  eventName: 'Компенсация',
+  serviceName: null,
+  serviceId: null,
+  serviceType: 0,
+  startBalance: 7840.0,
+  changeBalance: 123.0,
+  newBalance: 7963.0,
+  type: '3500'
+}, {
+  id: 'cd70409d-4262-4fee-b570-42d1a3908014',
+  date: '08/28/2017 09:36:44',
+  eventName: 'Компенсация',
+  serviceName: null,
+  serviceId: null,
+  serviceType: 0,
+  startBalance: 7963.0,
+  changeBalance: -7960.0,
+  newBalance: 3.0,
+  type: '3500'
+}, {
+  id: 'b0c0d076-b669-419d-830f-280585537dfc',
+  date: '08/28/2017 12:00:40',
+  eventName: 'Компенсация',
+  serviceName: null,
+  serviceId: null,
+  serviceType: 0,
+  startBalance: 3.0,
+  changeBalance: 5454.0,
+  newBalance: 5457.0,
+  type: '3500'
+}, {
+  id: 'a6598839-c443-4681-ae0c-6cbda83589eb',
+  date: '08/28/2017 12:05:34',
+  eventName: 'Резерв',
+  serviceName: 'Пакетное телевидение IPTV Москва',
+  serviceId: 'TV_CAP1',
+  serviceType: 22,
+  startBalance: 5457.0,
+  changeBalance: -172.29,
+  newBalance: 5284.71,
+  type: '7000'
+}
+];

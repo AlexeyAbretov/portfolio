@@ -1,0 +1,548 @@
+.form-about {
+  margin-top: 22px;
+}
+
+.form-about .form-inline .form-phone-box .code {
+  line-height: 40px;
+}
+
+.form-about .form-inline label {
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 191px;
+  padding-left: 100px;
+  line-height: 40px;
+}
+
+.form-about .captcha-content {
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 169px;
+  padding-left: 16px;
+}
+
+.form-about .captcha-content span:first-child {
+  width: 148px;
+}
+
+.form-about .captcha .input em,
+.form-about .captcha .input i {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding-top: 6px;
+  white-space: nowrap;
+}
+
+.portation-request .input input {
+  width: 239px;
+}
+
+.captcha .captcha-field {
+  display: inline-block;
+}
+
+.form-about .captcha .captcha-field .field-note {
+  margin-top: 4px;
+}
+
+.form-about .submit {
+  margin-top: 22px;
+  margin-bottom: 14px;
+}
+
+.request-accepted {
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.request-accepted ul {
+  text-align: left;
+}
+
+.request-accepted .accept-info ul {
+  margin-left: 32%;
+}
+
+.request-accepted .accept-info h4 {
+  padding-top: 0;
+}
+
+.accept-info {
+  padding-top: 18px;
+}
+
+.request-accepted h3 {
+  display: inline-block;
+}
+
+.request-accepted .app-accept,
+.request-accepted .app-decline {
+  padding-right: 25px;
+  position: relative;
+}
+
+.request-accepted .app-accept:before,
+.request-accepted .app-decline:before {
+  display: block;
+  width: 20px;
+  height: 20px;
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  background: url(../img/accepted.png) 0 0 no-repeat transparent;
+}
+
+.request-accepted .app-decline:before {
+  background-position: 0 -24px;
+}
+
+.request-accepted .submit {
+  margin: 22px 0;
+}
+
+.request-accepted .submit .button + span {
+  position: absolute;
+  margin-left: 8px;
+  top: 7px;
+}
+
+.grey,
+span.dynamic.grey,
+a.grey {
+  color: #787878;
+  border-color: #787878;
+}
+
+.show-map-link {
+  position: relative;
+}
+
+.portation-options {
+  background: #fef7cb;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  padding: 22px;
+  position: relative;
+}
+
+.portation-options table tr:first-child td {
+  padding-bottom: 14px;
+  padding-right: 14px;
+}
+
+.portation-options table tr:first-child td:first-child h4 {
+  margin-top: 8px;
+}
+
+.portation-options table .blank {
+  margin-bottom: 0;
+}
+
+.portation-options table tr td > div + div {
+  margin-top: 14px;
+}
+
+.portation-options table tr td > div .form-phone-box {
+  margin-right: 9px;
+}
+
+.portation-options table tr td > div .dynamic.grey {
+  font-size: 15px;
+  line-height: 40px;
+  font-family: 'Officina Serif';
+  font-weight: 400;
+}
+
+.portation-options table .blank li:first-child {
+  margin-top: 3px;
+}
+
+.portation-options table tr td .add-number {
+  display: block;
+}
+
+.portation-options table .blank p {
+  margin-left: 22px;
+}
+
+.portation-request .form-about .form-inline label {
+  padding-left: 22px;
+}
+
+.portation-request .form-about .form-inline .input + div {
+  margin-top: 5px;
+  margin-left: 210px;
+}
+
+.portation-request .form-about .captcha .input input {}
+
+.portation-request .form-about .captcha .input i,
+.portation-request .form-about .captcha .input em {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  white-space: nowrap;
+  padding-top: 7px;
+}
+
+.portation-request .form-about .submit .button .arrow-icon {
+  position: static;
+  color: inherit;
+}
+
+.form-about::-webkit-input-placeholder {
+  font-size: 13px;
+  font-style: italic;
+}
+
+.form-about:-moz-placeholder {
+  /* Firefox 18- */
+  font-size: 13px;
+  font-style: italic;
+}
+
+.form-about::-moz-placeholder {
+  /* Firefox 19+ */
+  font-size: 13px;
+  font-style: italic;
+}
+
+.form-about:-ms-input-placeholder {
+  font-size: 13px;
+  font-style: italic;
+}
+
+.form-about .contacts {
+  margin: 18px 0;
+}
+
+.portation-tariffs {
+  background: #fff;
+  border: 1px solid #c8c8c8;
+  padding: 20px;
+  margin: 0 -22px 44px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  position: relative;
+}
+
+.portation-tariffs > a:first-child {
+  float: right;
+  margin-top: 2px;
+}
+
+.portation-tariffs > a:first-child + h4 {
+  padding-top: 0;
+  margin-bottom: 14px;
+  margin-right: 239px;
+}
+
+.map-search-head {
+  padding: 8px 21px;
+  margin: -21px -21px 22px;
+  background: #fff8d3;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  -moz-border-top-left-radius: 4px;
+  -moz-border-top-right-radius: 4px;
+  -webkit-border-top-left-radius: 4px;
+  -webkit-border-top-right-radius: 4px;
+}
+
+.map-search.portation .form-select.region {
+  padding-left: 14px;
+  padding-right: 14px;
+  float: left;
+}
+
+.map-search.portation .form-select.region:before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 11px;
+  height: 18px;
+  top: 50%;
+  margin-top: -9px;
+  left: 0px;
+  background: url(../img/content-elements.png) -69px -416px no-repeat transparent;
+}
+
+.map-search.portation .toggle li.date {
+  padding-right: 22px;
+}
+
+.toggle li .date-icon {
+  cursor: pointer;
+  display: block;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  margin-top: -6px;
+  right: 13px;
+  background: url(../img/content-elements.png) -66px -336px no-repeat transparent;
+}
+
+.work-time {
+  display: inline-block;
+  margin: 0 -21px;
+  padding: 14px 21px;
+  border-top: 1px solid #c8c8c8;
+  border-bottom: 1px solid #c8c8c8;
+}
+
+.work-time > div {
+  float: left;
+}
+
+.work-time .days {
+  width: 110px;
+  margin-right: 14px;
+  margin-left: -5px;
+}
+
+.work-time .days ul.blank li {
+  margin: 0 0 10px;
+  padding: 2px 5px;
+  display: inline-block;
+}
+
+.work-time .time table tr td > div {
+  padding: 2px 5px;
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.work-time .time table tr td:first-child > div {
+  margin-right: 8px;
+}
+
+.work-time .time table tr td > .disabled,
+.work-time .days .disabled {
+  color: #787878;
+}
+
+.work-time .time table tr td > .active,
+.work-time .days .active {
+  font-weight: bold;
+}
+
+.work-time .time table tr td > .active:before,
+.work-time .days .active:before {
+  display: block;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffe100;
+  background: linear-gradient(to bottom, #f7a700 0%, #ffe100 99%);
+  border-radius: 16px;
+  -moz-border-radius: 16px;
+  -webkit-border-radius: 16px;
+  box-shadow: inset 0px 1px 3px 1px rgba(0, 0, 0, 0.3);
+  z-index: -1;
+}
+
+.work-time > .notice {
+  width: 169px;
+  margin-left: 14px;
+}
+
+.special.operator > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.special.operator > img {
+  margin-right: 22px;
+}
+
+.check-mnp .form-box .submit {
+  margin-top: 31px;
+}
+
+.special.operator .before {
+  position: absolute;
+  margin-left: -10px;
+  bottom: 100%;
+  z-index: 3;
+  display: block;
+  width: 20px;
+  height: 10px;
+  background-image: url(../img/icons.png);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-position: -28px -783px;
+}
+
+.portation-request .form-about .form-inline.combine > div {
+  display: inline-block;
+  position: relative;
+}
+
+.portation-request .form-about .form-inline.combine .input.zoom {
+  margin: 0;
+}
+
+.content .mnp-filter {
+  width: 958px;
+  position: relative;
+}
+
+.content .content-block .mnp-filter {
+  width: auto;
+  margin-bottom: 36px;
+}
+
+.mnp-filter .filter-content {
+  padding: 14px 22px;
+}
+
+.mnp-filter .filter-content .service-filter {
+  margin: 14px 0;
+}
+
+.mnp-filter .filter-content .service-filter .button {
+  margin-top: 26px;
+}
+
+.mnp-filter .filter-content .slct-label {
+  color: #282828;
+}
+
+.mnp-filter .filter-content .filter-clear {
+  margin-top: 14px;
+}
+
+.mnp-filter .filter-content .filter-clear .clear {
+  position: relative;
+  padding-left: 18px;
+  cursor: pointer;
+}
+
+.mnp-filter .filter-content .filter-clear .clear:before {
+  display: block;
+  position: absolute;
+  width: 15px;
+  height: 13px;
+  content: '';
+  left: 0;
+  top: 2px;
+  background: url(../img/content-elements.png) -64px -567px no-repeat transparent;
+}
+
+.map-search.portation .form-inline .input.search input {
+  /*width: 358px;*/
+  padding-right: 22px;
+  color: #c8c8c8;
+  font-style: italic;
+}
+
+.mark-information-content .change-time,
+.mark-information-content .entry-info {
+  margin: 22px -21px 0;
+  padding: 22px 21px 0;
+  border-top: 1px solid #c8c8c8;
+}
+
+.mark-information-content .change-time + .submit,
+.mark-information-content .entry-info + .submit {
+  margin-top: 22px;
+}
+
+.form-select .slct.time {
+  width: 63px;
+}
+
+.content-block.common.wide.maps-wrap + .submit.arrow {
+  margin-left: 22px;
+}
+
+.content-block + .submit.arrow .arrow-icon {
+  position: static;
+  margin-right: 8px;
+}
+
+.content-block.common.wide .map-search.portation .map-search-head {
+  margin-top: -18px;
+}
+
+.mark-information-content .entry-info p {
+  padding-left: 33px;
+  position: relative;
+}
+
+
+/*.mark-information-content .entry-info p:before {
+  display: block;
+  position: absolute;
+  content: '';
+  background: url(../img/content-elements.png) -34px -702px no-repeat transparent;
+  width: 19px;
+  height: 19px;
+  padding: 14px;
+  left: 0;
+  top: 0;
+}
+*/
+
+.visit-date > div,
+.visit-date > span {
+  vertical-align: middle;
+}
+
+.map-search.mnp {
+  text-align: left;
+}
+
+.map-search.mnp .form-inline {
+  margin-right: 14px;
+}
+
+.map-search.mnp .form-inline .form-select .slct {
+  width: 215px;
+}
+
+.form-phone-box.zoom + .add-number,
+.add-notation + .add-number {
+  width: 168px;
+}
+
+.add-notation {
+  margin: 14px 0;
+  padding-left: 44px;
+  position: relative;
+}
+
+.add-notation:before {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  width: 33px;
+  height: 34px;
+  background: url(../img/content-elements.png) -47px -279px no-repeat transparent;
+}
+
+
+/* NEW TAB TOGGLE */
+
+.tab-toggle-box {
+  visibility: hidden;
+  position: absolute;
+  top: -9999px;
+}
+
+.tab-toggle-box.active {
+  position: relative;
+  top: 0;
+  visibility: visible;
+}

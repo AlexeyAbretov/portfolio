@@ -1,0 +1,38 @@
+body {
+  background: #f2efec;
+}
+
+.lk-page-wrap {
+  background: #efefef;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.lk-page {
+  width: 913px;
+  margin: auto;
+}
+
+.lk-page:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+@media only screen and (max-width: 1023px) {
+  body * {
+    box-sizing: border-box;
+  }
+
+  .lk-page {
+    width: auto;
+    padding: 0 10px;
+  }
+
+  .lk-page * {
+    box-sizing: border-box;
+  }
+}

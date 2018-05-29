@@ -1,0 +1,87 @@
+.user-info {
+  font-family: 'Officina Serif';
+  font-size: 15px;
+  border-bottom: 1px solid #c8c8c8;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  color: #282828;
+}
+
+.user-info__number-wrap {
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.user-info__folded {
+  padding: 5px 0 10px !important;
+  background-color: white;
+  box-sizing: content-box;
+}
+
+.user-info__btn {
+  width: 16px;
+  height: 16px;
+  background-image: url('../../../img/round-arrow.png');
+  background-size: contain;
+  position: absolute;
+  margin-left: 5px;
+  top: 2px;
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+}
+
+.user-info__btn--active {
+  transform: rotate(180deg);
+}
+
+.accounts-list {
+  margin-top: 5px;
+}
+
+.accounts-list--nested {
+  margin-top: 0;
+}
+
+.accounts-list .accounts-list__item {
+  padding-left: 0;
+  margin: 0;
+  min-height: 41px;
+}
+
+.accounts-list .accounts-list__item:before {
+  display: none;
+}
+
+.accounts-list__item-btn {
+  outline: none;
+  cursor: pointer;
+  padding: 10px 0 10px 45px;
+}
+
+.accounts-list--nested .accounts-list__item-btn {
+  padding-left: 60px;
+}
+
+.accounts-list__item-btn--active {
+  background-color: #f8e54a;
+}
+
+.accounts-list__item-btn:not(.accounts-list__item-btn--active):hover {
+  color: #f7d092;
+}
+
+.accounts-list__item-number {
+  margin-right: 5px;
+}
+
+.accounts-list__item-title {
+  font-size: 12px;
+}
+
+@media only screen and (max-width: 1023px) {
+  .user-info {
+    display: none;
+  }
+}
