@@ -14,9 +14,52 @@ export default [{
   isConnected: true,
   fee: 550,
   connectedFee: 1200,
-  description: `<div data-title="t1">Подробное описание</div><div data-title="t2">Параметр fullDescription сервиса <h2>FTTB_PRESET</h2></div>
-    <div data-title="t3">Отображается под заголовком. Должен быть поддержан HTML</div>`,
+  description: `<div data-title="Общая информация">Подробное описание</div><div data-title="Подключение">Параметр fullDescription сервиса <h2 class="mobile-hidden">FTTB_PRESET</h2><h3>Условия предоствления ТВ-приставки</h3><ol><li>Wi-Fi роутер предоставляется в собственность на условиях, соответствующих выбранному тарифу.</li><li>Оплата осуществляется в соответствии с условиями договора-оферты продажи оборудования. При расторжении договора Абонент обязан погасить остаточную стоимость оборудования.
+</li><li>Оплата производится путем списания Оператором суммы, соответствующей выбранному тарифу, с Персонального счета Абонента вместе со списанием Абонентской платы.</li></ol></div>
+    <div data-title="Стоимость и оплата">Отображается под заголовком. Должен быть поддержан HTML</div><div data-title="Оборудование">Отображается под заголовком. Должен быть поддержан HTML</div><style>.mobile-hidden{display: none}</style>`,
   services: [{
+    fee: 100,
+    discount: 0,
+    isRequired: false,
+    isPreInclude: false,
+    isAllow: true,
+    isLineHolder: false,
+    isTve: false,
+    speed: 0,
+    speedUp: 0,
+    maxSpeed: 0,
+    hasGift: false,
+    channels: 0,
+    packets: [],
+    splId: null,
+    accumulatorDiscountType: null,
+    accumulator: null,
+    name: 'NetPhone некон прес 4',
+    type: 4,
+    id: 'vobb062',
+    isConnected: false
+  },{
+    fee: 40,
+    discount: 0,
+    isRequired: false,
+    isPreInclude: true,
+    isAllow: false,
+    isLineHolder: false,
+    isTve: false,
+    speed: 0,
+    speedUp: 0,
+    maxSpeed: 0,
+    hasGift: false,
+    channels: 0,
+    packets: [],
+    splId: null,
+    accumulatorDiscountType: null,
+    accumulator: null,
+    name: 'test OTT 8 устройств',
+    type: 12,
+    id: 'ott0001',
+    isConnected: false
+  },{
     id: 'inet1',
     type: ServiceTypes.Internet,
     speed: 100,
@@ -89,10 +132,29 @@ export default [{
   {
     id: 'console1',
     type: ServiceTypes.TvConsole,
+    shortDescription: 'console1 short description',
     isRequired: false,
     isPreInclude: false,
     isLineHolder: false,
     isConnected: true
+  },
+  {
+    id: 'console2',
+    type: ServiceTypes.TvConsole,
+    shortDescription: 'console2 short description',
+    isRequired: false,
+    isPreInclude: false,
+    isLineHolder: false,
+    isConnected: true
+  },
+  {
+    id: 'console3',
+    type: ServiceTypes.TvConsole,
+    shortDescription: 'console3 short description',
+    isRequired: false,
+    isPreInclude: false,
+    isLineHolder: false,
+    isConnected: false
   }]
 },
 {
@@ -100,6 +162,11 @@ export default [{
   name: 'Preset 2',
   fee: 650,
   services: [{
+    id: 'phone1',
+    type: ServiceTypes.Phone,
+    isAllow: true,
+    name: 'ДТЦ1'
+  },{
     id: 'inet1',
     type: ServiceTypes.Internet,
     speed: 100,
@@ -120,6 +187,7 @@ export default [{
   {
     id: 'console1',
     type: ServiceTypes.TvConsole,
+    shortDescription: 'console1 short description',
     isRequired: false,
     isPreInclude: true,
     isLineHolder: false
@@ -185,6 +253,7 @@ export default [{
   {
     id: 'console1',
     type: ServiceTypes.TvConsole,
+    shortDescription: 'console1 short description',
     isRequired: false,
     isPreInclude: false,
     isLineHolder: false,
@@ -217,6 +286,7 @@ export default [{
   {
     id: 'console1',
     type: ServiceTypes.TvConsole,
+    shortDescription: 'console1 short description',
     isRequired: false,
     isPreInclude: true,
     isLineHolder: false,
@@ -256,6 +326,7 @@ export default [{
   {
     id: 'console1',
     type: ServiceTypes.TvConsole,
+    shortDescription: 'console1 short description',
     isRequired: false,
     isPreInclude: true,
     isLineHolder: false,
@@ -289,6 +360,7 @@ export default [{
   {
     id: 'console1',
     type: ServiceTypes.TvConsole,
+    shortDescription: 'console1 short description',
     isRequired: false,
     isPreInclude: true,
     isLineHolder: false,
@@ -325,6 +397,7 @@ export default [{
   {
     id: 'console1',
     type: ServiceTypes.TvConsole,
+    shortDescription: 'console1 short description',
     isRequired: false,
     isPreInclude: true,
     isLineHolder: false,
@@ -354,6 +427,7 @@ export default [{
   {
     id: 'console1',
     type: ServiceTypes.TvConsole,
+    shortDescription: 'console1 short description',
     isRequired: false,
     isPreInclude: false,
     isLineHolder: false,
@@ -383,6 +457,7 @@ export default [{
   {
     id: 'console1',
     type: ServiceTypes.TvConsole,
+    shortDescription: 'console1 short description',
     isRequired: false,
     isPreInclude: false,
     isLineHolder: false,
@@ -413,6 +488,7 @@ export default [{
   {
     id: 'console1',
     type: ServiceTypes.TvConsole,
+    shortDescription: 'console1 short description',
     isRequired: false,
     isPreInclude: false,
     isLineHolder: false,

@@ -52,19 +52,19 @@ const getTvPresets = createSelector(
         .length > 0)
   ]);
 
+const tvTypes = [
+  ServiceTypes.TvTariff,
+  ServiceTypes.Tve
+];
+
 const getInetTvPresets = createSelector(
   [mapPresets, getTvPresets],
   (items, tvItems) => [
     ...items
       .filter(x => !tvItems.find(w => w.id === x.id))
-      .filter(x => (x.services || [])
-        .filter(w => w.type === ServiceTypes.Internet &&
-          (w.isRequired || w.isPreInclude) &&
-          !w.isLineHolder)
-        .length > 0 &&
+      .filter(x =>
         (x.services || [])
-          .filter(w => (w.type === ServiceTypes.TvTariff ||
-            w.type === ServiceTypes.Tve) &&
+          .filter(w => tvTypes.includes(w.type) &&
             (w.isRequired || w.isPreInclude))
           .length > 0)
   ]);
@@ -75,11 +75,6 @@ const getInetPresets = createSelector(
     ...items
       .filter(x => !tvItems.find(w => w.id === x.id))
       .filter(x => (x.services || [])
-        .filter(w => w.type === ServiceTypes.Internet &&
-          (w.isRequired || w.isPreInclude) &&
-          !w.isLineHolder)
-        .length > 0 &&
-        (x.services || [])
           .filter(w => (w.type === ServiceTypes.TvTariff ||
             w.type === ServiceTypes.Tve) &&
             (w.isRequired || w.isPreInclude))

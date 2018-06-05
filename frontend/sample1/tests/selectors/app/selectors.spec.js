@@ -1,6 +1,8 @@
 /* eslint-disable */
 
-import getNote from 'selectors/app';
+import { 
+    getNote
+ } from 'selectors/app';
 
 import {
     hasConnectedPreset,

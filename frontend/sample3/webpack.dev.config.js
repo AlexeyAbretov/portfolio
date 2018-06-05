@@ -30,7 +30,7 @@ const config = {
       {
         test: /\.(js|jsx)$/,
         use: [
-          'expose-loader?Qa.Pages.Home.Profile',
+          'expose-loader?Pages.Home.Profile',
           'babel-loader',
           'ifdef-loader?FAKE=false&PRODUCTION=false&DEV=true'
         ],

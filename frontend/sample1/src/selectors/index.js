@@ -38,7 +38,12 @@ export const getPresetServices = createSelector(
   (presets) => {
     let result = [];
     presets.forEach((element) => {
-      result = result.concat(element.services || []);
+      result = result.concat(
+        (element.services || []).filter(x => ![
+          ServiceTypes.Multiroom,
+          ServiceTypes.MobileTv,
+          ServiceTypes.AutoPromisePayment
+        ].includes(x.type)));
     });
 
     return result;
@@ -143,3 +148,8 @@ export const getPresetItemsOrder = createSelector(
 
     return order.map(x => ({ key: x }));
   });
+
+export const getButtonTitle = createSelector(
+  [getOptions],
+  options => options.saveChangesText
+);

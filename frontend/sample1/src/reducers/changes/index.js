@@ -14,8 +14,7 @@ export default handleActions({
       return state;
     }
 
-    const changes = state[key];
-    if (changes) {
+    if (state[key]) {
       return {
         ...state,
         [key]: {
@@ -42,14 +41,13 @@ export default handleActions({
       return state;
     }
 
-    const changes = state[key];
-    if (changes) {
+    if (state[key]) {
       return {
-        ...state,
+        ...state[key],
         [key]: {
-          ...changes,
+          ...state[key],
           added: [
-            ...changes.added,
+            ...state[key].added,
             service
           ]
         }
@@ -72,9 +70,8 @@ export default handleActions({
       return state;
     }
 
-    const changes = state[key];
-    if (changes) {
-      const index = changes.added
+    if (state[key]) {
+      const index = state[key].added
         .findIndex(x => x.id === service.id);
       if (index === -1) {
         return state;
@@ -83,10 +80,10 @@ export default handleActions({
       return {
         ...state,
         [key]: {
-          ...changes,
+          ...state[key],
           added: [
-            ...changes.added.slice(0, index),
-            ...changes.added.slice(index + 1)
+            ...state[key].added.slice(0, index),
+            ...state[key].added.slice(index + 1)
           ]
         },
         loading: false
@@ -110,14 +107,13 @@ export default handleActions({
       return state;
     }
 
-    const changes = state[key];
-    if (changes) {
+    if (state[key]) {
       return {
         ...state,
         [key]: {
-          ...changes,
+          ...state[key],
           removed: [
-            ...changes.removed,
+            ...state[key].removed,
             service
           ]
         },
@@ -141,9 +137,8 @@ export default handleActions({
       return state;
     }
 
-    const changes = state[key];
-    if (changes) {
-      const index = changes.removed
+    if (state[key]) {
+      const index = state[key].removed
         .findIndex(x => x.id === service.id);
       if (index === -1) {
         return state;
@@ -152,10 +147,10 @@ export default handleActions({
       return {
         ...state,
         [key]: {
-          ...changes,
+          ...state[key],
           removed: [
-            ...changes.removed.slice(0, index),
-            ...changes.removed.slice(index + 1)
+            ...state[key].removed.slice(0, index),
+            ...state[key].removed.slice(index + 1)
           ]
         },
         loading: false

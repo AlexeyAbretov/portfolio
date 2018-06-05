@@ -15,7 +15,7 @@ const config = {
       {
         test: /\.(js|jsx)$/,
         use: [
-          'expose-loader?Qa.Pages.Home.Request.Lite',
+          'expose-loader?Pages.Home.Request.Lite',
           'babel-loader',
           'ifdef-loader?FAKE=false&PRODUCTION=true&DEV=false'
         ],

@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import {
-    getState
-  } from 'selectors';
+  getState
+} from 'selectors';
 
 export const getMappings = createSelector(
     [getState],

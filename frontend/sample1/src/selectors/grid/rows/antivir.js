@@ -21,8 +21,8 @@ const map = ({ row, service, options } = {}) => {
 
   return {
     ...row,
-    value: !service.isConnected && options.antivirTitle ?
-      options.antivirTitle :
+    value: !service.isConnected && options.antivirusTitle ?
+      options.antivirusTitle :
       service.name
   };
 };

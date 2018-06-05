@@ -1,4 +1,4 @@
-﻿/* eslint-disable */
+/* eslint-disable */
 
 import mapPresets from 'selectors/grid/map';
 
@@ -85,7 +85,7 @@ describe('Grid selectors tests', () => {
                 connectedVsuText: '+ {0}',
                 connectVsuText: '+ Увеличение скорости',
 
-                giftIcon: ''
+                giftIcon: 'https://static.vendor.ru/upload/images/emoji/present.svg'
             };
 
             it('default', () => {
@@ -100,7 +100,7 @@ describe('Grid selectors tests', () => {
                         services: [{
                             id: 'inet1',
                             type: ServiceTypes.Internet,
-                            speed: 100,
+                            speed: 100000,
                             fee: 120,
                             discount: 20,
                             isRequired: true,
@@ -204,7 +204,7 @@ describe('Grid selectors tests', () => {
                         services: [{
                             id: 'inet1',
                             type: ServiceTypes.Internet,
-                            speed: 100,
+                            speed: 100000,
                             fee: 120,
                             discount: 20,
                             isRequired: true,
@@ -261,12 +261,18 @@ describe('Grid selectors tests', () => {
                         services: [{
                             id: 'inet1',
                             type: ServiceTypes.Internet,
-                            speed: 100,
+                            speed: 100000,
                             fee: 120,
                             discount: 20,
                             isRequired: true,
                             isPreInclude: false,
                             isLineHolder: false
+                        },
+                        {
+                            id: 'phone1',
+                            type: ServiceTypes.Phone,
+                            isAllow: true,
+                            name: 'Phone1'
                         },
                         {
                             id: 'tv1',
@@ -318,7 +324,7 @@ describe('Grid selectors tests', () => {
                         services: [{
                             id: 'inet1',
                             type: ServiceTypes.Internet,
-                            speed: 100,
+                            speed: 100000,
                             fee: 120,
                             discount: 20,
                             isRequired: true,
@@ -331,7 +337,7 @@ describe('Grid selectors tests', () => {
                         services: [{
                             id: 'inet1',
                             type: ServiceTypes.Internet,
-                            speed: 100,
+                            speed: 100000,
                             fee: 120,
                             discount: 20,
                             isRequired: false,
@@ -357,7 +363,7 @@ describe('Grid selectors tests', () => {
                         services: [{
                             id: 'inet1',
                             type: ServiceTypes.Internet,
-                            speed: 100,
+                            speed: 100000,
                             fee: 120,
                             discount: 20,
                             isRequired: false,
@@ -388,8 +394,8 @@ describe('Grid selectors tests', () => {
                             isLineHolder: false,
                             isAllow: true,
                             isConnected: false,
-                            speedUp: 40,
-                            maxSpeed: 300
+                            speedUp: 40000,
+                            maxSpeed: 300000
                         },
                         {
                             id: 'vsu2',
@@ -401,8 +407,8 @@ describe('Grid selectors tests', () => {
                             isLineHolder: false,
                             isAllow: true,
                             isConnected: false,
-                            speedUp: 60,
-                            maxSpeed: 300
+                            speedUp: 60000,
+                            maxSpeed: 300000
                         }]
                     },
                     {
@@ -411,7 +417,7 @@ describe('Grid selectors tests', () => {
                         services: [{
                             id: 'inet1',
                             type: ServiceTypes.Internet,
-                            speed: 100,
+                            speed: 100000,
                             fee: 120,
                             discount: 20,
                             isRequired: false,
@@ -443,7 +449,7 @@ describe('Grid selectors tests', () => {
                             isLineHolder: false,
                             isAllow: true,
                             isConnected: true,
-                            speedUp: 40
+                            speedUp: 40000
                         }]
                     },
                     {
@@ -451,7 +457,7 @@ describe('Grid selectors tests', () => {
                         services: [{
                             id: 'inet1',
                             type: ServiceTypes.Internet,
-                            speed: 100,
+                            speed: 100000,
                             fee: 120,
                             discount: 20,
                             isRequired: false,
@@ -482,8 +488,8 @@ describe('Grid selectors tests', () => {
                             isLineHolder: false,
                             isAllow: true,
                             isConnected: false,
-                            speedUp: 40,
-                            maxSpeed: 120
+                            speedUp: 40000,
+                            maxSpeed: 120000
                         },
                         {
                             id: 'vsu2',
@@ -495,8 +501,8 @@ describe('Grid selectors tests', () => {
                             isLineHolder: false,
                             isAllow: true,
                             isConnected: false,
-                            speedUp: 60,
-                            maxSpeed: 120
+                            speedUp: 60000,
+                            maxSpeed: 120000
                         }]
                     }]
                 };
@@ -506,14 +512,15 @@ describe('Grid selectors tests', () => {
                 expect(result).not.toBeNull();
                 expect(result.length).toBe(6);
                 expect(result[0].rows).not.toBeUndefined();
-                expect(result[0].rows.length).toBe(6);
+                expect(result[0].rows.length).toBe(7);
 
                 expect(result[0].rows).toEqual([
                     { id: 'inet1', "status": "Default", image: "", "key": 6, "value": `100 ${options.mbitsPerSecond}`, "type": "Link" },
                     {
                         id: 'tv1', "key": 14, "value": `100 каналов`,
                         status: "Default",
-                        image: "", "type": "Link"
+                        image: "https://static.vendor.ru/upload/images/emoji/present.svg",
+                        "type": "Link"
                     },
                     {
                         id: 'wifi1',
@@ -522,6 +529,7 @@ describe('Grid selectors tests', () => {
                     },
                     { id: 'kav1', image: "", "status": "Default", "key": 3, "value": "Антивирус 1", "type": "Link" },
                     { id: 'console1', "status": "Default", image: "", "key": 17, "value": options.tvConsoleTitle, "type": "Link" },
+                    { id: 'phone1', "status": "Allow", image: "", "key": 4, "value": 'Phone1', "type": "Link" },
                     { id: 'firewall1', "status": "Default", image: "", "key": 10, "value": 'Firewall 1', "type": "Inline" }]);
 
                 expect(result[1].rows).toEqual([
@@ -566,14 +574,14 @@ describe('Grid selectors tests', () => {
                 expect(result[4].rows).toEqual([
                     {
                         id: 'inet1',
-                        status: "Connected", image: "",
+                        status: "Default", image: "",
                         "key": 6,
                         "value": `100 ${options.mbitsPerSecond}`,
                         "type": "Inline"
                     },
                     {
                         id: 'vsu1', "key": 13, "value": '+ 40 Мбит/с',
-                        status: "Connected", image: '', "type": "Inline"
+                        status: "Default", image: '', "type": "Inline"
                     }]);
 
                 expect(result[5].rows).toEqual([
@@ -588,6 +596,289 @@ describe('Grid selectors tests', () => {
                         id: 'tv1', "key": 14, "value": state.options.connectTvText,
                         status: "Allow", image: '', "type": "Link"
                     }]);
+            });
+
+            it('wifi rent title - not empty', () => {
+                const state = {
+                    options: JSON.parse(JSON.stringify({
+                        ...initialState.options,
+                        ...options,
+                        wifiRentTitle: 'Аренда роутера'
+                    })),
+                    presets: [{
+                        name: 'Preset 1',
+                        services: [{
+                            id: 'inet1',
+                            type: ServiceTypes.Internet,
+                            speed: 100000,
+                            fee: 120,
+                            discount: 20,
+                            isRequired: true,
+                            isPreInclude: false,
+                            isLineHolder: false
+                        },
+                        {
+                            id: 'tv1',
+                            type: ServiceTypes.TvTariff,
+                            channels: 100,
+                            fee: 120,
+                            discount: 20,
+                            accumulator: 10,
+                            hasGift: true,
+                            isRequired: true,
+                            isPreInclude: false,
+                            isLineHolder: false
+                        },
+                        {
+                            id: 'wifi1',
+                            name: 'Wifi-router',
+                            type: ServiceTypes.WifiRent,
+                            isRequired: true,
+                            isPreInclude: false,
+                            isLineHolder: false
+                        },
+                        {
+                            id: 'kav1',
+                            name: 'Антивирус 1',
+                            type: ServiceTypes.Kasper,
+                            isRequired: true,
+                            isPreInclude: false,
+                            isLineHolder: false
+                        },
+                        {
+                            id: 'console1',
+                            name: 'Консоль 1',
+                            type: ServiceTypes.TvConsole,
+                            isRequired: true,
+                            isPreInclude: false,
+                            isLineHolder: false
+                        },
+                        {
+                            id: 'firewall1',
+                            name: 'Firewall 1',
+                            type: ServiceTypes.Firewall,
+                            isRequired: true,
+                            isPreInclude: false,
+                            isLineHolder: false
+                        }]
+                    }]
+                };
+
+                const result = mapPresets(state);
+
+                expect(result).not.toBeNull();
+                expect(result.length).toBe(1);
+                expect(result[0].rows).not.toBeUndefined();
+                expect(result[0].rows.length).toBe(6);
+
+                expect(result[0].rows).toEqual([
+                    { id: 'inet1', "status": "Default", image: "", "key": 6, "value": `100 ${options.mbitsPerSecond}`, "type": "Link" },
+                    {
+                        id: 'tv1', "key": 14, "value": `100 каналов`,
+                        status: "Default",
+                        image: "https://static.vendor.ru/upload/images/emoji/present.svg",
+                        "type": "Link"
+                    },
+                    {
+                        id: 'wifi1',
+                        "status": "Default", image: "",
+                        "key": 16, "value": "Аренда роутера", "type": "Link"
+                    },
+                    { id: 'kav1', image: "", "status": "Default", "key": 3, "value": "Антивирус 1", "type": "Link" },
+                    { id: 'console1', "status": "Default", image: "", "key": 17, "value": options.tvConsoleTitle, "type": "Link" },
+                    { id: 'firewall1', "status": "Default", image: "", "key": 10, "value": 'Firewall 1', "type": "Inline" }]);
+            });
+
+            it('antivir title - not empty', () => {
+                const state = {
+                    options: JSON.parse(JSON.stringify({
+                        ...initialState.options,
+                        ...options,
+                        antivirusTitle: 'Антивирус'
+                    })),
+                    presets: [{
+                        name: 'Preset 1',
+                        services: [{
+                            id: 'inet1',
+                            type: ServiceTypes.Internet,
+                            speed: 100000,
+                            fee: 120,
+                            discount: 20,
+                            isRequired: true,
+                            isPreInclude: false,
+                            isLineHolder: false
+                        },
+                        {
+                            id: 'tv1',
+                            type: ServiceTypes.TvTariff,
+                            channels: 100,
+                            fee: 120,
+                            discount: 20,
+                            accumulator: 10,
+                            hasGift: true,
+                            isRequired: true,
+                            isPreInclude: false,
+                            isLineHolder: false
+                        },
+                        {
+                            id: 'wifi1',
+                            name: 'Wifi-router',
+                            type: ServiceTypes.WifiRent,
+                            isRequired: true,
+                            isPreInclude: false,
+                            isLineHolder: false
+                        },
+                        {
+                            id: 'kav1',
+                            name: 'Антивирус 1',
+                            type: ServiceTypes.Kasper,
+                            isRequired: true,
+                            isPreInclude: false,
+                            isLineHolder: false
+                        },
+                        {
+                            id: 'console1',
+                            name: 'Консоль 1',
+                            type: ServiceTypes.TvConsole,
+                            isRequired: true,
+                            isPreInclude: false,
+                            isLineHolder: false
+                        },
+                        {
+                            id: 'firewall1',
+                            name: 'Firewall 1',
+                            type: ServiceTypes.Firewall,
+                            isRequired: true,
+                            isPreInclude: false,
+                            isLineHolder: false
+                        }]
+                    }]
+                };
+
+                const result = mapPresets(state);
+
+                expect(result).not.toBeNull();
+                expect(result.length).toBe(1);
+                expect(result[0].rows).not.toBeUndefined();
+                expect(result[0].rows.length).toBe(6);
+
+                expect(result[0].rows).toEqual([
+                    { id: 'inet1', "status": "Default", image: "", "key": 6, "value": `100 ${options.mbitsPerSecond}`, "type": "Link" },
+                    {
+                        id: 'tv1', "key": 14, "value": `100 каналов`,
+                        status: "Default",
+                        image: "https://static.vendor.ru/upload/images/emoji/present.svg",
+                        "type": "Link"
+                    },
+                    {
+                        id: 'wifi1',
+                        "status": "Default",
+                        image: "",
+                        "key": 16, "value": "Wifi-router", "type": "Link"
+                    },
+                    { id: 'kav1', image: "", "status": "Default", "key": 3,
+                    "value": "Антивирус", "type": "Link" },
+                    { id: 'console1', "status": "Default", image: "", "key": 17, "value": options.tvConsoleTitle, "type": "Link" },
+                    { id: 'firewall1', "status": "Default", image: "", "key": 10, "value": 'Firewall 1', "type": "Inline" }]);
+            });
+
+            it('phone title - not empty', () => {
+                const state = {
+                    options: JSON.parse(JSON.stringify({
+                        ...initialState.options,
+                        ...options,
+                        phoneTitle: 'Phone'
+                    })),
+                    presets: [{
+                        name: 'Preset 1',
+                        services: [{
+                            id: 'inet1',
+                            type: ServiceTypes.Internet,
+                            speed: 100000,
+                            fee: 120,
+                            discount: 20,
+                            isRequired: true,
+                            isPreInclude: false,
+                            isLineHolder: false
+                        },
+                        {
+                            id: 'phone1',
+                            type: ServiceTypes.Phone,
+                            isAllow: true,
+                            name: 'Phone1'
+                        },
+                        {
+                            id: 'tv1',
+                            type: ServiceTypes.TvTariff,
+                            channels: 100,
+                            fee: 120,
+                            discount: 20,
+                            accumulator: 10,
+                            hasGift: true,
+                            isRequired: true,
+                            isPreInclude: false,
+                            isLineHolder: false
+                        },
+                        {
+                            id: 'wifi1',
+                            name: 'Wifi-router',
+                            type: ServiceTypes.WifiRent,
+                            isRequired: true,
+                            isPreInclude: false,
+                            isLineHolder: false
+                        },
+                        {
+                            id: 'kav1',
+                            name: 'Антивирус 1',
+                            type: ServiceTypes.Kasper,
+                            isRequired: true,
+                            isPreInclude: false,
+                            isLineHolder: false
+                        },
+                        {
+                            id: 'console1',
+                            name: 'Консоль 1',
+                            type: ServiceTypes.TvConsole,
+                            isRequired: true,
+                            isPreInclude: false,
+                            isLineHolder: false
+                        },
+                        {
+                            id: 'firewall1',
+                            name: 'Firewall 1',
+                            type: ServiceTypes.Firewall,
+                            isRequired: true,
+                            isPreInclude: false,
+                            isLineHolder: false
+                        }]
+                    }]
+                };
+
+                const result = mapPresets(state);
+
+                expect(result).not.toBeNull();
+                expect(result.length).toBe(1);
+                expect(result[0].rows).not.toBeUndefined();
+                expect(result[0].rows.length).toBe(7);
+
+                expect(result[0].rows).toEqual([
+                    { id: 'inet1', "status": "Default", image: "", "key": 6, "value": `100 ${options.mbitsPerSecond}`, "type": "Link" },
+                    {
+                        id: 'tv1', "key": 14, "value": `100 каналов`,
+                        status: "Default",
+                        image: "https://static.vendor.ru/upload/images/emoji/present.svg",
+                        "type": "Link"
+                    },
+                    {
+                        id: 'wifi1',
+                        "status": "Default", image: "",
+                        "key": 16, "value": "Wifi-router", "type": "Link"
+                    },
+                    { id: 'kav1', image: "", "status": "Default", "key": 3,
+                    "value": "Антивирус 1", "type": "Link" },
+                    { id: 'console1', "status": "Default", image: "", "key": 17, "value": options.tvConsoleTitle, "type": "Link" },
+                    { id: 'phone1', "status": "Allow", image: "", "key": 4, "value": 'Phone', "type": "Link" },
+                    { id: 'firewall1', "status": "Default", image: "", "key": 10, "value": 'Firewall 1', "type": "Inline" }]);
             });
         });
     });

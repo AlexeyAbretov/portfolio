@@ -12,6 +12,14 @@ const { actions } = createSymbiote(initState, {
       success: (state, presetId) => ({ ...state, presetId }),
       error: state => ({ ...state }),
     }
+  },
+  services: {
+    setup: {
+      start: (state, data) => ({ ...state, data }),
+      pending: state => ({ ...state }),
+      success: (state, data) => ({ ...state, data }),
+      error: state => ({ ...state }),
+    }
   }
 });
 

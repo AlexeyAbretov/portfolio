@@ -1,15 +1,15 @@
 import { put, takeLatest, select } from 'redux-saga/effects';
 
-import
-actions
-  from 'symbiotes/changes';
+import actions from 'symbiotes/changes';
 
 import {
   ServiceTypes
 } from 'consts';
 
-export const getPresets = state => state.presets || [];
-export const getChanges = state => state.changes || {};
+import {
+  getPresets,
+  getChanges
+} from 'selectors';
 
 function* toggle({
   service,
@@ -58,11 +58,12 @@ export function* toggleService(action = {}) {
     const presets = yield select(getPresets);
     const changes = yield select(getChanges);
 
-    const preset = presets.find(x => x.id === presetId);
+    const preset = (presets || []).find(x => x.id === presetId);
 
     if (!preset || preset.isConnected) {
       return;
     }
+
     const services = preset.services || [];
     const service = services
       .find(x => x.id === serviceId);

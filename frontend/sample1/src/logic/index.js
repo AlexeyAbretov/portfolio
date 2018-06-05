@@ -10,3 +10,13 @@ export const priceSort = (a, b) => {
 
   return result;
 };
+
+export const KbitsToMbits = (source) => {
+  if (!source) {
+    return source;
+  }
+
+  return Number.isInteger(source) ?
+    source / 1000 :
+    source;
+};

@@ -20,7 +20,7 @@ namespace Vendor.Client.WebApp.Controllers.Home
     /// <summary>
     /// Контроллер для виджета списка домашних тарифов
     /// </summary>
-    public partial class HomeTariffsApiController : QAControllerBase
+    public partial class HomeTariffsApiController : ControllerBase
     {
         private readonly ILogger _logger = null;
         private readonly IHomeTariffsApiService _apiService = null;

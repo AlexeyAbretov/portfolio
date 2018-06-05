@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Button } from 'components/vendors-ui';
+import { Button } from 'components/vendor-ui';
 
 export default class PureButton extends React.PureComponent {
   static defaultProps = {
@@ -10,7 +10,7 @@ export default class PureButton extends React.PureComponent {
   }
 
   render() {
-    const { className } = this.props;
+    const { className, click } = this.props;
     let { text } = this.props;
 
     if (!text) {
@@ -18,12 +18,19 @@ export default class PureButton extends React.PureComponent {
     }
 
     return (
-      <Button className={className}>{text}</Button>
+      <Button className={className} onClick={click}>{text}</Button>
     );
   }
 }
 
 PureButton.propTypes = {
   className: PropTypes.string,
-  text: PropTypes.string
+  text: PropTypes.string,
+  click: PropTypes.func
+};
+
+PureButton.defaultProps = {
+  className: '',
+  text: '',
+  click: () => {}
 };

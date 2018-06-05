@@ -8,7 +8,8 @@ import {
 } from 'consts';
 
 import {
-  priceSort
+  priceSort,
+  KbitsToMbits
 } from 'logic';
 
 const map = ({ row, service, options } = {}) => {
@@ -21,7 +22,7 @@ const map = ({ row, service, options } = {}) => {
     value: row.status === GridRowStatus.Allow ?
       options.connectInternetText :
       (service.speed ?
-        `${service.speed} ${options.mbitsPerSecond}` :
+        `${KbitsToMbits(service.speed)} ${options.mbitsPerSecond}` :
         service.value)
   };
 };

@@ -14,7 +14,9 @@ export default handleActions({
   [actions.popups.open.success]: (state, action) => {
     const [name, data] = action.payload || [];
 
-    const opened = state.opened || [];
+    const opened = (data || {}).isPreserve ?
+      state.opened || [] :
+      [];
 
     let popup = opened.find(x => x.name === name);
 

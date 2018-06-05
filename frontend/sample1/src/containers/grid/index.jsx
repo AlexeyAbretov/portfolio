@@ -8,10 +8,6 @@ import {
 } from 'selectors/grid';
 
 import
-  actions
-from 'symbiotes/changes';
-
-import
   popupsActions
 from 'symbiotes/popups';
 
@@ -29,8 +25,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  click: (presetId, serviceId) => {
-    dispatch(actions.services.toggle.start(presetId, serviceId));
+  click: (presetId, serviceId, type) => {
+    dispatch(activityActions.services.setup.start(
+      { presetId, serviceId, type }));
   },
 
   moreInfoClick: (presetId) => {

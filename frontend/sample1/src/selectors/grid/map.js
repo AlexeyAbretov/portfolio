@@ -13,7 +13,7 @@ import {
 
 import {
   ServiceTypes,
-  TvPacketAccumulatorDiscountType
+  AccumulatorDiscountType
 } from 'consts';
 
 import prepareRows from './rows';
@@ -35,6 +35,13 @@ const getButtonText = ({
   return options.connectTariffText;
 };
 
+const packetPrices = {
+  [AccumulatorDiscountType.BySum]: packet =>
+    (packet.fee || 0) - (packet.discount || 0),
+  [AccumulatorDiscountType.ByPercent]: packet =>
+    ((packet.fee || 0) * (100 - (packet.discount || 0))) / 100,
+};
+
 const getTvPacketPrice = ({
   packet
 }) => {
@@ -42,15 +49,18 @@ const getTvPacketPrice = ({
     return 0;
   }
 
-  if (packet.discountType === TvPacketAccumulatorDiscountType.BySum) {
-    return (packet.fee || 0) - (packet.discount || 0);
-  }
-
-  if (packet.discountType === TvPacketAccumulatorDiscountType.ByPercent) {
-    return ((packet.fee || 0) * (100 - (packet.discount || 0))) / 100;
+  if (packetPrices[packet.discountType]) {
+    return packetPrices[packet.discountType](packet);
   }
 
   return packet.fee;
+};
+
+const servicePrices = {
+  [AccumulatorDiscountType.BySum]: service =>
+    (service.fee || 0) - (service.accumulator || 0),
+  [AccumulatorDiscountType.ByPercent]: service =>
+    (((service.fee || 0) * (service.accumulator || 0)) / 100),
 };
 
 const getServicePrice = ({
@@ -62,10 +72,8 @@ const getServicePrice = ({
 
   let price = (service.fee || 0) - (service.discount || 0);
 
-  if (service.accumulatorType === TvPacketAccumulatorDiscountType.BySum) {
-    price -= (service.fee || 0) - (service.accumulator || 0);
-  } else if (service.accumulatorType === TvPacketAccumulatorDiscountType.ByPercent) {
-    price -= (((service.fee || 0) * (service.accumulator || 0)) / 100);
+  if (packetPrices[service.discountType]) {
+    price -= servicePrices[service.discountType](service);
   }
 
   return price;
@@ -109,7 +117,7 @@ export default createSelector(
       item.sumUnit = options.rubPerMonth;
 
       item.sum = getCurrentPrice({
-        item, changes
+        item
       });
 
       item.buttonTitle = getButtonText({

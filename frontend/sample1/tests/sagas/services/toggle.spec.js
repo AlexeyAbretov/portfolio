@@ -3,7 +3,13 @@
 
 import { testSaga, expectSaga } from 'redux-saga-test-plan';
 
-import { toggleService, getPresets, getChanges } from 'sagas/services/toggle';
+import { toggleService } from 'sagas/services/toggle';
+
+import {
+    getPresets,
+    getChanges
+} from 'selectors';
+
 import actions from 'symbiotes/changes';
 
 const action = {

@@ -10,11 +10,11 @@ const cx = classNames.bind(styles);
 const App = (props) => {
   const { title, infoText, note } = props;
   return (
-    <div className={cx('foo-catalog')}>
-      <div className={cx('foo-catalog__wrap')}>
-        <h1 className={cx('foo-catalog__title')}>{Parser(title)}</h1>
-        <div className={cx('foo-catalog__benefit')}>{Parser(infoText)}</div>
-        {note && <div className={cx('foo-catalog__note')}>{Parser(note)}</div>}
+    <div className={cx('vendor-shpd-home-catalog')}>
+      <div className={cx('vendor-shpd-home-catalog__wrap')}>
+        <h1 className={cx('vendor-shpd-home-catalog__title')}>{Parser(title)}</h1>
+        <div className={cx('vendor-shpd-home-catalog__benefit')}>{Parser(infoText)}</div>
+        {note && <div className={cx('vendor-shpd-home-catalog__note')}>{Parser(note)}</div>}
         {props.children}
       </div>
     </div>

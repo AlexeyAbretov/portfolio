@@ -10,7 +10,8 @@ import {
 } from 'selectors';
 
 import {
-  priceSort
+  priceSort,
+  KbitsToMbits
 } from 'logic';
 
 import internet from './internet';
@@ -25,7 +26,7 @@ const map = ({
     ...row,
     value: row.status !== GridRowStatus.Allow ?
       `${(options.connectedVsuText || '+ {0}')
-        .replace('{0}', (service.speedUp || 0))} ${options.mbitsPerSecond}` :
+        .replace('{0}', KbitsToMbits(service.speedUp || 0))} ${options.mbitsPerSecond}` :
       options.connectVsuText
   };
 };

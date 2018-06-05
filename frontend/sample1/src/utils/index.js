@@ -18,25 +18,22 @@ export const format = (...args) => {
 };
 
 export const getRussianPluralForm = (wordForm = {}, number) => {
-  const forms = [
-    wordForm.rusFirstPlural || '{0}',
+  const forms = [wordForm.rusFirstPlural || '{0}',
     wordForm.rusSecondPlural || '{0}',
-    wordForm.rusThirdPlural || '{0}'
-  ];
-  
+    wordForm.rusThirdPlural || '{0}'];
   let num = number;
   if (num < 0) {
     num *= -1;
   }
 
   if (num % 10 === 1 &&
-    number % 100 !== 11) {
+          number % 100 !== 11) {
     return forms[0];
   }
 
   if (number % 10 >= 2 &&
-    number % 10 <= 4 &&
-    (number % 100 < 10 || number % 100 >= 20)) {
+          number % 10 <= 4 &&
+          (number % 100 < 10 || number % 100 >= 20)) {
     return forms[1];
   }
 
