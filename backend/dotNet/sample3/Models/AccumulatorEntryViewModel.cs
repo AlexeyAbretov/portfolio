@@ -21,5 +21,10 @@ namespace Vendor.Client.WebApp.Models.HomeTariffs.Presets
         /// Размер скидки в аккумуляторе в рублях/процентах
         /// </summary>
         public int? Discount { get; set; }
+
+        /// <summary>
+        /// Цена в единицах валюты абонента
+        /// </summary>
+        public decimal? Price { get; set; }
     }
 }

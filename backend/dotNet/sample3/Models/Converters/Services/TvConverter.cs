@@ -6,9 +6,9 @@ using Vendor.Interface.Enums;
 
 namespace Vendor.Client.WebApp.Models.HomeTariffs.Presets.Converters
 {
-    public class TvConverter : ServiceConverterBase
+    public class TvConverter : ServiceConverterBase<TvViewModel>
     {
-        public override FttbPresetServiceViewModel Convert(
+        public override TvViewModel Convert(
             Service service,
             List<AccumulatorsResponseViewModel> accumulators = null)
         {

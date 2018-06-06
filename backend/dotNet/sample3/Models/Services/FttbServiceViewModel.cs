@@ -9,10 +9,5 @@
         /// урл
         /// </summary>
         public string Url { get; set; }
-
-        /// <summary>
-        /// АП
-        /// </summary>
-        public decimal Fee { get; set; }
     }
 }

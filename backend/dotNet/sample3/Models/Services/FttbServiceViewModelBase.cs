@@ -1,4 +1,6 @@
-﻿namespace Vendor.Client.WebApp.Models.HomeTariffs.Presets
+﻿using Vendor.Client.Models.Enums.USSS;
+
+namespace Vendor.Client.WebApp.Models.HomeTariffs.Presets
 {
     /// <summary>
     /// Базовая модель услуги
@@ -10,7 +12,7 @@
         /// <summary>
         /// Тип услуги
         /// </summary>
-        public int Type { get; set; }
+        public ServiceTypeEnum Type { get; set; }
 
         /// <summary>
         /// Ид.
@@ -21,5 +23,10 @@
         /// Признак подключения
         /// </summary>
         public bool IsConnected { get; set; }
+
+        /// <summary>
+        /// АП
+        /// </summary>
+        public decimal? Fee { get; set; }
     }
 }

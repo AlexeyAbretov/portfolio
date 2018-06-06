@@ -6,14 +6,14 @@ using System.Linq;
 
 namespace Vendor.Client.WebApp.Models.HomeTariffs.Presets.Converters
 {
-    public class ServiceConverterBase
+    public class ServiceConverterBase<T> where T : FttbPresetServiceViewModel, new()
     {
         /// <summary>
         /// Преобразует данные об услуге инак-пресета из usss-объекта в объект для клиента
         /// </summary>
         /// <param name="service">Услуга</param>
         /// <returns></returns>
-        public virtual FttbPresetServiceViewModel Convert(
+        public virtual T Convert(
             Service service,
             List<AccumulatorsResponseViewModel> accumulators = null)
         {
@@ -26,7 +26,7 @@ namespace Vendor.Client.WebApp.Models.HomeTariffs.Presets.Converters
                 .Services?
                 .FirstOrDefault(x => x.ServiceId == service?.ServiceId);
 
-            return new FttbPresetServiceViewModel
+            return new T
             {
                 Id = service.ServiceIdExact,
                 SplId = service.SplId,
@@ -35,10 +35,10 @@ namespace Vendor.Client.WebApp.Models.HomeTariffs.Presets.Converters
                 ShortDescription = service.ShortDescription,
 
                 IsConnected = service.Connected ?? false,
-                Fee = service.Price,
+                Fee = service.Price ?? 0,
                 Discount = service.PsDiscount ?? 0,
 
-                Type = (int)service.ServiceType,
+                Type = service.ServiceType,
                 IsRequired = service.PsSelected?.ToUpper() == PsSelected.M.ToString(),
                 IsPreInclude = service.PsSelected?.ToUpper() == PsSelected.N.ToString(),
                 IsAllow = service.PsSelected?.ToUpper() == PsSelected.A.ToString(),

@@ -1,5 +1,4 @@
-﻿using Vendor.Client.WebApp.Models.Equipments;
-using Vendor.Core.Enums;
+﻿using Vendor.Core.Enums;
 using Vendor.Interface.Data.USSS;
 using Vendor.Interface.Enums;
 using System.Collections.Generic;
@@ -7,10 +6,11 @@ using static Vendor.Client.WebApp.Models.Equipments.InacEquipmentBase;
 
 namespace Vendor.Client.WebApp.Models.HomeTariffs.Presets.Converters
 {
-    public class WifiRentConverter : ServiceConverterBase
+    public class WifiRentConverter : ServiceConverterBase<WifiRentViewModel>
     {
         private Dictionary<string, OwnershipTypeEnum> _types = new Dictionary<string, OwnershipTypeEnum>
         {
+            // по факту 2 перечисления с одинаковыми значениями
             { OwnershipType.B.GetDescription(), OwnershipTypeEnum.Buyed },
             { OwnershipType.I.GetDescription(), OwnershipTypeEnum.ByInstallments },
             { OwnershipType.G.GetDescription(), OwnershipTypeEnum.Gift },
@@ -18,15 +18,16 @@ namespace Vendor.Client.WebApp.Models.HomeTariffs.Presets.Converters
             { OwnershipType.O.GetDescription(), OwnershipTypeEnum.BuyOut }
         };
 
-        private Dictionary<string, AccType> _accTypes = new Dictionary<string, AccType>
+        private Dictionary<string, AccumulatorType> _accTypes = new Dictionary<string, AccumulatorType>
         {
-            { AccType.ActiveDays.GetDescription(), AccType.ActiveDays },
-            { AccType.AllBc.GetDescription(), AccType.AllBc },
-            { AccType.FullBc.GetDescription(), AccType.FullBc },
-            { AccType.AllDays.GetDescription(), AccType.AllDays }
+            // преобразовать строку из доп. параметров в перечисление
+            { AccumulatorType.ActiveDays.GetDescription(), AccumulatorType.ActiveDays },
+            { AccumulatorType.AllBc.GetDescription(), AccumulatorType.AllBc },
+            { AccumulatorType.FullBc.GetDescription(), AccumulatorType.FullBc },
+            { AccumulatorType.AllDays.GetDescription(), AccumulatorType.AllDays }
         };
 
-        public override FttbPresetServiceViewModel Convert(
+        public override WifiRentViewModel Convert(
             Service service,
             List<AccumulatorsResponseViewModel> accumulators = null)
         {
@@ -46,9 +47,9 @@ namespace Vendor.Client.WebApp.Models.HomeTariffs.Presets.Converters
 
             if (!string.IsNullOrWhiteSpace(acc))
             {
-                result.AccumulatorPeriodType = _accTypes.ContainsKey(acc) ?
-                _accTypes[acc] :
-                AccType.None;
+                result.AccumulatorType = _accTypes.ContainsKey(acc) ?
+                    _accTypes[acc] :
+                    AccumulatorType.None;
             }
 
             result.InstallmentTime = service.GetAdditionalParamValue<decimal>(

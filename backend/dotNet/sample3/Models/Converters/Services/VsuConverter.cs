@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace Vendor.Client.WebApp.Models.HomeTariffs.Presets.Converters
 {
-    public class VsuConverter : ServiceConverterBase
+    public class VsuConverter : ServiceConverterBase<VsuViewModel>
     {
-        public override FttbPresetServiceViewModel Convert(
+        public override VsuViewModel Convert(
             Service service,
             List<AccumulatorsResponseViewModel> accumulators = null)
         {

@@ -10,9 +10,9 @@ namespace Vendor.Client.WebApp.Models.HomeTariffs.Presets.Converters
     /// </summary>
     public class HomePresetConverter : IHomePresetConverter
     {
-        private readonly IHomePresetConverterFactory _factory;
+        private readonly IHomePresetServiceFactory _factory;
 
-        public HomePresetConverter(IHomePresetConverterFactory factory)
+        public HomePresetConverter(IHomePresetServiceFactory factory)
         {
             _factory = factory;
         }
@@ -40,8 +40,7 @@ namespace Vendor.Client.WebApp.Models.HomeTariffs.Presets.Converters
                 Services = preset?.Containers?
                     .SelectMany(w => w.Services)
                     .Select(x => _factory
-                        .GetServiceConverter(x.ServiceType)
-                        .Convert(x, accumulators))
+                        .ConvertPresetService(x, accumulators))
                     .ToArray(),
                 Description = preset.FullDescription
             };

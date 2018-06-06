@@ -22,7 +22,7 @@ namespace Vendor.Client.WebApp.Models.HomeTariffs.Presets.Converters
             {
                 Id = service.ServiceId,
                 Name = service.Name,
-                Type = (int)service.ServiceType,
+                Type = service.ServiceType,
                 IsConnected = service.Connected ?? false,
                 Fee = GetFee(service),
                 Url = string.IsNullOrWhiteSpace(action) ?
