@@ -1,14 +1,14 @@
-﻿using Vendor.Client.Models.Enums.USSS;
-using Vendor.Client.WebApp.Models.HomeTariffs.Presets;
-using Vendor.Client.WebApp.Models.HomeTariffs.Presets.Converters;
-using Vendor.Interface.Data.USSS;
-using Vendor.Interface.Enums;
-using Vendor.Interface.Services;
+﻿using QA.Beeline.Client.Models.Enums.USSS;
+using QA.Beeline.Client.WebApp.Models.HomeTariffs.Presets;
+using QA.Beeline.Client.WebApp.Models.HomeTariffs.Presets.Converters;
+using QA.Beeline.Interface.Data.USSS;
+using QA.Beeline.Interface.Enums;
+using QA.Beeline.Interface.Services;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Vendor.Client.WebApp.LocalServices.Impl.Home
+namespace QA.Beeline.Client.WebApp.LocalServices.Impl.Home
 {
     /// <summary>
     /// Сервис инак-пресетов
@@ -16,12 +16,12 @@ namespace Vendor.Client.WebApp.LocalServices.Impl.Home
     public class HomePresetService : IHomePresetService
     {
         private readonly IUsssApiService _usssApiService;
-        private readonly IHomePresetConverterFactory _convertersFactory;
+        private readonly IHomePresetServiceFactory _convertersFactory;
         private readonly IHomePresetConverter _converter;
 
         public HomePresetService(
             IUsssApiService usssApiService,
-            IHomePresetConverterFactory convertersFactory,
+            IHomePresetServiceFactory convertersFactory,
             IHomePresetConverter converter)
         {
             _usssApiService = usssApiService;
@@ -108,7 +108,8 @@ namespace Vendor.Client.WebApp.LocalServices.Impl.Home
                             {
                                 ServiceId = s.ServiceId,
                                 Discount = s.Discount,
-                                DiscountType = s.DiscountType
+                                DiscountType = s.DiscountType,
+                                Price = s.Price
                             })
                             .ToArray()
                     };
@@ -180,9 +181,7 @@ namespace Vendor.Client.WebApp.LocalServices.Impl.Home
                 .Where(x => types.Contains(x.ServiceTypeValue))
                 .SelectMany(s => s.Services)
                 .Select(x => _convertersFactory
-                    .GetStandaloneServiceConverter(
-                        x.ServiceType)
-                    .Convert(x))
+                    .ConvertStandaloneService(x))
                 .ToArray();
         }
 
