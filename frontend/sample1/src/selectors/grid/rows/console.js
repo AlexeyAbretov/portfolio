@@ -12,6 +12,8 @@ import {
   getPluralFormFormatted
 } from 'utils';
 
+import { getChanges } from 'selectors';
+
 const map = ({ row, service, options, preset } = {}) => {
   if (!row) {
     return row;
@@ -40,8 +42,8 @@ const map = ({ row, service, options, preset } = {}) => {
 };
 
 const selector = ({ preset, rows } = {}) => createSelector(
-  [],
-  () => {
+  [getChanges],
+  (changes) => {
     if ((rows || []).find(x => x.key === ServiceTypes.TvConsole)) {
       return null;
     }
@@ -52,6 +54,15 @@ const selector = ({ preset, rows } = {}) => createSelector(
     let console = services
       .find(x => x.type === ServiceTypes.TvConsole &&
         x.isConnected);
+
+    if (console) {
+      return console;
+    }
+
+    console = services
+      .find(x => x.type === ServiceTypes.TvConsole &&
+        ((changes[preset.id] || {}).added || [])
+          .find(w => w.id === x.id));
 
     if (console) {
       return console;

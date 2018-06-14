@@ -112,7 +112,7 @@ describe('tv console popup (selector) tests', () => {
         expect(result).toEqual(
             state.options.courierServiceText
                 .replace(
-                    '{fee}',
+                    '{0}',
                     `${service.fee} ${state.options.rubSymbol}`));
     });
 

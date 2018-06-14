@@ -1,5 +1,6 @@
 import {
-  getAvailableMappings
+  getAvailableMappings,
+  getServiceMappingState
 } from 'selectors/mappings';
 
 import {
@@ -14,11 +15,8 @@ export default ({ row, preset, service, state } = {}) => {
 
   const mappings = getAvailableMappings(state);
 
-  const mappingsByPreset = mappings
-    .find(x => x.id === preset.id) || {};
-
-  const serviceState = ((mappingsByPreset.states || [])
-    .find(x => x.id === service.id) || {}).state;
+  const serviceState = getServiceMappingState(
+    { mappings, preset, service });
 
   if (!serviceState) {
     return row;
@@ -41,12 +39,12 @@ export default ({ row, preset, service, state } = {}) => {
 
   if (serviceState === MappingState.Delete) {
     const anotherServices = (preset.services || [])
-        .filter(x => x.type === service.type &&
-          x.id !== service.id);
+      .filter(x => x.type === service.type &&
+        x.id !== service.id);
 
     const withDeleteStatus = anotherServices
-        .filter(x => ((mappingsByPreset.states || [])
-            .find(w => w.id === x.id) || {}).state === MappingState.Delete);
+      .filter(x => getServiceMappingState(
+        { mappings, preset, service: x }) === MappingState.Delete);
 
     if (anotherServices.length &&
         anotherServices.length !== withDeleteStatus.length) {

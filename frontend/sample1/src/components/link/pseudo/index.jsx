@@ -20,7 +20,7 @@ export default class PseudoLink extends React.PureComponent {
 
   render() {
     let { text } = this.props;
-    const { status } = this.props;
+    const { status, className } = this.props;
 
     if (!text) {
       text = this.props.children;
@@ -29,13 +29,13 @@ export default class PseudoLink extends React.PureComponent {
     const classes = cx({
       dynamic: true,
       link__black: status === Status.Default || !status,
-      link__green: status === Status.Connected,
-      link__yellow: status === Status.Allow
+      link__connected: status === Status.Connected,
+      link__allow: status === Status.Allow
     });
 
     return (
       <span
-        className={classes}
+        className={cx(classes, className)}
         onClick={this.click}
         role="link"
         tabIndex="-1"
@@ -47,11 +47,13 @@ export default class PseudoLink extends React.PureComponent {
 PseudoLink.propTypes = {
   text: PropTypes.string,
   click: PropTypes.func,
-  status: PropTypes.string
+  status: PropTypes.string,
+  className: PropTypes.string,
 };
 
 PseudoLink.defaultProps = {
   text: '',
   click: () => {},
-  status: Status.Default
+  status: Status.Default,
+  className: '',
 };

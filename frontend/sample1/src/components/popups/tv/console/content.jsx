@@ -36,7 +36,6 @@ const TvConsole = (props) => {
     <Switch
       id={x.id}
       checked={x.connected}
-      isFuture={x.future}
       disabled={x.disabled}
       onChange={() => change(x.id)}
     />

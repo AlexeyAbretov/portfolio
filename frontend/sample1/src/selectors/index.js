@@ -57,6 +57,15 @@ export const getChannelsWordForm = createSelector(
     rusThirdPlural: '{0}'
   });
 
+export const getEquipmentsWordForm = createSelector(
+  [getOptions],
+  options => options.equipmentWordForms || {
+    rusFirstPlural: '{0}',
+    rusSecondPlural: '{0}',
+    rusThirdPlural: '{0}'
+  });
+
+
 export const sortPresets = createSelector(
   [getPresets, getOptions],
   (presets, options) => presets
@@ -152,4 +161,9 @@ export const getPresetItemsOrder = createSelector(
 export const getButtonTitle = createSelector(
   [getOptions],
   options => options.saveChangesText
+);
+
+export const getRubSymbol = createSelector(
+  [getOptions],
+  options => options.rubSymbol
 );

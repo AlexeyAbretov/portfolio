@@ -2,7 +2,7 @@ import React from 'react';
 
 import Popup from 'components/popups';
 
-import Content from './content';
+import Content from './stateful';
 
 export default props =>
   (<Popup

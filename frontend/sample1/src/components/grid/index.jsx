@@ -24,7 +24,7 @@ const RowStatus = {
 };
 
 const btnClass = cx('catalog__tariff-btn');
-
+// key,type,value,id,status,image
 const getItemData = ({ item, click, moreInfoClick, setupClick } = {}) => {
   const rows = (item.rows || [])
     .map((x) => {
@@ -33,6 +33,14 @@ const getItemData = ({ item, click, moreInfoClick, setupClick } = {}) => {
         'catalog__tariff-service-text--connected': x.status === RowStatus.Connected,
         'catalog__tariff-service-text--additional': x.status === RowStatus.Allow
       };
+      // console.log(`getItemData ------ ${x.id} --- ${x.value} ---
+      //   ${x.type} --- ${x.status} --- ${typeof x.status} --- ${Object.keys(x)}`);
+
+      const icon = x.status === RowStatus.Allow ?
+      'http://static.vendordev.ru/upload/images/add-icon.png' :
+      'http://static.vendordev.ru/upload/images/connected-icon.png';
+
+      // const acumIcon = 'http://static.vendordev.ru/upload/images/acum-icon.png';
 
       return (<div
         key={x.key}
@@ -42,24 +50,19 @@ const getItemData = ({ item, click, moreInfoClick, setupClick } = {}) => {
       >
         {x.type === RowType.Link ?
           (<span>
-            {/* { (x.status === RowStatus.Connected || x.status === RowStatus.Allow) &&
-              <span className={cx({
-                'catalog__tariff-service-text--connected-cross': x.status === RowStatus.Connected,
-                'catalog__tariff-service-text--additional-cross': x.status === RowStatus.Allow,
-              })}
-              >+</span>} */}
+            { (x.status === RowStatus.Connected || x.status === RowStatus.Allow) &&
+              <img className={cx('catalog__tariff-service-icon')} src={icon} alt="add" />}
             <Link status={x.status} click={bind(click, [item.id, x.id, x.key])}>{x.value}</Link>
           </span>) :
           <span>
-            {x.status === RowStatus.Default || !item.status ?
-              <span className={cx(inlineCss)}>{Parser(x.value)}</span> :
+            {(x.status === RowStatus.Default || !item.status) ?
               <span>
                 {(x.status === RowStatus.Connected || x.status === RowStatus.Allow) &&
-                  <span className={cx({
-                    'catalog__tariff-service-text--connected-cross': x.status === RowStatus.Connected,
-                    'catalog__tariff-service-text--additional-cross': x.status === RowStatus.Allow,
-                  })}
-                  >+</span>}
+                <img className={cx('catalog__tariff-service-icon')} src={icon} alt="add" />}
+                <span className={cx(inlineCss)}>{Parser(x.value)}</span></span> :
+              <span>
+                {(x.status === RowStatus.Connected || x.status === RowStatus.Allow) &&
+                  <img className={cx('catalog__tariff-service-icon')} src={icon} alt="add" />}
                 <span className={cx(inlineCss)}>{Parser(x.value)}</span>
               </span>
             }
@@ -85,10 +88,10 @@ const getItemData = ({ item, click, moreInfoClick, setupClick } = {}) => {
       <div className={cx('catalog__tariff-services')}>{rows}</div>
     </div>
     <div className={cx('catalog__tariff-downwrap')}>
-      <div className={cx('catalog__tariff-full-fee')}>{Parser(`${item.sum} ${item.sumUnit}`)}</div>
-      <div className={cx('catalog__tariff-services-text')}>{Parser(item.additionalServicesText)}</div>
+      {/* <div className={cx('catalog__tariff-full-fee')}>{Parser(`${item.sum} ${item.sumUnit}`)}</div> */}
+      {/* <div className={cx('catalog__tariff-services-text')}>{Parser(item.additionalServicesText)}</div> */}
       <div className={cx('catalog__tariff-btn-container')}>{button}</div>
-      <div>
+      <div className={cx('catalog__tariff-more-info-wrap')}>
         {item.setupText &&
           <Link className={cx('catalog__tariff-more-info')} click={bind(setupClick, [item.id])}>{item.setupText}</Link>}
         {item.setupText && <br />}
@@ -117,7 +120,8 @@ class Grid extends React.Component {
   }
   componentDidMount() {
     setTimeout(() => {
-      this.setState({ maxTranslate: this.wrap.offsetWidth - this.container.offsetWidth });
+      const maxTranslate = this.wrap.offsetWidth - this.container.offsetWidth;
+      this.setState({ maxTranslate: maxTranslate + 3 });
     }, 100);
     let titleFixHeight = 0;
     this.groupTitle.forEach((x, i) => {
@@ -152,6 +156,8 @@ class Grid extends React.Component {
   scroll = (e) => {
     if (!this.state.nextDisabled && e.target === this.next) {
       const translateTariffs = this.state.translateTariffs - 130;
+      // console.log(this.state.maxTranslate);
+      // console.log(translateTariffs);
       this.setState({
         translateTariffs,
         nextDisabled: translateTariffs <= this.state.maxTranslate

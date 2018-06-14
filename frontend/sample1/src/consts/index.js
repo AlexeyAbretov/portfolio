@@ -197,3 +197,21 @@ export const AccumulatorPeriodType = {
 
   AllBc: 4
 };
+
+export const InetServiceTypes = {
+  U: 'U',
+
+  N: 'N',
+
+  S: 'S',
+
+  L: 'L',
+
+  Shaped: 'Shaped',
+
+  MultiService: 'Multiservice',
+
+  ShapedMultiService: 'shaped-multi-service',
+
+  None: 'none'
+};

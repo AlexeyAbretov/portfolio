@@ -9,7 +9,14 @@ import {
 } from 'selectors';
 
 import {
-  PopupNames, ServiceTypes
+  getAvailableMappings,
+  getServiceMappingState,
+  SavedMappingStates
+} from 'selectors/mappings';
+
+import {
+  PopupNames,
+  ServiceTypes
 } from 'consts';
 
 const getPopupData = createSelector(
@@ -41,18 +48,29 @@ const getService = createSelector(
   });
 
 export const getTv = createSelector(
-  [getPreset, getChanges],
-  (preset, changes) => {
+  [getPreset, getChanges, getAvailableMappings],
+  (preset, changes, mappings) => {
     const added = (changes[preset.id] || {}).added || [];
     const removed = (changes[preset.id] || {}).removed || [];
 
-    return (preset
+    const tv = (preset
       .services || [])
-      .find(x => x.type === ServiceTypes.TvTariff && (
+      .filter(x => x.type === ServiceTypes.TvTariff);
+
+    const mTv = tv
+      .find(x => SavedMappingStates.includes(
+        getServiceMappingState({ mappings, preset, service: x })));
+
+    if (mTv) {
+      return mTv;
+    }
+
+    return tv
+      .find(x =>
         x.isRequired ||
         (x.isPreInclude && !removed.find(y => y.id === x.id)) ||
         (x.isAllow && added.find(y => y.id === x.id))
-      ));
+      );
   });
 
 export const getConsoles = createSelector(
@@ -92,21 +110,34 @@ export const getDescriptionSelector = createSelector(
 );
 
 export const getItemsSelector = createSelector(
-  [getConsoles, getOptions, getTv, getPreset, getChanges],
-  (consoles, options, tv, preset, changes) => {
+  [getConsoles, getOptions, getTv, getPreset, getChanges, getAvailableMappings],
+  (consoles, options, tv, preset, changes, mappings) => {
     const added = (changes[preset.id] || {}).added || [];
     const removed = (changes[preset.id] || {}).removed || [];
 
-    return consoles.map((x, index, arr) => ({
+    const hasChangesConsoles = added
+      .find(x => x.type === ServiceTypes.TvConsole) ||
+      removed
+        .find(x => x.type === ServiceTypes.TvConsole);
+
+    return consoles.map((x, index) => ({
       id: x.id,
       name: options.tvConsoleTitle || x.name,
-      connected: x.connected ||
+      connected: x.isConnected ||
         x.isRequired ||
         (x.isPreInclude && !removed.find(w => w.id === x.id)) ||
         (x.isAllow && added.find(w => w.id === x.id)) ||
-        (tv && x.isAllow && !arr
-          .filter(w => w.isRequired || x.isPreInclude).length),
-      future: x.isPreInclude,
+        // по факту isPreInclude,
+        // но ориентироваться на индекс в разных слоях - бред
+        (tv && index === 0 && !hasChangesConsoles) ||
+        (SavedMappingStates.includes(
+          getServiceMappingState({ mappings, preset, service: x })) &&
+          !removed.length && !added.length) ||
+        false,
+      // по факту isPreInclude,
+      // ради этого ввел новое свойство
+      byDefault: (tv && index === 0 && !hasChangesConsoles),
+      type: x.type,
       disabled: x.isRequired,
       fee: `${(x.fee || 0) - (x.discount || 0)} ${options.rubPerMonth}`
     }));

@@ -43,7 +43,7 @@ export default handleActions({
 
     if (state[key]) {
       return {
-        ...state[key],
+        ...state,
         [key]: {
           ...state[key],
           added: [
@@ -124,7 +124,6 @@ export default handleActions({
     return {
       ...state,
       [key]: {
-        added: [],
         removed: [service]
       },
       loading: false

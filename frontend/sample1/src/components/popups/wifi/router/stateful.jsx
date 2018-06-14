@@ -8,28 +8,36 @@ class WifiRouterStateful extends React.Component {
     super(props);
 
     this.state = {
-      changes: []
+      changes: [
+        ...(props.items || [])
+          .filter(x => x.connected)
+          .map(x => x.id)
+      ]
     };
   }
 
   change = (id) => {
     this.setState((prevState) => {
-      const index = prevState.changes
-        .indexOf(id);
-      if (index === -1) {
+      if (!prevState.changes.includes(id)) {
         return {
           changes: [
-            id,
-            ...prevState.changes
+            id
+          ]
+        };
+      }
+
+      const required = this.props.items
+        .find(x => x.isRequired && !x.isMapped);
+      if (required) {
+        return {
+          changes: [
+            required.id
           ]
         };
       }
 
       return {
-        changes: [
-          ...prevState.changes.slice(0, index),
-          ...prevState.changes.slice(index + 1)
-        ]
+        changes: []
       };
     });
   }
@@ -37,7 +45,7 @@ class WifiRouterStateful extends React.Component {
   save = () => {
     if (this.state.changes.length) {
       this.props.save(
-        this.state.changes[0]
+        this.state.changes
       );
     }
   }
@@ -55,20 +63,12 @@ class WifiRouterStateful extends React.Component {
     }
 
     const list = (items || []).map((x) => {
-      let { connected, future } = x;
-
-      future = this.state.changes.includes(x.id) ?
-        !future :
-        future;
-
-      connected = this.state.changes.includes(x.id) ?
-        !connected :
-        connected;
+      const connected = this.state.changes.includes(x.id) || x.isMapped;
 
       return {
         ...x,
         connected,
-        future
+        disabled: connected && (x.isRequired || x.isMapped)
       };
     });
 

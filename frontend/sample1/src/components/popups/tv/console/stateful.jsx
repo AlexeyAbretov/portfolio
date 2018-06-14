@@ -21,9 +21,7 @@ class TvConsoleStateful extends React.Component {
 
   change = (id) => {
     this.setState((prevState) => {
-      const index = prevState.changes
-        .indexOf(id);
-      if (index === -1) {
+      if (!prevState.changes.includes(id)) {
         return {
           changes: [
             id,
@@ -34,17 +32,36 @@ class TvConsoleStateful extends React.Component {
 
       return {
         changes: [
-          ...prevState.changes.slice(0, index),
-          ...prevState.changes.slice(index + 1)
+          ...prevState.changes.filter(x => x !== id)
         ]
       };
     });
   }
 
   save = () => {
-    if (this.state.changes.length) {
+    // по факту isPreInclude,
+    // ну и как факт компонент знает о доп. логике
+    // !!! наверное лучше переделать на 2 списка: добавленные и удаленные !!!
+    const defaultConsole = (this.props.items || [])
+      .find(x => x.byDefault);
+    if (this.state.changes.length || defaultConsole) {
+      let changes = [
+        ...this.state.changes
+      ];
+
+      if (defaultConsole && changes.includes(defaultConsole.id)) {
+        changes = [
+          ...changes.filter(x => x !== defaultConsole.id)
+        ];
+      } else if (defaultConsole && !changes.includes(defaultConsole.id)) {
+        changes = [
+          ...changes,
+          defaultConsole.id
+        ];
+      }
+
       this.props.save(
-        this.state.changes[0]
+        changes
       );
     }
   }
@@ -59,23 +76,12 @@ class TvConsoleStateful extends React.Component {
       return null;
     }
 
-    const list = (items || []).map((x) => {
-      let { connected, future } = x;
-
-      future = this.state.changes.includes(x.id) ?
-        !future :
-        future;
-
-      connected = this.state.changes.includes(x.id) ?
-        !connected :
-        connected;
-
-      return {
-        ...x,
-        connected,
-        future
-      };
-    });
+    const list = (items || []).map(x => ({
+      ...x,
+      connected: this.state.changes.includes(x.id) ?
+          !x.connected :
+          x.connected
+    }));
 
     const props = {
       ...this.props,

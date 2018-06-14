@@ -14,6 +14,12 @@ import {
   AccumulatorPeriodType
 } from 'consts';
 
+import {
+  getAvailableMappings,
+  isServiceMapped
+} from 'selectors/mappings';
+
+
 export const openStateSelector = createSelector(
   [getOpenedPopups],
   opened => !!opened.find(x => x.name === PopupNames.WifiRouter)
@@ -44,6 +50,11 @@ export const getContinueTitleSelector = createSelector(
   options => options.wifiRouterPopupNextButtonTitle
 );
 
+export const getNote = createSelector(
+  [getOptions],
+  options => options.wifiRouterPopupNote
+);
+
 const getPopupData = createSelector(
   [getOpenedPopups],
   (opened) => {
@@ -66,10 +77,18 @@ export const getOwnerShipTypeTitles = createSelector(
   [getOptions],
   options => ({
     [OwnershipType.Rented]: options.wifiRentedStatusText,
-    [OwnershipType.Buyed]: options.wifiBuyStatusText,
     [OwnershipType.Gift]: options.wifiGiftStatusText,
-    [OwnershipType.BuyOut]: options.wifiBuyOutStatusText,
     [OwnershipType.ByInstallments]: options.wifiInstallmentStatusText
+  }));
+
+export const getMappedOwnerShipTypeTitles = createSelector(
+  [getOptions],
+  options => ({
+    [OwnershipType.Rented]: options.wifiRentedStatusMappedText,
+    [OwnershipType.Buyed]: options.wifiBuyStatusText,
+    [OwnershipType.Gift]: options.wifiGiftStatusMappedText,
+    [OwnershipType.BuyOut]: options.wifiBuyOutStatusText,
+    [OwnershipType.ByInstallments]: options.wifiInstallmentStatusMappedText
   }));
 
 const dayAccumulatorPeriodType = [
@@ -77,21 +96,23 @@ const dayAccumulatorPeriodType = [
   AccumulatorPeriodType.ActiveDays
 ];
 
-export const getFeeNote = (router, ownerShipTypeTitles) => {
+export const getFeeNote = (router, ownerShipTypeTitles, mappedOwnerShipTypeTitles, isMapped) => {
   let installmentTime = router.accumulatorPeriodType === AccumulatorPeriodType.None ?
     '' :
     router.installmentTime;
 
   if (dayAccumulatorPeriodType.includes(router.accumulatorPeriodType)) {
-    installmentTime = router.installmentTime / 30;
+    installmentTime = ((router.installmentTime || 0) / 30).toFixed();
   }
 
-  return router.OwnershipType === OwnershipType.ByInstallments ?
-    ownerShipTypeTitles[router.OwnershipType]
+  const titles = isMapped ? mappedOwnerShipTypeTitles : ownerShipTypeTitles;
+
+  return router.ownershipType === OwnershipType.ByInstallments ?
+    titles[router.ownershipType]
       .replace(
         '{0}',
         installmentTime) :
-    ownerShipTypeTitles[router.OwnershipType];
+        titles[router.ownershipType];
 };
 
 export const getRouters = createSelector(
@@ -101,22 +122,33 @@ export const getRouters = createSelector(
     .filter(x => x.type === ServiceTypes.WifiRent) || []);
 
 export const getItemsSelector = createSelector(
-  [getRouters, getOptions, getPreset, getChanges, getOwnerShipTypeTitles],
-  (routers, options, preset, changes, ownerShipTypeTitles) => {
+  [getRouters, getOptions, getPreset,
+    getChanges, getOwnerShipTypeTitles, getMappedOwnerShipTypeTitles, getAvailableMappings],
+  (routers, options, preset, changes, ownerShipTypeTitles, mappedOwnerShipTypeTitles, mappings) => {
     const added = (changes[preset.id] || {}).added || [];
-    const removed = (changes[preset.id] || {}).removed || [];
+    // const removed = (changes[preset.id] || {}).removed || [];
 
-    return routers.map(x => ({
-      id: x.id,
-      name: x.name,
-      connected: x.connected ||
-        x.isRequired ||
-        (x.isPreInclude && !removed.find(w => w.id === x.id)) ||
-        (x.isAllow && added.find(w => w.id === x.id)),
-      future: x.isPreInclude,
-      disabled: x.isRequired,
-      fee: `${(x.fee || 0) - ((x.accumulator ? x.discount : 0) || 0)} ${options.rubPerMonth}`,
-      feeNote: getFeeNote(x, ownerShipTypeTitles)
-    }));
+    return routers.map((x) => {
+      const isMapped = isServiceMapped({ mappings, preset, service: x });
+      return {
+        id: x.id,
+        name: x.name,
+        isRequired: x.isRequired,
+        isMapped,
+        connected: /* x.isConnected || */
+          isMapped ||
+          /* (x.isPreInclude && !removed.find(w => w.id === x.id)) ||
+          (x.isAllow && */ !!added.find(w => w.id === x.id) /* ) */ ||
+          false,
+        serial: isMapped &&
+          x.connected ? `${options.wifiSerialText} ${x.serial}` : '',
+        charge: x.chargeInfo && x.chargeInfo.chargePrice ?
+          `${x.chargeInfo.chargeName || options.wifiChargeText} ${x.chargeInfo.chargePrice} ${options.rubSymbol}` :
+          '',
+        disabled: isMapped,
+        fee: `${((x.accumulatorPrice || x.fee) || 0) - (x.discount || 0)} ${options.rubPerMonth}`,
+        feeNote: getFeeNote(x, ownerShipTypeTitles, mappedOwnerShipTypeTitles, isMapped)
+      };
+    });
   }
 );

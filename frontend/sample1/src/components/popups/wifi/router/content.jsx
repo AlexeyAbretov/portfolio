@@ -22,7 +22,8 @@ const WifiRouter = (props) => {
     change,
     save,
     cancelTitle,
-    cancel
+    cancel,
+    note
   } = props;
 
   if (!isShow) {
@@ -33,12 +34,13 @@ const WifiRouter = (props) => {
     <Switch
       id={x.id}
       checked={x.connected}
-      isFuture={x.future}
       disabled={x.disabled}
       onChange={() => change(x.id)}
     />
     {Parser(x.name)}
+    {Parser(x.serial)}
     {Parser(x.fee)}
+    {Parser(x.charge)}
     {Parser(x.feeNote)}
   </div>));
 
@@ -46,6 +48,9 @@ const WifiRouter = (props) => {
     <h2 className={cx(commonStyles['vendor-shpd-home-catalog__title'])}>{Parser(title)}</h2>
     <div>{Parser(description)}</div>
     {list}
+    {note && <div>
+      {Parser(note)}
+    </div>}
     <div>
       <Button click={save}>{Parser(buttonTitle)}</Button>
     </div>
@@ -58,29 +63,35 @@ const WifiRouter = (props) => {
 WifiRouter.propTypes = {
   description: PropTypes.string,
   title: PropTypes.string,
+  note: PropTypes.string,
   isShow: PropTypes.bool,
   buttonTitle: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string,
     connected: PropTypes.bool,
     name: PropTypes.string,
+    serial: PropTypes.string,
+    charge: PropTypes.string,
     fee: PropTypes.string,
     feeNote: PropTypes.string
   })),
   change: PropTypes.func,
   save: PropTypes.func,
-  cancelTitle: PropTypes.string
+  cancelTitle: PropTypes.string,
+  cancel: PropTypes.func,
 };
 
 WifiRouter.defaultProps = {
   description: '',
   title: '',
+  note: '',
   isShow: false,
   buttonTitle: 'Сохранить изменения',
   items: [],
   change: () => { },
   save: () => { },
-  cancelTitle: 'Отменить изменения'
+  cancelTitle: 'Отменить изменения',
+  cancel: () => { },
 };
 
 export default WifiRouter;

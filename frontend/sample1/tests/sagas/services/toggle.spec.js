@@ -68,8 +68,6 @@ describe('toggle service saga tests', () => {
             .next()
             .select(getPresets)
             .next()
-            .select(getChanges)
-            .next()
             .isDone();
     });
 
@@ -81,7 +79,7 @@ describe('toggle service saga tests', () => {
 
         expectSaga(toggleService, action)
             .withState(emptyState)
-            .select(getChanges)
+            .not.select(getChanges)
             .run();
 
         expectSaga(toggleService, action)

@@ -5,7 +5,9 @@ import {
   SortOrder,
   Groups,
   TvPacketTypes,
-  TvPacketSaveStatus
+  TvPacketSaveStatus,
+  OwnershipType,
+  InetServiceTypes
 } from 'consts';
 
 export default [{
@@ -61,6 +63,7 @@ export default [{
     isConnected: false
   },{
     id: 'inet1',
+    name: 'inet1',
     type: ServiceTypes.Internet,
     speed: 100,
     fee: 120,
@@ -166,8 +169,17 @@ export default [{
     type: ServiceTypes.Phone,
     isAllow: true,
     name: 'ДТЦ1'
+  },
+  {
+    id: 'support1',
+    name: 'support1',
+    type: ServiceTypes.Internet,
+    isRequired: false,
+    isPreInclude: false,
+    isLineHolder: true
   },{
     id: 'inet1',
+    name: '---- inet1 --- ',
     type: ServiceTypes.Internet,
     speed: 100,
     isRequired: true,
@@ -199,11 +211,31 @@ export default [{
   fee: 150,
   services: [{
     id: 'inet1',
+    name: 'inet1',
     type: ServiceTypes.Internet,
     speed: 100,
     isRequired: true,
     isPreInclude: false,
     isLineHolder: false
+  },{
+    id: 'inet2',
+    name: 'inet2',
+    type: ServiceTypes.Internet,
+    speed: 100,
+    nightSpeed: 120,
+    internetType: InetServiceTypes.N,
+    isRequired: false,
+    isPreInclude: false,
+    isLineHolder: false,
+    isAllow: true
+  },
+  {
+    id: 'support1',
+    name: 'support1',
+    type: ServiceTypes.Internet,
+    isRequired: false,
+    isPreInclude: false,
+    isLineHolder: true
   },
   {
     id: 'tv1',
@@ -236,9 +268,46 @@ export default [{
     id: 'wifi1',
     name: 'Wifi-router',
     type: ServiceTypes.WifiRent,
+    isRequired: false,
+    isPreInclude: false,
+    isLineHolder: false,
+    connected: true,
+    serial: '111111',
+    chargeInfo: {
+      chargeName: 'разовое списание',
+      chargePrice: 100
+    },
+    ownershipType: OwnershipType.Gift
+  },
+  {
+    id: 'wifi2',
+    name: 'Wifi-router 2',
+    type: ServiceTypes.WifiRent,
+    isRequired: false,
+    isPreInclude: false,
+    isLineHolder: false,
+    isAllow: true,
+    ownershipType: OwnershipType.Gift
+  },
+  {
+    id: 'wifi3',
+    name: 'Wifi-router 3',
+    type: ServiceTypes.WifiRent,
+    isRequired: false,
+    isPreInclude: false,
+    isLineHolder: false,
+    isAllow: true,
+    ownershipType: OwnershipType.Buyed
+  },
+  {
+    id: 'wifi4',
+    name: 'Wifi-router 4',
+    type: ServiceTypes.WifiRent,
     isRequired: true,
     isPreInclude: false,
-    isLineHolder: false
+    isLineHolder: false,
+    isAllow: false,
+    ownershipType: OwnershipType.Buyed
   },
   {
     id: 'eset1',
@@ -258,6 +327,24 @@ export default [{
     isPreInclude: false,
     isLineHolder: false,
     isAllow: true
+  },
+  {
+    id: 'console2',
+    type: ServiceTypes.TvConsole,
+    shortDescription: 'console4 short description',
+    isRequired: false,
+    isPreInclude: false,
+    isLineHolder: false,
+    isAllow: true
+  },
+  {
+    id: 'console3',
+    type: ServiceTypes.TvConsole,
+    shortDescription: 'console3 short description',
+    isRequired: false,
+    isPreInclude: false,
+    isLineHolder: false,
+    isAllow: true
   }]
 },
 {
@@ -265,13 +352,148 @@ export default [{
   name: 'Preset 4',
   isConnected: false,
   fee: 1550,
-  services: [{
+  services: [
+    {
+      id: 'eset1',
+      name: 'Антивирус eset 2',
+      type: ServiceTypes.Eset,
+      isRequired: false,
+      isPreInclude: false,
+      isLineHolder: false,
+      isAllow: true,
+      licenseCount: 10,
+      description: 'dsdsdsdsdsd'
+    },
+    {
+      id: 'drweb1',
+      name: 'Антивирус drweb 2',
+      type: ServiceTypes.DrWeb,
+      isRequired: false,
+      isPreInclude: false,
+      isLineHolder: false,
+      isAllow: true,
+      licenseCount: 12,
+      description: 'dsdsdsdsdsd111'
+    },
+    {
+      id: 'kav1',
+      name: 'Антивирус kasper 1',
+      type: ServiceTypes.Kasper,
+      isRequired: false,
+      isPreInclude: false,
+      isLineHolder: false,
+      isAllow: true,
+      licenseCount: 11,
+      description: 'dsdsdsdsdsd222'
+    },
+    {
+      id: 'kav2',
+      name: 'Антивирус kasper 2',
+      type: ServiceTypes.Kasper,
+      isRequired: false,
+      isPreInclude: false,
+      isLineHolder: false,
+      isAllow: true,
+      licenseCount: 3,
+      description: 'dsdsdsdsdsd211122'
+    },{
     id: 'inet1',
+    name: 'inet1',
     type: ServiceTypes.Internet,
     speed: 100,
-    isRequired: true,
+    isRequired: false,
     isPreInclude: false,
-    isLineHolder: false
+    isLineHolder: false,
+    isAllow: true,
+    isVsuAllow: true
+  },{
+    id: 'inet3',
+    name: 'inet3',
+    type: ServiceTypes.Internet,
+    speed: 100,
+    isRequired: false,
+    isPreInclude: false,
+    isLineHolder: false,
+    isAllow: true,
+    isVsuAllow: true
+  },{
+    id: 'vsu1',
+    name: 'vsu1',
+    type: ServiceTypes.Vsu,
+    speedUp: 0,
+    maxSpeed: 150,
+    vsuConnectFee: 10,
+    vsuMoveDownFee: 5,
+    vsuMoveUpFee: 15
+  },{
+    id: 'vsu2',
+    name: 'vsu2',
+    type: ServiceTypes.Vsu,
+    speedUp: 10,
+    maxSpeed: 150,
+    fee: 10,
+    vsuConnectFee: 10,
+    vsuMoveDownFee: 5,
+    vsuMoveUpFee: 15
+  },{
+    id: 'vsu3',
+    name: 'vsu3',
+    type: ServiceTypes.Vsu,
+    speedUp: 20,
+    maxSpeed: 150,
+    fee: 20,
+    vsuConnectFee: 10,
+    vsuMoveDownFee: 5,
+    vsuMoveUpFee: 15
+  },{
+    id: 'vsu6',
+    name: 'vsu6',
+    type: ServiceTypes.Vsu,
+    speedUp: 50,
+    maxSpeed: 150,
+    fee: 50,
+    vsuConnectFee: 10,
+    vsuMoveDownFee: 5,
+    vsuMoveUpFee: 15
+  },{
+    id: 'vsu4',
+    name: 'vsu4',
+    type: ServiceTypes.Vsu,
+    speedUp: 30,
+    maxSpeed: 150,
+    fee: 30,
+    vsuConnectFee: 10,
+    vsuMoveDownFee: 5,
+    vsuMoveUpFee: 15
+  },{
+    id: 'vsu5',
+    name: 'vsu5',
+    type: ServiceTypes.Vsu,
+    speedUp: 40,
+    maxSpeed: 150,
+    fee: 40,
+    vsuConnectFee: 10,
+    vsuMoveDownFee: 5,
+    vsuMoveUpFee: 15
+  },{
+    id: 'vsu7',
+    name: 'vsu7',
+    type: ServiceTypes.Vsu,
+    speedUp: 60,
+    maxSpeed: 150,
+    fee: 60,
+    vsuConnectFee: 10,
+    vsuMoveDownFee: 5,
+    vsuMoveUpFee: 15
+  },{
+    id: 'inet4',
+    name: 'inet4',
+    type: ServiceTypes.Internet,
+    speed: 100,
+    isRequired: false,
+    isPreInclude: false,
+    isLineHolder: false,
+    isAllow: true
   },
   {
     id: 'tv1',
@@ -299,6 +521,7 @@ export default [{
   fee: 1650,
   services: [{
     id: 'inet1',
+    name: 'inet1',
     type: ServiceTypes.Internet,
     speed: 100,
     isRequired: true,
@@ -316,12 +539,47 @@ export default [{
   },
   {
     id: 'eset1',
-    name: 'Антивирус 2',
+    name: 'Антивирус eset 2',
     type: ServiceTypes.Eset,
     isRequired: false,
     isPreInclude: false,
     isLineHolder: false,
-    isAllow: true
+    isAllow: true,
+    licenseCount: 10,
+    description: 'dsdsdsdsdsd'
+  },
+  {
+    id: 'drweb1',
+    name: 'Антивирус drweb 2',
+    type: ServiceTypes.DrWeb,
+    isRequired: false,
+    isPreInclude: false,
+    isLineHolder: false,
+    isAllow: true,
+    licenseCount: 12,
+    description: 'dsdsdsdsdsd111'
+  },
+  {
+    id: 'kav1',
+    name: 'Антивирус kasper 1',
+    type: ServiceTypes.Kasper,
+    isRequired: false,
+    isPreInclude: false,
+    isLineHolder: false,
+    isAllow: true,
+    licenseCount: 11,
+    description: 'dsdsdsdsdsd222'
+  },
+  {
+    id: 'kav2',
+    name: 'Антивирус kasper 2',
+    type: ServiceTypes.Kasper,
+    isRequired: false,
+    isPreInclude: false,
+    isLineHolder: false,
+    isAllow: true,
+    licenseCount: 3,
+    description: 'dsdsdsdsdsd211122'
   },
   {
     id: 'console1',
@@ -340,6 +598,7 @@ export default [{
   fee: 1550,
   services: [{
     id: 'inet1',
+    name: 'inet1',
     type: ServiceTypes.Internet,
     speed: 100,
     isRequired: true,
@@ -373,6 +632,7 @@ export default [{
   fee: 1750,
   services: [{
     id: 'inet1',
+    name: 'inet1',
     type: ServiceTypes.Internet,
     speed: 100,
     isRequired: true,
@@ -387,6 +647,7 @@ export default [{
     isLineHolder: false
   }, {
     id: 'inet2',
+    name: 'inet2',
     type: ServiceTypes.Internet,
     speed: 120,
     isRequired: false,
@@ -410,6 +671,7 @@ export default [{
   fee: 750,
   services: [{
     id: 'inet1',
+    name: 'inet1',
     type: ServiceTypes.Internet,
     speed: 100,
     isRequired: true,
@@ -440,6 +702,7 @@ export default [{
   fee: 751,
   services: [{
     id: 'inet1',
+    name: 'inet1',
     type: ServiceTypes.Internet,
     speed: 100,
     isRequired: true,
@@ -471,6 +734,7 @@ export default [{
   fee: 752,
   services: [{
     id: 'inet1',
+    name: 'inet1',
     type: ServiceTypes.Internet,
     speed: 100,
     isRequired: true,

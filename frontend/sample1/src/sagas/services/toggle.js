@@ -1,4 +1,4 @@
-import { put, takeLatest, select } from 'redux-saga/effects';
+import { put, takeLatest, select, all, call } from 'redux-saga/effects';
 
 import actions from 'symbiotes/changes';
 
@@ -11,13 +11,23 @@ import {
   getChanges
 } from 'selectors';
 
+import {
+  getAvailableMappings,
+  getServiceMappingState,
+  SavedMappingStates
+} from 'selectors/mappings';
+
 function* toggle({
   service,
   changes,
-  presetId
+  presetId,
+  mappings
 }) {
   const serviceId = service.id;
   const serviceChanges = changes[presetId] || {};
+  const hasMapping = SavedMappingStates.includes(
+    getServiceMappingState(
+      { mappings, preset: { id: presetId }, service }));
 
   if (service.isAllow) {
     const added = (serviceChanges.added || [])
@@ -31,7 +41,7 @@ function* toggle({
         presetId,
         service));
     }
-  } else if (service.isPreInclude) {
+  } else if (service.isPreInclude || hasMapping) {
     const removed = (serviceChanges.removed || [])
       .find(x => x.id === serviceId);
     if (!removed) {
@@ -56,40 +66,53 @@ export function* toggleService(action = {}) {
 
   try {
     const presets = yield select(getPresets);
-    const changes = yield select(getChanges);
 
-    const preset = (presets || []).find(x => x.id === presetId);
+    const preset = (presets || [])
+      .find(x => x.id === presetId);
 
     if (!preset || preset.isConnected) {
       return;
     }
 
-    const services = preset.services || [];
-    const service = services
-      .find(x => x.id === serviceId);
+    let services = Array.isArray(serviceId) ?
+      (preset.services || [])
+        .filter(x => serviceId.includes(x.id)) :
+      (preset.services || [])
+        .filter(x => x.id === serviceId);
 
-    if (!service || service.isRequired) {
+    services = services.filter(x => !x.isRequired);
+
+    if (!services || !services.length) {
       return;
     }
 
-    const type = service.type;
-    const isTve = service.isTve;
+    const changes = yield select(getChanges);
+    const mappings = yield select(getAvailableMappings);
+    let calls = [];
+    services.forEach((service, index) => {
+      const type = service.type;
+      const isTve = service.isTve;
 
-    yield toggle({
-      service, presetId, changes
+      calls = [
+        ...calls,
+        call(toggle, { service, presetId, changes, mappings })
+      ];
+
+      if (!isTve && relatedServiceTypes[type] && index === 0) {
+        const related = (preset.services || [])
+          .find(x => x.type === relatedServiceTypes[type] &&
+            !x.isTve);
+
+        if (related) {
+          calls = [
+            ...calls,
+            call(toggle, { service: related, presetId, changes, mappings })
+          ];
+        }
+      }
     });
 
-    if (!isTve && relatedServiceTypes[type]) {
-      const related = services
-        .find(x => x.type === relatedServiceTypes[type] &&
-          !x.isTve);
-
-      if (related) {
-        yield toggle({
-          service: related, presetId, changes
-        });
-      }
-    }
+    yield all(calls);
   } catch (e) {
     console.log(e); // eslint-disable-line
   }

@@ -25,7 +25,7 @@
 
 .catalog__tariffs-wrap {
   max-width: 100%;
-  padding: 0 45px 0 44px;
+  padding: 0 44px 0 44px;
   margin: 0 auto 74px;
   position: relative;
   display: -moz-inline-flex;
@@ -50,14 +50,18 @@
 .catalog__tariffs-group {
   position: relative;
   margin-top: 118px;
-  background: #fff;
-  border: 1px solid rgba(40,40,40,.2);
-  border-width: 1px 0 1px 1px;
+  /*background: #fff;*/
+  border: 1px solid #d8d8d8;
+  border-width: 1px 1px 0 0;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
-.catalog__tariffs-group:not(:first-child) {
-  border-left: 0;
+.catalog__tariffs-group:first-child {
+  border-width: 1px 1px 0 1px;
 }
+
+
 
 .catalog__tariffs-groupe-image {
   position: absolute;
@@ -78,50 +82,87 @@
   font-size: 15px;
   color: #282828;
   text-align: center;
-  border: 1px solid rgba(40,40,40,.2);
-  border-width: 0 1px 1px 0;
+  border: 1px solid #d8d8d8;
+  border-width: 0 0 1px 0;
   display: -moz-flex;
   display: -ms-flex;
   display: -o-flex;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  background: #fff;
 }
 
 .catalog__tariffs-groupe-title-text {
   margin: auto;
 }
 
+/*.catalog__tariffs-group .grid-container {
+  margin-left: -1px;
+}
+*/
+/*.catalog__tariffs-group:first-child .grid-container {
+  margin-left: 0;
+}*/
+
 .catalog__tariff {
   width: 130px;
+  background: #fff;
   -ms-flex-preferred-size: 130px;
       flex-basis: 130px;
-  border-right: 1px solid rgba(40,40,40,.2);
+  border: 1px solid #d8d8d8;
+  border-width: 0 1px 1px 0;
+  /*margin-left: -1px;*/
+  /*margin-top: -1px;*/
   text-align: center;
-  padding: 19px 7px 14px;
+  padding: 17px 7px 21px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
+
+.catalog__tariffs-group:not(:first-child) .catalog__tariff:first-child {
+  /*margin-left: -1px;*/
+}
+
+.catalog__tariff:last-child {
+  border-right-color: transparent;
+}
+
+.catalog__tariffs-group:last-child .catalog__tariff:last-child {
+  width: 128px;
+}
+ 
+/*.catalog__tariffs-group:last-child .catalog__tariff:last-child {
+  border-right: 0;
+}*/
+
+/*.catalog__tariffs-group:first-child .catalog__tariff:first-child {
+  border-left: 0;
+}*/
 
 .catalog__tariff-fee {
   font-size: 30px;
   font-family: 'Officina Serif';
   font-weight: 400;
   color: #282828;
-  margin-bottom: 2px;
+  line-height: 1;
+  padding-top: 6px;
 }
 
 .catalog__tariff-fee-text {
-  color: #282828;
+  color: #787878;
 }
 
 .catalog__tariff-services {
-  padding-top: 30px;
-  min-height: 306px;
+  padding-top: 21px;
+  min-height: 159px;
+  padding-bottom: 6px;
 }
 
 .catalog__tariff-service {
   font-size: 17px;
   font-family: 'Officina Serif';
-  margin-bottom: 10px;
+  margin-bottom: 22px;
 }
 
 .catalog__tariff-service-text {
@@ -129,19 +170,13 @@
 }
 
 .catalog__tariff-service-text--additional {
-  color: #f6a000;
-}
-
-.catalog__tariff-service-text--additional-cross {
-  color: #f6a000;
+  color: #787878;
+  border-bottom: 1px dashed rgba(40,40,40,.33);
 }
 
 .catalog__tariff-service-text--connected {
   color: #007300;
-}
-
-.catalog__tariff-service-text--connected-cross {
-  color: #007300;
+  border-bottom:  1px dashed rgba(0,115,0,.45);
 }
 
 .catalog__tariff-service-img {
@@ -149,6 +184,12 @@
   vertical-align: middle;
   margin-left: 3px;
   max-height: 19px;
+}
+
+.catalog__tariff-service-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 2px;
 }
 
 .catalog__tariff-full-fee {
@@ -159,7 +200,7 @@
 }
 
 .catalog__tariff-btn-container {
-  margin: 22px 0 14px;
+  margin: 0 0 14px;
 }
 
 .catalog__tariff-btn:not(:disabled) {
@@ -193,6 +234,16 @@ a.catalog__tariff-more-info {
   font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
   font-size: 13px;
   color: #787878;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.catalog__tariff-more-info:first-child {
+  margin-top: 0;
+}
+
+.catalog__tariff-more-info:only-child {
+  margin-top: 15px;
 }
 
 .catalog__tariff-btn--connected {
@@ -242,6 +293,7 @@ a.catalog__tariff-more-info {
 
 .catalog__tariffs-arrow-prev:before {
   background: url(../../../img/prev-arrow.png);
+  background-repeat: no-repeat;
 }
 
 .catalog__tariffs-arrow-next {
@@ -250,6 +302,7 @@ a.catalog__tariff-more-info {
 
 .catalog__tariffs-arrow-next:before {
   background: url(../../../img/next-arrow.png);
+  background-repeat: no-repeat;
 }
 
 .catalog__tariffs-arrow--disabled {

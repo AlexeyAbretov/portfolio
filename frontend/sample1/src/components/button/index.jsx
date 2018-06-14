@@ -10,7 +10,7 @@ export default class PureButton extends React.PureComponent {
   }
 
   render() {
-    const { className, click } = this.props;
+    const { className, click, disabled } = this.props;
     let { text } = this.props;
 
     if (!text) {
@@ -18,7 +18,7 @@ export default class PureButton extends React.PureComponent {
     }
 
     return (
-      <Button className={className} onClick={click}>{text}</Button>
+      <Button className={className} onClick={click} disabled={disabled}>{text}</Button>
     );
   }
 }
@@ -26,11 +26,13 @@ export default class PureButton extends React.PureComponent {
 PureButton.propTypes = {
   className: PropTypes.string,
   text: PropTypes.string,
-  click: PropTypes.func
+  click: PropTypes.func,
+  disabled: PropTypes.bool
 };
 
 PureButton.defaultProps = {
   className: '',
   text: '',
-  click: () => {}
+  click: () => {},
+  disabled: false
 };
