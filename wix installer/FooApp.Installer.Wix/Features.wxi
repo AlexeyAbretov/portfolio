@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include
+  xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Feature
+    Id="BackendFeature"
+    Title="!(loc.BackendFeatureTitle)"
+    Level="1"
+    ConfigurableDirectory="BACKENDINSTALLFOLDER">
+    <ComponentGroupRef
+      Id="BackendProductComponents" />
+    <ComponentRef Id="InstallFooAppRegistrySettings"></ComponentRef>
+    <ComponentRef Id="UnistallFooAppRegistrySettings"></ComponentRef>
+    <ComponentRef Id="cmpSites"/>
+    <ComponentRef Id="cmpTemp"/>
+    <ComponentRef Id="cmpLogs"/>
+    <ComponentRef Id="cmpLogsDirBackend"/>
+    <ComponentRef Id="cmpBackendPersmissions"/>
+    <ComponentRef Id="FooAppSiteIisSettings"/>
+    <ComponentRef Id="PermissionsIIsRoot"/>
+    <ComponentRef Id="SiteRegistrySettings"/>
+    <ComponentRef Id="FooAppublishingConfigurationXmlRegistrySettings"/>
+    <ComponentRef Id="FooAppublishingConfigurationXmlFirstInstallAndUpdateRegistrySettings"/>
+    <ComponentGroupRef Id="FooAppConfigurationXmlFileComponents"/>
+    <ComponentRef Id="cmpFooAppTempFile"/>
+    <ComponentRef Id="WebModeConfigurationSettings"/>
+    <ComponentRef Id="DbRegistrySettings"/>
+    <ComponentGroupRef
+        Id="SitesProductComponents" />
+    <ComponentRef Id="cmp_ExecuteSql"/>
+    <Feature
+      Id="WinlogonFeature"
+      Title="!(loc.WinlogonFeatureTitle)"
+      Level="1"
+      ConfigurableDirectory="WINLOGONINSTALLFOLDER"
+      Absent="disallow"
+      AllowAdvertise="no">
+      <ComponentGroupRef
+        Id="WinlogonProductComponents" />
+      <ComponentRef Id="cmpWinlogonPersmissions"/>
+    </Feature>
+    <Feature
+      Id="SiteMapFeature"
+      Title="!(loc.SiteMapFeatureTitle)"
+      Level="1"
+      ConfigurableDirectory="SITEMAPINSTALLFOLDER"
+      Absent="disallow"
+      AllowAdvertise="no">
+      <ComponentGroupRef
+        Id="SiteMapProductComponents" />
+      <ComponentRef Id="cmpSiteMapPersmissions"/>
+      <ComponentRef Id="cmpLogs"/>
+      <ComponentRef Id="cmpLogsDirSiteMap"/>
+    </Feature>
+    <Feature
+      Id="PluginsFeature"
+      Title="!(loc.PluginsFeatureTitle)"
+      Level="1"
+      ConfigurableDirectory="PLUGINSINSTALLFOLDER"
+      Absent="disallow"
+      AllowAdvertise="no">
+      <ComponentGroupRef
+        Id="PluginsProductComponents" />
+      <ComponentRef Id="cmpPluginsPersmissions"/>
+    </Feature>
+    <Feature
+     Id="ArticleSchedulerFeature"
+     Title="!(loc.ArticleSchedulerFeatureTitle)"
+     Level="1"
+     ConfigurableDirectory="ARTICLESCHEDULERINSTALLFOLDER">
+      <ComponentGroupRef
+        Id="ArticleSchedulerProductComponents" />
+      <ComponentRef
+          Id="ArticleSchedulerServiceInstaller" />
+      <ComponentRef Id="cmpLogs"/>
+      <ComponentRef Id="cmpLogsDirArticleService"/>
+    </Feature>
+    <Feature
+      Id="CommonSchedulerFeature"
+      Title="!(loc.CommonSchedulerFeatureTitle)"
+      Level="1"
+      ConfigurableDirectory="COMMONSCHEDULERINSTALLFOLDER">
+      <ComponentGroupRef
+        Id="CommonSchedulerProductComponents" />
+      <ComponentRef Id="cmpLogs"/>
+      <ComponentRef Id="cmpLogsDirCommonService"/>
+    </Feature>
+  </Feature>
+  <Feature
+    Id="DatabaseFeature"
+    Title="!(loc.DatabaseFeatureTitle)"
+    Level="1"
+    ConfigurableDirectory="DATABASEINSTALLFOLDER">
+    <Condition Level="0"><![CDATA[WIX_UPGRADE_DETECTED <> ""]]></Condition>
+    <ComponentGroupRef Id="DbProductComponents"/>
+    <ComponentRef Id="cmpRestoreDB"/>
+  </Feature>
+  <Feature
+    Id="DemoSiteFeature"
+    Title="!(loc.DemoSiteFeatureTitle)"
+    Level="1"
+    ConfigurableDirectory="DEMOSITEINSTALLFOLDER">
+    <ComponentGroupRef Id="StaticFilesComponents"/>
+    <ComponentRef Id="cmpStaticSite"/>
+    <ComponentRef Id="StaticSiteIisSettings"/>
+    <ComponentRef Id="StaticSiteRegistrySettings"/>
+    <ComponentGroupRef
+        Id="LiveDemoSiteProductComponents" />
+    <ComponentGroupRef
+        Id="StageDemoSiteProductComponents" />
+    <ComponentRef Id="FooAppDemoSiteIisSettings"/>
+    <ComponentRef Id="DemoSiteRegistrySettings"/>
+    <ComponentRef Id="DemoSiteSettings"/>
+    <ComponentRef Id="UpdateDemoSitePaths"/>
+  </Feature>
+</Include>

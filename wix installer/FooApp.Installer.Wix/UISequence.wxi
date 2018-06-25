@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include
+  xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <UI>
+    <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="CustomizeDlg" Order="3">
+      <![CDATA[NOT Installed]]>
+    </Publish>
+
+    <Publish Dialog="CustomizeDlg" Control="Next" Event="NewDialog" Value="WebModeDbDlg" Order="1">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND ((&BackendFeature=3 OR &DemoSiteFeature=3) AND &DatabaseFeature<>3)]]>
+    </Publish>
+
+    <Publish Dialog="CustomizeDlg" Control="Next" Event="DoAction" Value="FillSqlServersComboBoxCA" Order="2">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND &DatabaseFeature=3]]>
+    </Publish>
+
+    <Publish Dialog="CustomizeDlg" Control="Next" Event="NewDialog" Value="DatabaseModeDbDlg" Order="3">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND &DatabaseFeature=3]]>
+    </Publish>
+
+    <!-- Check iis, ps and other -->
+    <Publish Dialog="CustomizeDlg" Control="Next" Event="DoAction" Value="CheckPowerShellCA" Order="4">
+      <![CDATA[WIX_UPGRADE_DETECTED <> "" AND (&BackendFeature=3 OR !BackendFeature=3)]]>
+    </Publish>
+    
+    <Publish Dialog="CustomizeDlg" Control="Next" Event="NewDialog" Value="WrongIISMessageDlg" Order="5">
+      <![CDATA[(IISMAJORVERSION_INT < 7) AND (&BackendFeature=3 OR &DemoSiteFeature=3)]]>
+    </Publish>
+    <Publish Dialog="CustomizeDlg" Control="Next" Event="NewDialog" Value="WrongDotNetMessageDlg" Order="5">
+      <![CDATA[(NOT NETFRAMEWORK45) AND (&BackendFeature=3 OR &CommonSchedulerFeature = 3 OR &ArticleSchedulerFeature = 3 OR &DemoSiteFeature = 3)]]>
+    </Publish>
+    <Publish Dialog="CustomizeDlg" Control="Next" Event="NewDialog" Value="WrongPowerShellMessageDlg" Order="5">
+      <![CDATA[(&BackendFeature=3 OR !BackendFeature=3) AND NOT POWERSHELLEXE AND WIX_UPGRADE_DETECTED <> ""]]>
+    </Publish>
+
+    <Publish Dialog="CustomizeDlg" Control="Tree" Property="BackendFeatureChangeState" Value="3" Order="6">
+      <![CDATA[WixUI_InstallMode = "Change" AND MsiSelectionTreeSelectedFeature = "BackendFeature" AND (MsiSelectionTreeSelectedAction = 3)]]>
+    </Publish>
+
+    <Publish Dialog="CustomizeDlg" Control="Tree" Property="BackendFeatureChangeState" Value="2" Order="6">
+      <![CDATA[WixUI_InstallMode = "Change" AND MsiSelectionTreeSelectedFeature = "BackendFeature" AND (MsiSelectionTreeSelectedAction <> 3)]]>
+    </Publish>
+
+    <Publish Dialog="CustomizeDlg" Control="Tree" Property="DatabaseFeatureChangeState" Value="3" Order="6">
+      <![CDATA[WixUI_InstallMode = "Change" AND MsiSelectionTreeSelectedFeature = "DatabaseFeature" AND (MsiSelectionTreeSelectedAction = 3)]]>
+    </Publish>
+
+    <Publish Dialog="CustomizeDlg" Control="Tree" Property="DatabaseFeatureChangeState" Value="2" Order="6">
+      <![CDATA[WixUI_InstallMode = "Change" AND MsiSelectionTreeSelectedFeature = "DatabaseFeature" AND (MsiSelectionTreeSelectedAction <> 3)]]>
+    </Publish>
+
+    <Publish Dialog="CustomizeDlg" Control="Tree" Property="DemoSiteFeatureChangeState" Value="3" Order="6">
+      <![CDATA[WixUI_InstallMode = "Change" AND MsiSelectionTreeSelectedFeature = "DemoSiteFeature" AND (MsiSelectionTreeSelectedAction = 3)]]>
+    </Publish>
+
+    <Publish Dialog="CustomizeDlg" Control="Tree" Property="DemoSiteFeatureChangeState" Value="2" Order="6">
+      <![CDATA[WixUI_InstallMode = "Change" AND MsiSelectionTreeSelectedFeature = "DemoSiteFeature" AND (MsiSelectionTreeSelectedAction <> 3)]]>
+    </Publish>
+
+    <Publish Dialog="CustomizeDlg" Control="Next" Event="NewDialog" Value="NotSelectedFeaturesDlg" Order="7">
+      <![CDATA[(NOT Installed) AND NOT (&BackendFeature=3 OR &DatabaseFeature=3 OR &DemoSiteFeature=3)]]>
+    </Publish>
+
+    <Publish Dialog="CustomizeDlg" Control="Next" Event="NewDialog" Value="NotSelectedFeaturesDlg" Order="7">
+      <![CDATA[(WixUI_InstallMode = "Change") AND 
+        NOT (BackendFeatureChangeState=3 OR DatabaseFeatureChangeState=3 OR DemoSiteFeatureChangeState=3)]]>
+    </Publish>
+
+    <!-- CustomizeDlg back -->
+    <Publish Dialog="CustomizeDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="1">
+      <![CDATA[NOT Installed]]>
+    </Publish>
+
+    <Publish Dialog="WebModeDbDlg" Control="Next" Event="DoAction" Value="CheckDbDialogWebModeCA" Order="1">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND (&DemoSiteFeature=3 OR &BackendFeature=3)]]>
+    </Publish>
+
+    <Publish Dialog="WebModeDbDlg" Control="Next" Event="NewDialog" Value="SiteIisDlg" Order="2">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND &BackendFeature=3 AND DB_DIALOG_SUCCESS = "1"]]>
+    </Publish>
+    
+    <Publish Dialog="WebModeDbDlg" Control="Next" Event="DoAction" Value="CheckSqlPowerShellCA" Order="3">
+      <![CDATA[(&BackendFeature=3 OR !BackendFeature=3) AND WIX_UPGRADE_DETECTED <> ""]]>
+    </Publish>
+    
+    <Publish Dialog="WebModeDbDlg" Control="Next" Event="NewDialog" Value="WrongSqlPowerShellMessageDlg" Order="4">
+      <![CDATA[(&BackendFeature=3 OR !BackendFeature=3) AND (NOT SQLPS OR SQLPS = "") AND WIX_UPGRADE_DETECTED <> ""]]>
+    </Publish>
+
+    <Publish Dialog="WebModeDbDlg" Control="Next" Event="NewDialog" Value="StaticSiteIisDlg" Order="5">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND &DemoSiteFeature=3 AND &BackendFeature<>3 AND DB_DIALOG_SUCCESS = "1"]]>
+    </Publish>
+
+    <Publish Dialog="WebModeDbDlg" Control="Back" Event="NewDialog" Value="CustomizeDlg" Order="1">
+      <![CDATA[1]]>
+    </Publish>
+
+    <Publish Dialog="WebModeDbDlg" Control="btnTestConnection" Event="DoAction"
+             Value="TestConnectionWebModeCA" Order="1">
+      <![CDATA[1]]>
+    </Publish>
+    
+    
+    <Publish Dialog="SiteIisDlg" Control="Next" Event="DoAction" Value="CheckIisSiteDialogCA" Order="1">
+      <![CDATA[WIX_UPGRADE_DETECTED = ""]]>
+    </Publish>
+    <Publish Dialog="SiteIisDlg" Control="Next" Event="NewDialog" Value="StaticSiteIisDlg" Order="2">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND IIS_DIALOG_SUCCESS = "1" AND &DemoSiteFeature=3]]>
+    </Publish>
+    <Publish Dialog="SiteIisDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" Order="3">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND &DemoSiteFeature<>3 AND &BackendFeature=3]]>
+    </Publish>
+
+    <Publish Dialog="StaticSiteIisDlg" Control="Next" Event="DoAction" Value="CheckIisStaticSiteDialogCA" Order="1">
+      <![CDATA[WIX_UPGRADE_DETECTED = ""]]>
+    </Publish>
+    <Publish Dialog="StaticSiteIisDlg" Control="Next" Event="NewDialog" Value="LiveDemoSiteIisDlg" Order="2">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND &DemoSiteFeature=3 AND IIS_DIALOG_SUCCESS = "1"]]>
+    </Publish>
+    <Publish Dialog="StaticSiteIisDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" Order="3">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND &DemoSiteFeature<>3 AND IIS_DIALOG_SUCCESS = "1"]]>
+    </Publish>
+
+    <Publish Dialog="StaticSiteIisDlg" Control="Back" Event="NewDialog" Value="SiteIisDlg" Order="1">
+      <![CDATA[1]]>
+    </Publish>
+
+    <Publish Dialog="StaticSiteIisDlg" Control="Back" Event="NewDialog" Value="WebModeDbDlg" Order="2">
+      <![CDATA[&BackendFeature<>3 AND &DemoSiteFeature=3]]>
+    </Publish>
+    
+    <!-- TODO -->
+    <Publish Dialog="SiteIisDlg" Control="Back" Event="NewDialog" Value="WebModeDbDlg" Order="1">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND (&BackendFeature=3 AND &DatabaseFeature<>3)]]>
+    </Publish>
+    <Publish Dialog="SiteIisDlg" Control="Back" Event="NewDialog" Value="DatabaseModeDbDlg" Order="2">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND &DatabaseFeature=3]]>
+    </Publish>
+
+    <Publish Dialog="LiveDemoSiteIisDlg" Control="Next" Event="DoAction" Value="CheckIisLiveDemoSiteDialogCA" Order="1">
+      <![CDATA[WIX_UPGRADE_DETECTED = ""]]>
+    </Publish>
+    <Publish Dialog="LiveDemoSiteIisDlg" Control="Next" Event="NewDialog" Value="StageDemoSiteIisDlg" Order="2">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND IIS_DIALOG_SUCCESS = "1"]]>
+    </Publish>
+    <Publish Dialog="LiveDemoSiteIisDlg" Control="Back" Event="NewDialog" Value="StaticSiteIisDlg" Order="1">
+      <![CDATA[1]]>
+    </Publish>
+
+    <Publish Dialog="StageDemoSiteIisDlg" Control="Next" Event="DoAction" Value="CheckIisStageDemoSiteDialogCA" Order="1">
+      <![CDATA[WIX_UPGRADE_DETECTED = ""]]>
+    </Publish>
+    <Publish Dialog="StageDemoSiteIisDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" Order="2">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND IIS_DIALOG_SUCCESS = "1"]]>
+    </Publish>
+    
+    <Publish Dialog="StageDemoSiteIisDlg" Control="Back" Event="NewDialog" Value="LiveDemoSiteIisDlg" Order="1">
+      <![CDATA[1]]>
+    </Publish>
+
+    <Publish Dialog="DatabaseModeDbDlg" Control="Next" Event="DoAction" Value="SetDbServerNameProperty" Order="1">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change")]]>
+    </Publish>
+
+    <Publish Dialog="DatabaseModeDbDlg" Control="Next" Event="DoAction" Value="CheckDbDialogCA" Order="2">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change")]]>
+    </Publish>
+    
+    <Publish Dialog="DatabaseModeDbDlg" Control="Next" Event="NewDialog" Value="SiteIisDlg" Order="3">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND &BackendFeature=3 AND DB_DIALOG_SUCCESS = "1"]]>
+    </Publish>
+
+    <Publish Dialog="DatabaseModeDbDlg" Control="Next" Event="NewDialog" Value="LiveDemoSiteIisDlg" Order="4">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND &BackendFeature<>3 AND &DemoSiteFeature=3 AND DB_DIALOG_SUCCESS = "1"]]>
+    </Publish>
+    
+     <Publish Dialog="DatabaseModeDbDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" Order="5">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND &BackendFeature<>3 AND &DemoSiteFeature<>3 AND DB_DIALOG_SUCCESS = "1" AND &DatabaseFeature=3]]>
+    </Publish>
+
+    <Publish Dialog="DatabaseModeDbDlg" Control="Back" Event="NewDialog" Value="CustomizeDlg" Order="1">
+      <![CDATA[1]]>
+    </Publish>
+    <!--<Publish Dialog="DatabaseModeDbDlg" Control="Back" Event="DoAction" Value="SetDbServerNameProperty" Order="2">
+      <![CDATA[1]]>
+    </Publish>-->
+
+    <Publish Dialog="DatabaseModeDbDlg" Control="btnTestConnection" Event="DoAction" Value="TestConnectionCA" Order="1">
+      <![CDATA[1]]>
+    </Publish>
+
+    <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="CustomizeDlg" Order="2">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change")]]>
+    </Publish>
+    
+    <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="StaticSiteIisDlg" Order="3">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND &DemoSiteFeature=3]]>
+    </Publish>
+    
+    <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="StageDemoSiteIisDlg" Order="4">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND &DemoSiteFeature=3]]>
+    </Publish>
+    <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="DatabaseModeDbDlg" Order="5">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND (&BackendFeature<>3 AND &DemoSiteFeature<>3 AND &DatabaseFeature=3)]]>
+    </Publish>
+    <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="CustomizeDlg" Order="6">
+      <![CDATA[(Installed) AND (&BackendFeature<>3 AND &DemoSiteFeature<>3 AND &DatabaseFeature=3)]]>
+    </Publish>
+    <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="SiteIisDlg" Order="3">
+      <![CDATA[(NOT Installed OR WixUI_InstallMode = "Change") AND &DemoSiteFeature<>3 AND &BackendFeature=3]]>
+    </Publish>
+  </UI>
+</Include>

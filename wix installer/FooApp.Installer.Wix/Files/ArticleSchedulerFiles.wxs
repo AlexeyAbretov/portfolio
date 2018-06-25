@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="ARTICLESCHEDULERINSTALLFOLDER">
+            <Component Id="cmp90C33EB5E2DB3E4EBB6AAFCB65DB2718" Guid="*">
+                <File Id="filB779E715E2557C06BDCD7B0BE678F23D" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\AutoMapper.dll" />
+            </Component>
+            <Component Id="cmp5C296AE721EF43806758CCB609116AF9" Guid="*">
+                <File Id="fil1ECF7763EFBD4BC2BCD700CEAE09D9B4" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\EFExtensions.dll" />
+            </Component>
+            <Component Id="cmp10EA3CF0C0022229F3AFC2594158E1AD" Guid="*">
+                <File Id="fil3D0016E5C479098FFA8C606DA0A7E6D9" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Flurl.dll" />
+            </Component>
+            <Component Id="cmpFFAFB1E9599C960CCF139B5F40FCF477" Guid="*">
+                <File Id="fil1F12760D4E64C8B06F5F9AB6A2B15F3A" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Flurl.Http.dll" />
+            </Component>
+            <Component Id="cmpF8ABACA1D502BE7A0FF18D6A3F32AB01" Guid="*">
+                <File Id="fil4C37669841BA8E9660369B6195485697" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Flurl.Http.pdb" />
+            </Component>
+            <Component Id="cmp2726097903143C0DB97CFB64832C22FE" Guid="*">
+                <File Id="fil4FA494307032BCD1B1BC6C03D7433A99" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Flurl.Http.xml" />
+            </Component>
+            <Component Id="cmpC81E76CC9EFE01A6B9D12CD6F152F0F9" Guid="*">
+                <File Id="fil011B9D0CED2E2A43271D45C796F6C362" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Flurl.pdb" />
+            </Component>
+            <Component Id="cmp6026137580508B7F221E4D3B100D4340" Guid="*">
+                <File Id="fil3B9C5ABC991AF8A06EE4EE3B6BE4DF8D" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Flurl.xml" />
+            </Component>
+            <Component Id="cmp9EA89B378796222B032D5B7A134B76CB" Guid="*">
+                <File Id="fil95DE1EAC749B89DC2BA340A2D62AE5D2" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Irony.dll" />
+            </Component>
+            <Component Id="cmpCAECD45BDD1BD0C99ADB5BE6F786AB5A" Guid="*">
+                <File Id="fil0D26AD87A5C2EBD5B09FBD62F94ECD81" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
+            </Component>
+            <Component Id="cmpA35E187461CB2D4854D1320DCD9163D4" Guid="*">
+                <File Id="filEC71AAE55A26D753BBAB8E184BDAA98C" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Microsoft.Practices.EnterpriseLibrary.Common.xml" />
+            </Component>
+            <Component Id="cmp55EF5410B1A4436BCA3795731C0DE031" Guid="*">
+                <File Id="fil4C8CF3608BE9BD96018AEA2FE96E11CF" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Microsoft.Practices.EnterpriseLibrary.Validation.dll" />
+            </Component>
+            <Component Id="cmp886687AE8B85C17A80D386864D742C23" Guid="*">
+                <File Id="fil9FA68E371EB287283A88AD11A27BC589" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Microsoft.Practices.EnterpriseLibrary.Validation.xml" />
+            </Component>
+            <Component Id="cmp6BE865AFB51B469BE6805CE96D89BA0A" Guid="*">
+                <File Id="filC4B551560872E296CCAB936DBD8DF98D" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Microsoft.Practices.ServiceLocation.dll" />
+            </Component>
+            <Component Id="cmp20349CE79330DB44C7FFA612595E7571" Guid="*">
+                <File Id="filA73F4BE9D8DAB1E9FDC04FE6165A094E" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Microsoft.Practices.ServiceLocation.pdb" />
+            </Component>
+            <Component Id="cmp1F0102CA05E9AE568DF6EE10DED11DB2" Guid="*">
+                <File Id="fil815C279AD8B67CFAC76CD43B0A3B7FA8" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Microsoft.Practices.ServiceLocation.xml" />
+            </Component>
+            <Component Id="cmpC992C484817353152A64D04DCC43599A" Guid="*">
+                <File Id="filB788C0214406F24629E07B1B198085F7" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Microsoft.Practices.Unity.Configuration.dll" />
+            </Component>
+            <Component Id="cmpC50311B1860ECA3DF53209337EDAEADC" Guid="*">
+                <File Id="fil68456AF26870A49D15759567C346E269" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Microsoft.Practices.Unity.Configuration.xml" />
+            </Component>
+            <Component Id="cmpC6D5208F8F512E269696E4EBD94253A7" Guid="*">
+                <File Id="fil796C987561E0C018F7042DC3B472AD05" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Microsoft.Practices.Unity.dll" />
+            </Component>
+            <Component Id="cmp146F4B157B315CC790DD2724E32FB646" Guid="*">
+                <File Id="fil8F1B3F8DD8299AC1F598BB94B69600E4" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Microsoft.Practices.Unity.Interception.dll" />
+            </Component>
+            <Component Id="cmp773770881EBD29B1C0220FC36F66C5C0" Guid="*">
+                <File Id="fil69DF2F068917CB4DC46242B85F2BA598" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Microsoft.Practices.Unity.Interception.xml" />
+            </Component>
+            <Component Id="cmp9B5192D2EBE120414EB33DE26F7E37C8" Guid="*">
+                <File Id="filBF361DDFFEF69C2117016CA0CE43124C" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Microsoft.Practices.Unity.xml" />
+            </Component>
+            <Component Id="cmp3535E7FCF02C6264AF1B72243B70EBBF" Guid="*">
+                <File Id="filBCEA01DC98F1FB795E790BA60B698902" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Microsoft.Web.Infrastructure.dll" />
+            </Component>
+            <Component Id="cmp8FB547F3C194CBFAF824CB8D32822806" Guid="*">
+                <File Id="filD6A5F74C591AB7CEA9E56E10C53BCB31" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Newtonsoft.Json.dll" />
+            </Component>
+            <Component Id="cmp18D0475B69382FE1BEE6EBFAA6DDC05A" Guid="*">
+                <File Id="filF70291303799C4D3CC062A4EB109C1DC" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Newtonsoft.Json.xml" />
+            </Component>
+            <Component Id="cmp908EC3B71D2883766770C0E403834085" Guid="*">
+                <File Id="filA47F953EBC25957ADC313351C586DF83" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\NLog.4.4.5.QuantumArt.xsd" />
+            </Component>
+            <Component Id="cmp324CB6389E86869AD2C6C4D1B4AF19E0" Guid="*">
+                <File Id="fil34668EF4AE49708B7F3B88DA09B2E545" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\NLog.config" />
+            </Component>
+            <Component Id="cmpE213D1649DD94C2B9D91087FBA0E72CB" Guid="*">
+                <File Id="filA6D79232AA937D3C903AEBBA50C3A5EA" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\NLog.dll" />
+            </Component>
+            <Component Id="cmp43B6230F3D66614A26BF4E6EACF72E67" Guid="*">
+                <File Id="fil34EAC4200B587E93874D2DF6E5D9CB8B" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\NLog.QuantumArt.PrtgMonitoring.dll" />
+            </Component>
+            <Component Id="cmp6732C1E9AB00A0B8E54103EDE9B401D9" Guid="*">
+                <File Id="filA8F57EF1BD6559E398E329379B169E24" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\NLog.QuantumArt.PrtgMonitoring.pdb" />
+            </Component>
+            <Component Id="cmp68479CF902F033E910FE57CB75909985" Guid="*">
+                <File Id="fil0854D8BC108FA071E33B392587E8B073" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\NLog.QuantumArt.xsd" />
+            </Component>
+            <Component Id="cmp0CB7BEB1EED27A5A1D67AD654BF631BF" Guid="*">
+                <File Id="fil64F8F23957D9465A008EE0C08F55FC4E" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\NLog.xml" />
+            </Component>
+            <Component Id="cmp833CFCA3A156EB9930A3A261F9005AC5" Guid="*">
+                <File Id="fil01D856D89ABC5B6C4DE3D39FFE3D3E59" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\QA.Configuration.dll" />
+            </Component>
+            <Component Id="cmp2B0D8DAA17E8FE2AF1459C3DDC521FB3" Guid="*">
+                <File Id="fil07235980549B9B16831712B89BD3958A" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\QA.Configuration.xml" />
+            </Component>
+            <Component Id="cmp1F822B21209952988D8CF40207861C13" Guid="*">
+                <File Id="fil7526FDFECDCCA00368D4FF5AE27A6A26" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\QA.Validation.Xaml.dll" />
+            </Component>
+            <Component Id="cmp093E386FEC99B27BEC143581F491AA5D" Guid="*">
+                <File Id="filEF326A270A05816A96165BA090865BDD" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\QA.Validation.Xaml.Extensions.dll" />
+            </Component>
+            <Component Id="cmpCE312B5129CB3BD79FF32A193EC2FD8D" Guid="*">
+                <File Id="fil96EAC9289178C3BB1069DE262836BC91" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\QA.Validation.Xaml.Extensions.xml" />
+            </Component>
+            <Component Id="cmp08D1286964D3705C7CD2DABE66E4C66E" Guid="*">
+                <File Id="fil997A7AC9519EBE0FF57E14C6E6D2D1FC" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\QA.Validation.Xaml.xml" />
+            </Component>
+            <Component Id="cmp30EAB2A9C6384A5F2D852F5DCA247B16" Guid="*">
+                <File Id="filEC2004E5FD885EFBFDCDE5AA57CCE505" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\FooApp.Infrastructure.dll" />
+            </Component>
+            <Component Id="cmpE17AFFAD307CD1046CB457B0CBE04F3A" Guid="*">
+                <File Id="fil5B7157AEF4A1D8B35DB6E76104B76C0E" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\FooApp.Infrastructure.Logging.dll" />
+            </Component>
+            <Component Id="cmpAF86C5CC061D75ED305EE37763C4E069" Guid="*">
+                <File Id="fil7D639B2F3BFCA9AB7FFAA00EE19F5F13" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\FooApp.Infrastructure.Logging.pdb" />
+            </Component>
+            <Component Id="cmpC85EAA54740C210B02D9886750778FB3" Guid="*">
+                <File Id="fil21A4BDE4A034497AA4E4E76977A1FBBB" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\FooApp.Infrastructure.pdb" />
+            </Component>
+            <Component Id="cmp2D31B3D8B1EE922309CB24088F2612D7" Guid="*">
+                <File Id="fil16840B7A53C59004D21308F113B877EC" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\FooApp.Infrastructure.Web.dll" />
+            </Component>
+            <Component Id="cmp34B59D37B4322AE2AD1364AD5A0EF953" Guid="*">
+                <File Id="fil9B50D4819A2FED2B85868B880055D240" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\FooApp.Infrastructure.Web.pdb" />
+            </Component>
+            <Component Id="cmpB2B08DA0ACDFD016D4369191901EA312" Guid="*">
+                <File Id="fil96A128416FDFA7FF267D3A369B78DF92" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.dll" />
+            </Component>
+            <Component Id="cmp4DBAE8791EAD694A28978C30E02C2A0C" Guid="*">
+                <File Id="filB966F0DA8B26F426035168E3FB845272" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.ArticleScheduler.dll" />
+            </Component>
+            <Component Id="cmp6EEA73B63F1B1BFAB318ABDED6064746" Guid="*">
+                <File Id="fil4D4D74900344CD1CD00BA4620A25F18B" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.ArticleScheduler.pdb" />
+            </Component>
+            
+            <Component Id="cmp37A97BE3ED85F307B7C2450F0098AD16" Guid="*">
+                <File Id="fil07CE2D3E0B61E50DA70BFA029F654D0C" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.ArticleScheduler.WinService.exe.config" />
+            </Component>
+            <Component Id="cmp9E80FAD78E2B4CE2F9557193063B5811" Guid="*">
+                <File Id="fil94C031B810EB118776073F2C24D4CA3E" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.Assembling.dll" />
+            </Component>
+            <Component Id="cmp404E5AFEB0DC3DD880B1C077338F6B90" Guid="*">
+                <File Id="fil48D657D87DC8E58027002E6511F6D747" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.BLL.dll" />
+            </Component>
+            <Component Id="cmpE16DA554AE6C7B3BA557C82635BC8F71" Guid="*">
+                <File Id="filDA384CC2EE640BFB0FECC4E924A93FD0" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.BLL.pdb" />
+            </Component>
+            <Component Id="cmp23C10FCFEFB61B5AABDAED6D50B46604" Guid="*">
+                <File Id="fil9A03265D3270C3CE83193EEDB801A165" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.Configuration.dll" />
+            </Component>
+            <Component Id="cmpEADC051421B0169018DFEFDB72D02B2D" Guid="*">
+                <File Id="fil45C1C1593B57DA899CBB6508078F070D" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.Configuration.pdb" />
+            </Component>
+            <Component Id="cmpE408BB57AA50E0A2FCE188B3FCE2D484" Guid="*">
+                <File Id="fil59F3B1584760BE78EDD6577B34D2DC2D" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.Constants.dll" />
+            </Component>
+            <Component Id="cmpFBD2AC2E8B4C6A48E173E46EEB9B96C7" Guid="*">
+                <File Id="filD35824A33A0B999E5DCC2DBC93A93E5A" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.Constants.pdb" />
+            </Component>
+            <Component Id="cmp13C800B3B824D39B123FCF0E15C50AAC" Guid="*">
+                <File Id="fil8080FB5FF42A40707EA5AD978B9DDC1A" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.DAL.dll" />
+            </Component>
+            <Component Id="cmp27ADFDA33DEC42ABD79C0FDA40C2C52C" Guid="*">
+                <File Id="fil9F1D9FEFF4EB2D6203224ABE7514FE97" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.DAL.pdb" />
+            </Component>
+            <Component Id="cmp1CDBAC4717DCEE535CAC036A845290CC" Guid="*">
+                <File Id="fil7740EE5333F4098022846CB2BD4E634A" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.Merger.dll" />
+            </Component>
+            <Component Id="cmpE75181A1CA0E0F8A377BBC90F5075E67" Guid="*">
+                <File Id="fil4816382942F8861BEAAA40D450FAB177" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.Resources.dll" />
+            </Component>
+            <Component Id="cmpD29C6EB70C51E6FE50D1FE958E572A9C" Guid="*">
+                <File Id="filE4A1B98D328A34CA8B609039FFC7A17D" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.Resources.pdb" />
+            </Component>
+            <Component Id="cmp85EFE05F38A4F8C91B0025FAAF57C31C" Guid="*">
+                <File Id="fil6887ADE87139D60B07CAA960B275B025" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.Security.dll" />
+            </Component>
+            <Component Id="cmp4460F27F67FC57CC0E2546233053F48D" Guid="*">
+                <File Id="filB4E9105D5BFFC08380C25CA6647CAC8F" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.Security.pdb" />
+            </Component>
+            <Component Id="cmpDC916AA7813E43F501E3F32BD08BBE86" Guid="*">
+                <File Id="fil401E3F22806F3F0AD51B6DF1CA88B6BE" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.Utils.dll" />
+            </Component>
+            <Component Id="cmp953B2784E7A9DFACE313618644184EDD" Guid="*">
+                <File Id="filC38A19F11F10979F921D6B3E7D4BC4D8" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.Utils.pdb" />
+            </Component>
+            <Component Id="cmp4F42DC88C5268B11CE68798B97741A5A" Guid="*">
+                <File Id="filAD2A3E1C0F0796E8A8DA14AEB17B4CEC" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.Validators.dll" />
+            </Component>
+            <Component Id="cmp888BA8139C23745A78E7605697930557" Guid="*">
+                <File Id="filE9F4A780B8E9B37911B0E0C412BA9045" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.Validators.pdb" />
+            </Component>
+            <Component Id="cmp41A6955D0155379D3C78C3C4747782BA" Guid="*">
+                <File Id="fil8B82AAC78A231095E284976B1329EA06" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\System.Net.Http.dll" />
+            </Component>
+            <Component Id="cmp3F69B242861D910F3236B2B52590DDEF" Guid="*">
+                <File Id="fil58BA9257423E2F2AA757948563AC0D49" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\System.Reflection.TypeExtensions.dll" />
+            </Component>
+            <Component Id="cmpCB243AD87C68DF8052317567975C83D7" Guid="*">
+                <File Id="filE27629E14B06281266F76A6DFC2BC2C2" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\System.Web.Mvc.dll" />
+            </Component>
+            <Component Id="cmp4C5A6235E0FC37A033FF650C3B1DC357" Guid="*">
+                <File Id="fil3FE20BDBE2F7FD9D3C9E6595F093C530" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\System.Web.Mvc.xml" />
+            </Component>
+            <Component Id="cmpE64A0FA41D738BA873795D7B7D44E238" Guid="*">
+                <File Id="filAFB6D4D9681C43AD46298C33C99A2BC4" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\System.Web.Razor.dll" />
+            </Component>
+            <Component Id="cmpDC540E5A96B41DE05288DF76AC64366F" Guid="*">
+                <File Id="filB452B7E7BD5CC6C06880A0514054FF62" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\System.Web.Razor.xml" />
+            </Component>
+            <Component Id="cmpAD798E14D70233AF9D7920D34DFE4DBC" Guid="*">
+                <File Id="fil2662F3C4B6E18E8BF30333473253283F" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\System.Web.WebPages.Deployment.dll" />
+            </Component>
+            <Component Id="cmpE22B3D6A7B9A98B21FC32BE8AFBAD068" Guid="*">
+                <File Id="fil13DC12DE35C92B20C27BC2AFAA6A7058" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\System.Web.WebPages.Deployment.xml" />
+            </Component>
+            <Component Id="cmp3B946B28CDBD5B30D5473F925E1BAD49" Guid="*">
+                <File Id="fil160C65D341D8BB7D7E479D95115462C2" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\System.Web.WebPages.dll" />
+            </Component>
+            <Component Id="cmp7DAFB392856BB2B41EF9CBA2F40F3AEF" Guid="*">
+                <File Id="fil25BDD111ABF086D66C47B8FF43A9E5F7" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\System.Web.WebPages.Razor.dll" />
+            </Component>
+            <Component Id="cmpA9CDF74725CF682D52C40E8B333F5A27" Guid="*">
+                <File Id="fil0EB113851A33EF927964ACEC9473DB18" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\System.Web.WebPages.Razor.xml" />
+            </Component>
+            <Component Id="cmpED075A92DB5BB2C8F9B9FA8D92BFC85E" Guid="*">
+                <File Id="filD89BE234E8A6B51883D90BAF60ABDF28" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\System.Web.WebPages.xml" />
+            </Component>
+            <Directory Id="dir016FA8CD737B223FA96750578FCA56C4" Name="ru-ru">
+                <Component Id="cmp1A7C63C7D9769716DA4E170094693BDC" Guid="*">
+                    <File Id="fil5AC5FAAFF384BD4C35B9DD7B33CBDF75" KeyPath="yes" Source="$(var.ArticleSchedulerDirPath)\ru-ru\Quantumart.FooApp.Resources.resources.dll" />
+                </Component>
+            </Directory>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="ArticleSchedulerProductComponents">
+            <ComponentRef Id="cmp90C33EB5E2DB3E4EBB6AAFCB65DB2718" />
+            <ComponentRef Id="cmp5C296AE721EF43806758CCB609116AF9" />
+            <ComponentRef Id="cmp10EA3CF0C0022229F3AFC2594158E1AD" />
+            <ComponentRef Id="cmpFFAFB1E9599C960CCF139B5F40FCF477" />
+            <ComponentRef Id="cmpF8ABACA1D502BE7A0FF18D6A3F32AB01" />
+            <ComponentRef Id="cmp2726097903143C0DB97CFB64832C22FE" />
+            <ComponentRef Id="cmpC81E76CC9EFE01A6B9D12CD6F152F0F9" />
+            <ComponentRef Id="cmp6026137580508B7F221E4D3B100D4340" />
+            <ComponentRef Id="cmp9EA89B378796222B032D5B7A134B76CB" />
+            <ComponentRef Id="cmpCAECD45BDD1BD0C99ADB5BE6F786AB5A" />
+            <ComponentRef Id="cmpA35E187461CB2D4854D1320DCD9163D4" />
+            <ComponentRef Id="cmp55EF5410B1A4436BCA3795731C0DE031" />
+            <ComponentRef Id="cmp886687AE8B85C17A80D386864D742C23" />
+            <ComponentRef Id="cmp6BE865AFB51B469BE6805CE96D89BA0A" />
+            <ComponentRef Id="cmp20349CE79330DB44C7FFA612595E7571" />
+            <ComponentRef Id="cmp1F0102CA05E9AE568DF6EE10DED11DB2" />
+            <ComponentRef Id="cmpC992C484817353152A64D04DCC43599A" />
+            <ComponentRef Id="cmpC50311B1860ECA3DF53209337EDAEADC" />
+            <ComponentRef Id="cmpC6D5208F8F512E269696E4EBD94253A7" />
+            <ComponentRef Id="cmp146F4B157B315CC790DD2724E32FB646" />
+            <ComponentRef Id="cmp773770881EBD29B1C0220FC36F66C5C0" />
+            <ComponentRef Id="cmp9B5192D2EBE120414EB33DE26F7E37C8" />
+            <ComponentRef Id="cmp3535E7FCF02C6264AF1B72243B70EBBF" />
+            <ComponentRef Id="cmp8FB547F3C194CBFAF824CB8D32822806" />
+            <ComponentRef Id="cmp18D0475B69382FE1BEE6EBFAA6DDC05A" />
+            <ComponentRef Id="cmp908EC3B71D2883766770C0E403834085" />
+            <ComponentRef Id="cmp324CB6389E86869AD2C6C4D1B4AF19E0" />
+            <ComponentRef Id="cmpE213D1649DD94C2B9D91087FBA0E72CB" />
+            <ComponentRef Id="cmp43B6230F3D66614A26BF4E6EACF72E67" />
+            <ComponentRef Id="cmp6732C1E9AB00A0B8E54103EDE9B401D9" />
+            <ComponentRef Id="cmp68479CF902F033E910FE57CB75909985" />
+            <ComponentRef Id="cmp0CB7BEB1EED27A5A1D67AD654BF631BF" />
+            <ComponentRef Id="cmp833CFCA3A156EB9930A3A261F9005AC5" />
+            <ComponentRef Id="cmp2B0D8DAA17E8FE2AF1459C3DDC521FB3" />
+            <ComponentRef Id="cmp1F822B21209952988D8CF40207861C13" />
+            <ComponentRef Id="cmp093E386FEC99B27BEC143581F491AA5D" />
+            <ComponentRef Id="cmpCE312B5129CB3BD79FF32A193EC2FD8D" />
+            <ComponentRef Id="cmp08D1286964D3705C7CD2DABE66E4C66E" />
+            <ComponentRef Id="cmp30EAB2A9C6384A5F2D852F5DCA247B16" />
+            <ComponentRef Id="cmpE17AFFAD307CD1046CB457B0CBE04F3A" />
+            <ComponentRef Id="cmpAF86C5CC061D75ED305EE37763C4E069" />
+            <ComponentRef Id="cmpC85EAA54740C210B02D9886750778FB3" />
+            <ComponentRef Id="cmp2D31B3D8B1EE922309CB24088F2612D7" />
+            <ComponentRef Id="cmp34B59D37B4322AE2AD1364AD5A0EF953" />
+            <ComponentRef Id="cmpB2B08DA0ACDFD016D4369191901EA312" />
+            <ComponentRef Id="cmp4DBAE8791EAD694A28978C30E02C2A0C" />
+            <ComponentRef Id="cmp6EEA73B63F1B1BFAB318ABDED6064746" />
+            
+            <ComponentRef Id="cmp37A97BE3ED85F307B7C2450F0098AD16" />
+            <ComponentRef Id="cmp9E80FAD78E2B4CE2F9557193063B5811" />
+            <ComponentRef Id="cmp404E5AFEB0DC3DD880B1C077338F6B90" />
+            <ComponentRef Id="cmpE16DA554AE6C7B3BA557C82635BC8F71" />
+            <ComponentRef Id="cmp23C10FCFEFB61B5AABDAED6D50B46604" />
+            <ComponentRef Id="cmpEADC051421B0169018DFEFDB72D02B2D" />
+            <ComponentRef Id="cmpE408BB57AA50E0A2FCE188B3FCE2D484" />
+            <ComponentRef Id="cmpFBD2AC2E8B4C6A48E173E46EEB9B96C7" />
+            <ComponentRef Id="cmp13C800B3B824D39B123FCF0E15C50AAC" />
+            <ComponentRef Id="cmp27ADFDA33DEC42ABD79C0FDA40C2C52C" />
+            <ComponentRef Id="cmp1CDBAC4717DCEE535CAC036A845290CC" />
+            <ComponentRef Id="cmpE75181A1CA0E0F8A377BBC90F5075E67" />
+            <ComponentRef Id="cmpD29C6EB70C51E6FE50D1FE958E572A9C" />
+            <ComponentRef Id="cmp85EFE05F38A4F8C91B0025FAAF57C31C" />
+            <ComponentRef Id="cmp4460F27F67FC57CC0E2546233053F48D" />
+            <ComponentRef Id="cmpDC916AA7813E43F501E3F32BD08BBE86" />
+            <ComponentRef Id="cmp953B2784E7A9DFACE313618644184EDD" />
+            <ComponentRef Id="cmp4F42DC88C5268B11CE68798B97741A5A" />
+            <ComponentRef Id="cmp888BA8139C23745A78E7605697930557" />
+            <ComponentRef Id="cmp41A6955D0155379D3C78C3C4747782BA" />
+            <ComponentRef Id="cmp3F69B242861D910F3236B2B52590DDEF" />
+            <ComponentRef Id="cmpCB243AD87C68DF8052317567975C83D7" />
+            <ComponentRef Id="cmp4C5A6235E0FC37A033FF650C3B1DC357" />
+            <ComponentRef Id="cmpE64A0FA41D738BA873795D7B7D44E238" />
+            <ComponentRef Id="cmpDC540E5A96B41DE05288DF76AC64366F" />
+            <ComponentRef Id="cmpAD798E14D70233AF9D7920D34DFE4DBC" />
+            <ComponentRef Id="cmpE22B3D6A7B9A98B21FC32BE8AFBAD068" />
+            <ComponentRef Id="cmp3B946B28CDBD5B30D5473F925E1BAD49" />
+            <ComponentRef Id="cmp7DAFB392856BB2B41EF9CBA2F40F3AEF" />
+            <ComponentRef Id="cmpA9CDF74725CF682D52C40E8B333F5A27" />
+            <ComponentRef Id="cmpED075A92DB5BB2C8F9B9FA8D92BFC85E" />
+            <ComponentRef Id="cmp1A7C63C7D9769716DA4E170094693BDC" />
+        </ComponentGroup>
+    </Fragment>
+</Wix>

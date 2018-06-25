@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Include
+  xmlns="http://schemas.microsoft.com/wix/2006/wi"
+  xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension">
+  <InstallExecuteSequence>
+    <Custom Action="ConfigureIIs" Before="SchedSecureObjects" />
+
+    <Custom Action='RunPowerShellScript_Sql' Before='InstallFinalize'>
+      <![CDATA[WIX_UPGRADE_DETECTED <> "" AND (&BackendFeature=3 OR !BackendFeature=3)]]>
+    </Custom>
+
+    <Custom Action='InstallCommonWinService' Before='StartFooAppNotificationWinService'>
+      <![CDATA[(NOT Installed OR REINSTALL<>"" OR REMOVE<>"" OR ADDLOCAL <> "") AND (!CommonSchedulerFeature=3 OR &CommonSchedulerFeature=3)]]>
+    </Custom>
+
+    <Custom Action='StartFooAppUsersWinService' Before='StartFooAppNotificationWinService'>
+      <![CDATA[(NOT Installed OR REINSTALL<>"" OR REMOVE<>"" OR ADDLOCAL <> "") AND (!CommonSchedulerFeature=3 OR &CommonSchedulerFeature=3)]]>
+    </Custom>
+    <Custom Action='StartFooAppNotificationWinService' Before='InstallFinalize'>
+      <![CDATA[(NOT Installed OR REINSTALL<>"" OR REMOVE<>"" OR ADDLOCAL <> "") AND (!CommonSchedulerFeature=3 OR &CommonSchedulerFeature=3)]]>
+    </Custom>
+
+    <Custom Action='StopFooAppUsersWinService' After='InstallInitialize'>
+      <![CDATA[Installed AND !CommonSchedulerFeature=3 AND (REINSTALL<>"" OR REMOVE<>"" OR ADDLOCAL <> "")]]>
+    </Custom>
+    <Custom Action='StopFooAppNotificationWinService' After='StopFooAppUsersWinService'>
+      <![CDATA[Installed AND !CommonSchedulerFeature=3 AND (REINSTALL<>"" OR REMOVE<>"" OR ADDLOCAL <> "")]]>
+    </Custom>
+
+    <Custom Action='UninstallCommonWinService' After='StopFooAppNotificationWinService'>
+      <![CDATA[Installed AND !CommonSchedulerFeature=3 AND (REINSTALL<>"" OR REMOVE<>"" OR ADDLOCAL <> "")]]>
+    </Custom>
+
+    <Custom Action="CA.ConfigureBackendAppPool"
+            Before="InstallFinalize">
+      <![CDATA[(NOT Installed OR REINSTALL<>"" OR REMOVE<>"" OR ADDLOCAL <> "") AND (!CommonSchedulerFeature=3 OR &CommonSchedulerFeature=3)]]>
+    </Custom>
+
+    <Custom Action="CA.ConfigureLiveDemoSiteAppPool"
+            Before="InstallFinalize">
+      <![CDATA[(NOT Installed OR REINSTALL<>"" OR REMOVE<>"" OR ADDLOCAL <> "") AND (!DemoSiteFeature=3 OR &DemoSiteFeature=3)]]>
+    </Custom>
+
+    <Custom Action="CA.ConfigureStageDemoSiteAppPool"
+            Before="InstallFinalize">
+      <![CDATA[(NOT Installed OR REINSTALL<>"" OR REMOVE<>"" OR ADDLOCAL <> "") AND (!DemoSiteFeature=3 OR &DemoSiteFeature=3)]]>
+    </Custom>
+
+    <Custom Action="CA.ConfigureStaticSiteAppPool"
+            Before="InstallFinalize">
+      <![CDATA[(NOT Installed OR REINSTALL<>"" OR REMOVE<>"" OR ADDLOCAL <> "") AND (!BackendFeature=3 OR &BackendFeature=3)]]>
+    </Custom>
+    
+    <Custom Action="CA.UnlockAnonymousAuthentication"
+            Before="InstallFinalize">
+      <![CDATA[(NOT Installed OR REINSTALL<>"" OR REMOVE<>"" OR ADDLOCAL <> "") AND (!CommonSchedulerFeature=3 OR &CommonSchedulerFeature=3)]]>
+    </Custom>
+
+    <Custom Action="CA.UnlockWindowsAuthentication"
+            Before="InstallFinalize">
+      <![CDATA[(NOT Installed OR REINSTALL<>"" OR REMOVE<>"" OR ADDLOCAL <> "") AND (!CommonSchedulerFeature=3 OR &CommonSchedulerFeature=3)]]>
+    </Custom>
+
+  </InstallExecuteSequence>
+</Include>

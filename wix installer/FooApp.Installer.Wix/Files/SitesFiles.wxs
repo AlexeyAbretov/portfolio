@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="SITESINSTALLFOLDER">
+            <Component Id="cmp9C8D9C01B15088B9961B3CD687062943" Guid="*">
+                <File Id="fil760D488698A6EDD5E6D3BA2A3194054A" KeyPath="yes" Source="$(var.SitesDirPath)\default.aspx" />
+            </Component>
+            <Component Id="cmp6A0B15257DA47B4F301E7A1928680CE1" Guid="*">
+                <File Id="fil4B40905052581E3A186C836B3B94FF38" KeyPath="yes" Source="$(var.SitesDirPath)\web.config" />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="SitesProductComponents">
+            <ComponentRef Id="cmp9C8D9C01B15088B9961B3CD687062943" />
+            <ComponentRef Id="cmp6A0B15257DA47B4F301E7A1928680CE1" />
+        </ComponentGroup>
+    </Fragment>
+</Wix>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension"
+     xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension"
+     xmlns:sql="http://schemas.microsoft.com/wix/SqlExtension"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+
+  <!-- Настройки продукта -->
+  <?include ProductProperties.wxi?>
+  <!-- Настройки пакета -->
+  <?include PackageProperties.wxi?>
+
+  <!-- Продукт. Id генерится во время билда. -->
+  <Product
+    Id="*"
+    Name="!(loc.ProductName)"
+    Language="!(loc.Lang)"
+    Version="$(var.Version)"
+    Manufacturer="!(loc.Manufacturer)"
+    UpgradeCode="$(var.UpgradeCode)">
+
+    <Package
+      InstallerVersion="$(var.InstallerVersion)"
+      Compressed="$(var.Compressed)"
+      InstallScope="$(var.InstallScope)"
+      Description="!(loc.ProductName) $(var.Version)" />
+
+    <!-- Действия с БД -->
+    <?include Sql.wxi?>
+    
+    <EnsureTable Id="ComboBox" />
+
+    <!-- Ссылка на сборку с дополнительными действиями на .NET -->
+    <Binary Id="NetCustomActions"
+            SourceFile="$(var.SolutionDir)build\dlls\FooApp.Installer.Wix.CustomActions.CA.dll" />
+
+    <!-- Обновление с версии на версию.
+    AllowSameVersionUpgrades="yes" считает, что одна и таже версия с одним тем же UpgradeCode, но разным Product.Id
+    одинаковые продукты. -->
+    <MajorUpgrade
+      Schedule="afterInstallInitialize"
+      DowngradeErrorMessage="!(loc.DowngradeErrorMessage)"
+      AllowSameVersionUpgrades="yes"
+      />
+
+    <!-- Переменные -->
+    <?include Properties.wxi?>
+
+    <MediaTemplate CompressionLevel="$(var.CompressionLevel)"
+                   EmbedCab="$(var.EmbedCab)" />
+
+    <!-- Фичи продукта -->
+    <?include Features.wxi?>
+
+    <!-- Интерфейс инсталлятора -->
+    <?include UI.wxi?>
+    <!-- Последовательность диалогов инсталлятора -->
+    <?include UISequence.wxi?>
+
+    <!-- Глобальные проверки -->
+    <?include GlobalConditions.wxi?>
+
+    <!-- Последоватеьность выполнения кастомных действий в UI установке -->
+    <?include InstallUIExecuteSequence.wxi?>
+    <!-- Последоватеьность выполнения кастомных действий при установке -->
+    <?include InstallExecuteSequence.wxi?>
+
+    <!-- Дополнительные действия -->
+    <?include CustomActions.wxi?>
+  </Product>
+
+  <Fragment>
+    <!-- Иерархия каталогов по умолчанию. -->
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="FooApp.Framework">
+          <?include InstallFooAppSettings.wxi?>
+          <Directory Id="BACKENDINSTALLFOLDER" Name="Backend"
+                     ComponentGuidGenerationSeed="{78D6DBF1-476C-4491-BEED-A4E3C3C64E60}">
+            <Directory Id="SITESINSTALLFOLDER" Name="Sites">
+            </Directory>
+            <Directory Id="SITESCONTENTINSTALLFOLDER" Name="Content">
+            </Directory>
+            <Directory Id="SITESSCRIPTSINSTALLFOLDER" Name="Scripts">
+            </Directory>
+          </Directory>
+          <Directory Id="WINLOGONINSTALLFOLDER" Name="Winlogon"
+                     ComponentGuidGenerationSeed="{585B9230-1A11-401B-9CBD-342223763ACF}">
+          </Directory>
+          <Directory Id="SITEMAPINSTALLFOLDER" Name="SiteMap"
+                     ComponentGuidGenerationSeed="{478971F3-C9A1-4866-BBCB-B58F3F5F833E}">
+          </Directory>
+          <Directory Id="PLUGINSINSTALLFOLDER" Name="Plugins"
+                     ComponentGuidGenerationSeed="{DF5A9351-BFD3-4CEA-97BB-A9B09F7DDD71}">
+          </Directory>
+          <Directory Id="ARTICLESCHEDULERINSTALLFOLDER" Name="ArticleScheduler"
+                     ComponentGuidGenerationSeed="{C0E1B1F9-B526-4521-9BF6-2A63495F09EF}">
+          </Directory>
+          <Directory Id="COMMONSCHEDULERINSTALLFOLDER" Name="CommonScheduler"
+                     ComponentGuidGenerationSeed="{FFF9E216-3E8F-427F-9622-48F32C451D6C}">
+          </Directory>
+          <Directory Id="DATABASEINSTALLFOLDER" Name="DemoDb"
+                     ComponentGuidGenerationSeed="{97D87278-744A-437F-8B51-618A940E86EC}">
+          </Directory>
+          <Directory Id="DEMOSITEINSTALLFOLDER" Name="DemoSite"
+                     ComponentGuidGenerationSeed="{D510A761-BAAD-4EAE-9EA0-F57D858BA327}">
+            <Directory Id="LIVEDEMOSITEINSTALLFOLDER" Name="Live">
+            </Directory>
+            <Directory Id="STAGEDEMOSITEINSTALLFOLDER" Name="Stage">
+            </Directory>
+          </Directory>
+          <Directory Id="TEMPINSTALLFOLDER" Name="Temp">
+          </Directory>
+          <Directory Id="LOGSINSTALLFOLDER" Name="Logs">
+          </Directory>
+          <Directory Id="STATICINSTALLFOLDER" Name="Static">
+          </Directory>
+        </Directory>
+      </Directory>
+
+      <Directory Id="IISROOTFOLDER">
+      </Directory>
+    </Directory>
+  </Fragment>
+</Wix>

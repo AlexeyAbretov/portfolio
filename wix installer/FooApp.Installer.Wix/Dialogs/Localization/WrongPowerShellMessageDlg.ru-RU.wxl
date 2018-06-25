@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="ru-RU" xmlns="http://schemas.microsoft.com/wix/2006/localization" Codepage="1251">
+  <String Id="WrongPowerShellDlgTitle">Не установлен PowerShell</String>
+  <String Id="WrongPowerShellDlgInstallTitle">Ошибка</String>
+  <String Id="WrongPowerShellDlgErrorMessage">Не установлен PowerShell.</String>
+  <String Id="WrongSqlPowerShellDlgTitle">Не установлен Sql PowerShell</String>
+  <String Id="WrongSqlPowerShellDlgInstallTitle">Ошибка</String>
+  <String Id="WrongSqlPowerShellDlgErrorMessage">Не установлен Sql PowerShell.</String>
+</WixLocalization>

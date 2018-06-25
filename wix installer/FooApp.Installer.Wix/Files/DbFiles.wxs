@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <DirectoryRef Id="DATABASEINSTALLFOLDER">
+      <Component Id="cmp_ExecuteSql"
+                 Guid="{31700297-0F3E-44CC-A4E8-09CF7553BF70}"
+                 KeyPath="yes">
+        <File Id="ExecuteSql"
+              Name="executeSql.ps1"
+              Source="deploy\executeSql.ps1"
+              Vital="yes" />
+        <File Id="UpdateDbFile"
+              Name="current.sql"
+              Source="$(var.DbDirPath)\current.sql"
+              Vital="yes" />
+      </Component>
+      <Component Id="cmpDbBak"
+                 Guid="{87B6F469-ADF2-4F70-9BD0-ADF1108B71AC}">
+        <File Id="filDbBak"
+              KeyPath="yes"
+              Source="$(var.DbDirPath)\demo_FooApp.bak" />
+        <Condition><![CDATA[NOT Installed]]></Condition>
+      </Component>
+    </DirectoryRef>
+    <ComponentGroup Id="DbProductComponents">
+      <ComponentRef Id="cmpDbBak" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>

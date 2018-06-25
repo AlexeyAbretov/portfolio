@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <UI>
+      <Property Id="LIVE_DEMO_SITE_WEB_APP_NAME"
+                Value="FooApp Live Demo Site">
+        <RegistrySearch Id="veDemoSiteNameValue"
+                        Type="raw"
+                        Root="HKLM"
+                        Key="Software\Quantum Art\FooApp.Framework"
+                        Name="LiveDemoSiteName">
+        </RegistrySearch>
+      </Property>
+      <Property Id="LIVE_DEMO_SITE_APP_POOL_NAME"
+                Value="FooApp Live Demo Site">
+        <RegistrySearch Id="LiveDemoSiteWebAppPoolValue"
+                        Type="raw"
+                        Root="HKLM"
+                        Key="Software\Quantum Art\FooApp.Framework"
+                        Name="LiveDemoSiteAppPool">
+        </RegistrySearch>
+      </Property>
+
+      <Property Id="LIVE_DEMO_SITE_IP"
+                Value="*">
+        <RegistrySearch Id="LiveDemoSiteIpValue"
+                        Type="raw"
+                        Root="HKLM"
+                        Key="Software\Quantum Art\Q-Publishing"
+                        Name="LiveDemoSiteSiteIP">
+
+        </RegistrySearch>
+      </Property>
+
+      <Property Id="LIVE_DEMO_SITE_PORT"
+                Value="90">
+        <RegistrySearch Id="LiveDemoSitePortValue"
+                        Type="raw"
+                        Root="HKLM"
+                        Key="Software\Quantum Art\Q-Publishing"
+                        Name="LiveDemoSitePort">
+        </RegistrySearch>
+      </Property>
+
+      <Property Id="LIVE_DEMO_SITE_HEADER"
+                Value="localhost">
+        <RegistrySearch Id="LiveDemoSiteHostNameValue"
+                        Type="raw"
+                        Root="HKLM"
+                        Key="Software\Quantum Art\Q-Publishing"
+                        Name="LiveDemoSiteHostName">
+        </RegistrySearch>
+      </Property>
+
+      <!--<Property Id="SITESTAGE_BINDINGS"
+                Secure="yes"></Property>-->
+
+      <Dialog Id="LiveDemoSiteIisDlg"
+              Width="370"
+              Height="270"
+              Title="!(loc.LiveDemoSiteIisDlgTitle)">
+        <Control Id="tbDemoSiteWebAppName"
+                 Type="Edit"
+                 Height="15"
+                 Width="238"
+                 X="122"
+                 Y="49"
+                 Property="LIVE_DEMO_SITE_WEB_APP_NAME"
+                 Text="[LIVE_DEMO_SITE_WEB_APP_NAME]">
+        </Control>
+        <Control Id="tbDemoSiteAppPoolName"
+                Type="Edit"
+                Height="15"
+                Width="237"
+                X="122"
+                Y="68"
+                Property="LIVE_DEMO_SITE_APP_POOL_NAME"
+                Text="[LIVE_DEMO_SITE_APP_POOL_NAME]"/>
+        <Control Id="tbDemoSiteIP" Type="Edit" Height="15" Width="122" X="122" Y="88"
+                 Property="LIVE_DEMO_SITE_IP"
+                 Text="[LIVE_DEMO_SITE_IP]"/>
+        <Control Id="tbDemoSitePort" Type="Edit" Height="15" Width="122" X="122" Y="107"
+                 Property="LIVE_DEMO_SITE_PORT"
+                 Text="[LIVE_DEMO_SITE_PORT]"/>
+        <Control Id="tbDemoSiteHeader" Type="Edit" Height="15" Width="122" X="122" Y="127"
+                Property="LIVE_DEMO_SITE_HEADER"
+                Text="[LIVE_DEMO_SITE_HEADER]"/>
+        
+        <Control Id="Back"
+                 Type="PushButton"
+                 X="168"
+                 Y="243"
+                 Width="56"
+                 Height="17"
+                 Text="!(loc.WixUIBack)"></Control>
+        <Control Id="Next"
+                 Type="PushButton"
+                 X="236"
+                 Y="243"
+                 Width="56"
+                 Height="17"
+                 Default="yes"
+                 Text="!(loc.WixUINext)"></Control>
+        <Control Id="Cancel"
+                 Type="PushButton"
+                 X="304"
+                 Y="243"
+                 Width="56"
+                 Height="17"
+                 Cancel="yes"
+                 Text="!(loc.WixUICancel)">
+          <Publish Event="SpawnDialog"
+                   Value="CancelDlg">1</Publish>
+        </Control>
+       
+        <Control Id="lblDemoSiteAppPoolName"
+                 Type="Text"
+                 Height="10"
+                 Width="109"
+                 X="9"
+                 Y="68"
+                 Text="!(loc.LiveDemoSiteAppPoolNameLabel)" />
+        <Control Id="lblDemoSiteWebAppName"
+                 Type="Text"
+                 Height="10"
+                 Width="90"
+                 X="9"
+                 Y="49"
+                 Text="!(loc.LiveDemoSiteWebAppNameLabel)" />
+        <Control Id="BannerBitmap"
+                 Type="Bitmap"
+                 X="0"
+                 Y="0"
+                 Width="370"
+                 Height="44"
+                 TabSkip="no"
+                 Text="!(loc.VerifyReadyDlgBannerBitmap)" />
+        <Control Id="BannerLine"
+                 Type="Line"
+                 X="0"
+                 Y="44"
+                 Width="370"
+                 Height="2" />
+        <Control Id="BottomLine"
+                 Type="Line"
+                 X="0"
+                 Y="234"
+                 Width="370"
+                 Height="2" />
+        <Control Id="InstallTitle"
+                 Type="Text"
+                 X="15"
+                 Y="15"
+                 Width="300"
+                 Height="15"
+                 Transparent="yes"
+                 NoPrefix="yes"
+                 Hidden="no"
+                 Text="!(loc.LiveDemoSiteIisDlgTitle)">
+        </Control>
+        <Control Id="label3" Type="Text" Height="10" Width="98" X="9" Y="129" Text="!(loc.LiveDemoSiteAppHeaderLabel)" />
+        <Control Id="label2" Type="Text" Height="10" Width="86" X="9" Y="110" Text="!(loc.LiveDemoSiteAppPortLabel)" />
+        <Control Id="label1" Type="Text" Height="10" Width="80" X="9" Y="90" Text="!(loc.LiveDemoSiteAppIPLabel)" />
+        <!--<Control Id="label1"
+                 Type="Text"
+                 Height="17"
+                 Width="108"
+                 X="10"
+                 Y="88"
+                 Text="Привязки" />
+        <Control Id="lbSiteStageBindings"
+                 Type="ListBox"
+                 Height="130"
+                 Width="170"
+                 X="122"
+                 Y="88"
+                 Property="SITESTAGE_BINDINGS">
+        </Control>
+        <Control Id="btnAddSiteStageBinding"
+                 Type="PushButton"
+                 Height="17"
+                 Width="56"
+                 X="298"
+                 Y="88"
+                 Text="Добавить">
+          <Publish Event="DoAction"
+                   Value="AddSiteStageBindingCA"
+                   Order="1">1</Publish>
+          <Publish
+            Event="DoAction"
+            Value="SaveSiteStageBindingsCA"
+            Order="2">
+            <![CDATA[1]]>
+          </Publish>
+          <Publish Event="NewDialog"
+                   Value="SiteStageIisDlg2"
+                   Order="3">1</Publish>
+        </Control>
+        <Control Id="btnEdit"
+                 Type="PushButton"
+                 Height="17"
+                 Width="56"
+                 X="297"
+                 Y="110"
+                 Text="Изменить">
+          <Publish Event="DoAction"
+                   Value="ModifySiteStageBindingCA"
+                   Order="1">1</Publish>
+          <Publish
+            Event="DoAction"
+            Value="SaveSiteStageBindingsCA"
+            Order="2">
+            <![CDATA[1]]>
+          </Publish>
+          <Publish Event="NewDialog"
+                   Value="SiteStageIisDlg2"
+                   Order="3">1</Publish>
+        </Control>
+        <Control Id="btnRemove"
+                 Type="PushButton"
+                 Height="17"
+                 Width="56"
+                 X="297"
+                 Y="132"
+                 Text="Удалить">
+          <Publish Event="DoAction"
+                   Value="RemoveSiteStageBindingCA"
+                   Order="1"><![CDATA[1]]></Publish>
+          <Publish
+            Event="DoAction"
+            Value="SaveSiteStageBindingsCA"
+            Order="2">
+            <![CDATA[1]]>
+          </Publish>
+          <Publish Event="NewDialog"
+                   Value="SiteStageIisDlg2"
+                   Order="3"><![CDATA[1]]></Publish>
+        </Control>-->
+      </Dialog>
+    </UI>
+  </Fragment>
+</Wix>

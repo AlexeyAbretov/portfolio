@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <UI>
+      <Property Id="STATIC_SITE_WEB_APP_NAME"
+                Value="FooAppStatic">
+        <RegistrySearch Id="StaticSiteNameValue"
+                        Type="raw"
+                        Root="HKLM"
+                        Key="Software\Quantum Art\Q-Publishing"
+                        Name="StaticSiteName">
+        </RegistrySearch>
+      </Property>
+      <Property Id="STATIC_SITE_APP_POOL_NAME"
+                Value="FooAppStatic">
+        <RegistrySearch Id="StaticSiteWebAppPoolValue"
+                        Type="raw"
+                        Root="HKLM"
+                        Key="Software\Quantum Art\Q-Publishing"
+                        Name="StaticSiteAppPool">
+        </RegistrySearch>
+      </Property>
+
+      <Property Id="STATIC_SITE_IP"
+                Value="*">
+        <RegistrySearch Id="StaticSiteIpValue"
+                        Type="raw"
+                        Root="HKLM"
+                        Key="Software\Quantum Art\Q-Publishing"
+                        Name="StaticSiteIP">
+
+        </RegistrySearch>
+      </Property>
+
+      <Property Id="STATIC_SITE_PORT"
+                Value="92">
+        <RegistrySearch Id="StaticSitePortValue"
+                        Type="raw"
+                        Root="HKLM"
+                        Key="Software\Quantum Art\Q-Publishing"
+                        Name="StaticSitePort">
+        </RegistrySearch>
+      </Property>
+
+      <Property Id="STATIC_SITE_HEADER"
+                Value="localhost">
+        <RegistrySearch Id="StaticSiteHostNameValue"
+                        Type="raw"
+                        Root="HKLM"
+                        Key="Software\Quantum Art\Q-Publishing"
+                        Name="StaticSiteHostName">
+        </RegistrySearch>
+      </Property>
+
+      <Dialog Id="StaticSiteIisDlg"
+              Width="370"
+              Height="270"
+              Title="!(loc.StaticSiteIisDlgTitle)">
+        <Control Id="tbSiteWebAppName"
+                 Type="Edit"
+                 Height="15"
+                 Width="238"
+                 X="122"
+                 Y="49"
+                 Property="STATIC_SITE_WEB_APP_NAME"
+                 Text="[STATIC_SITE_WEB_APP_NAME]">
+        </Control>
+        <Control Id="tbSiteAppPoolName"
+                 Type="Edit"
+                 Height="15"
+                 Width="237"
+                 X="122"
+                 Y="68"
+                 Property="STATIC_SITE_APP_POOL_NAME"
+                 Text="[STATIC_SITE_APP_POOL_NAME]"/>
+        <Control Id="tbSiteIP" Type="Edit" Height="15" Width="122" X="122" Y="88"
+                Property="STATIC_SITE_IP"
+                Text="[STATIC_SITE_IP]"/>
+        <Control Id="tbSitePort" Type="Edit" Height="15" Width="122" X="122" Y="107"
+                 Property="STATIC_SITE_PORT"
+                 Text="[STATIC_SITE_PORT]"/>
+        <Control Id="tbSiteHeader" Type="Edit" Height="15" Width="122" X="122" Y="127"
+                 Property="STATIC_SITE_HEADER"
+                 Text="[STATIC_SITE_HEADER]"/>
+
+        <Control Id="Back"
+                 Type="PushButton"
+                 X="168"
+                 Y="243"
+                 Width="56"
+                 Height="17"
+                 Text="!(loc.WixUIBack)"></Control>
+        <Control Id="Next"
+                 Type="PushButton"
+                 X="236"
+                 Y="243"
+                 Width="56"
+                 Height="17"
+                 Default="yes"
+                 Text="!(loc.WixUINext)"></Control>
+        <Control Id="Cancel"
+                 Type="PushButton"
+                 X="304"
+                 Y="243"
+                 Width="56"
+                 Height="17"
+                 Cancel="yes"
+                 Text="!(loc.WixUICancel)">
+          <Publish Event="SpawnDialog"
+                   Value="CancelDlg">1</Publish>
+        </Control>
+        
+        <Control Id="lblSiteAppPoolName"
+                 Type="Text"
+                 Height="10"
+                 Width="109"
+                 X="9"
+                 Y="68"
+                 Text="!(loc.StaticSiteAppPoolNameLabel)" />
+        
+        <Control Id="lblSiteWebAppName"
+                 Type="Text"
+                 Height="10"
+                 Width="90"
+                 X="9"
+                 Y="49"
+                 Text="!(loc.StaticSiteWebAppNameLabel)" />
+        <Control Id="BannerBitmap"
+                 Type="Bitmap"
+                 X="0"
+                 Y="0"
+                 Width="370"
+                 Height="44"
+                 TabSkip="no"
+                 Text="!(loc.VerifyReadyDlgBannerBitmap)" />
+        <Control Id="BannerLine"
+                 Type="Line"
+                 X="0"
+                 Y="44"
+                 Width="370"
+                 Height="2" />
+        <Control Id="BottomLine"
+                 Type="Line"
+                 X="0"
+                 Y="234"
+                 Width="370"
+                 Height="2" />
+
+        <Control Id="InstallTitle"
+                 Type="Text"
+                 X="15"
+                 Y="15"
+                 Width="300"
+                 Height="15"
+                 Transparent="yes"
+                 NoPrefix="yes"
+                 Hidden="no"
+                 Text="!(loc.StaticSiteIisDlgTitle)">
+        </Control>
+        <Control Id="label3" Type="Text" Height="10" Width="98" X="9" Y="129" Text="!(loc.StaticSiteAppHeaderLabel)" />
+        <Control Id="label2" Type="Text" Height="10" Width="86" X="9" Y="110" Text="!(loc.StaticSiteAppPortLabel)" />
+        <Control Id="label1" Type="Text" Height="10" Width="80" X="9" Y="90" Text="!(loc.StaticSiteAppIPLabel)" />
+      </Dialog>
+    </UI>
+  </Fragment>
+</Wix>

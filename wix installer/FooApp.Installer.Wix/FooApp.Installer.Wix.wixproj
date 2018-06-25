@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>3.9</ProductVersion>
+    <ProjectGuid>a48f1897-3c46-4ccd-878b-21f1940f3949</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputName>FooApp.Installer.Wix</OutputName>
+    <OutputType>Package</OutputType>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <SccProjectName>$/FooApp/main/FooApp.Installer.Wix</SccProjectName>
+    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+    <SccAuxPath>http://tfs:8080/tfs/quantumartcollection</SccAuxPath>
+    <SccLocalPath>.</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>Debug;StaticDirPath=$(SolutionDir)build\source\static;BackendDirPath=$(SolutionDir)build\source\Backend;WinlogonDirPath=$(SolutionDir)build\source\Winlogon;ArticleSchedulerDirPath=$(SolutionDir)build\source\ArticleScheduler;CommonSchedulerDirPath=$(SolutionDir)build\source\CommonScheduler;PluginsDirPath=$(SolutionDir)build\source\plugins;SitesDirPath=$(SolutionDir)build\source\sites;DemoSiteDirPath=$(SolutionDir)build\source\DemoSite;SiteMapDirPath=$(SolutionDir)build\source\SiteMap;DbDirPath=$(SolutionDir)build\source\db</DefineConstants>
+    <Cultures>ru-RU</Cultures>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>StaticDirPath=$(SolutionDir)build\source\static;BackendDirPath=$(SolutionDir)build\source\Backend;WinlogonDirPath=$(SolutionDir)build\source\Winlogon;ArticleSchedulerDirPath=$(SolutionDir)build\source\ArticleScheduler;CommonSchedulerDirPath=$(SolutionDir)build\source\CommonScheduler;PluginsDirPath=$(SolutionDir)build\source\plugins;SitesDirPath=$(SolutionDir)build\source\sites;DemoSiteDirPath=$(SolutionDir)build\source\DemoSite;SiteMapDirPath=$(SolutionDir)build\source\SiteMap;DbDirPath=$(SolutionDir)build\source\db</DefineConstants>
+    <Cultures>ru-RU</Cultures>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Any CPU' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>StaticDirPath=$(SolutionDir)build\source\static;BackendDirPath=$(SolutionDir)build\source\Backend;WinlogonDirPath=$(SolutionDir)build\source\Winlogon;ArticleSchedulerDirPath=$(SolutionDir)build\source\ArticleScheduler;CommonSchedulerDirPath=$(SolutionDir)build\source\CommonScheduler;PluginsDirPath=$(SolutionDir)build\source\plugins;SitesDirPath=$(SolutionDir)build\source\sites;DemoSiteDirPath=$(SolutionDir)build\source\DemoSite;SiteMapDirPath=$(SolutionDir)build\source\SiteMap;DbDirPath=$(SolutionDir)build\source\db</DefineConstants>
+    <Cultures>ru-RU</Cultures>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="ArticleSchedulerSettings.wxs" />
+    <Compile Include="Dialogs\NotSelectedFeaturesDlg.wxs" />
+    <Compile Include="Dialogs\WrongSqlPowerShellMessageDlg.wxs" />
+    <Compile Include="Dialogs\WrongPowerShellMessageDlg.wxs" />
+    <Compile Include="Dialogs\WrongDotNetMessageDlg.wxs" />
+    <Compile Include="Dialogs\WrongIISMessageDlg.wxs" />
+    <Compile Include="Dialogs\StaticSiteIisDlg.wxs" />
+    <Compile Include="Dialogs\StageDemoSiteIisDlg.wxs" />
+    <Compile Include="Dialogs\DatabaseModeDbDlg.wxs" />
+    <Compile Include="Dialogs\WebModeDbDlg.wxs" />
+    <Compile Include="Dialogs\LiveDemoSiteIisDlg.wxs" />
+    <Compile Include="Dialogs\SiteIisDlg.wxs" />
+    <Compile Include="Files\ArticleSchedulerFiles.wxs" />
+    <Compile Include="Files\BackendFiles.wxs" />
+    <Compile Include="Files\LiveDemoSiteFiles.wxs" />
+    <Compile Include="Files\SiteMapFiles.wxs" />
+    <Compile Include="Files\SitesFiles.wxs" />
+    <Compile Include="Files\PluginsFiles.wxs" />
+    <Compile Include="Files\DbFiles.wxs" />
+    <Compile Include="Files\StageDemoSiteFiles.wxs" />
+    <Compile Include="Files\CommonSchedulerFiles.wxs" />
+    <Compile Include="Files\FooAppublishingConfiguration.wxs" />
+    <Compile Include="Files\StaticFiles.wxs" />
+    <Compile Include="Files\WinlogonFiles.wxs" />
+    <Compile Include="FolderPermissions.wxs" />
+    <Compile Include="GlobalProperties.wxs" />
+    <Content Include="InstallUIExecuteSequence.wxi" />
+    <Content Include="deploy\CleanBuild.ps1" />
+    <Content Include="deploy\CleanSource.ps1" />
+    <Content Include="deploy\copy.ps1" />
+    <Content Include="deploy\copy_msi.ps1" />
+    <Content Include="deploy\executeSql.ps1" />
+    <Content Include="deploy\ver.ps1" />
+    <Content Include="InstallExecuteSequence.wxi" />
+    <Compile Include="Product.wxs" />
+    <Compile Include="WixUI_FeatureTreeNoLicense.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CustomActions.wxi" />
+    <Content Include="Features.wxi" />
+    <Content Include="GlobalConditions.wxi" />
+    <Content Include="InstallFooAppSettings.wxi" />
+    <Content Include="PackageProperties.wxi" />
+    <Content Include="ProductProperties.wxi" />
+    <Content Include="Properties.wxi" />
+    <None Include="readme.txt" />
+    <Content Include="Sql.wxi" />
+    <Content Include="Transformation\ArticleSchedulerHeatTransform.xslt" />
+    <Content Include="UI.wxi" />
+    <Content Include="UISequence.wxi" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Dialogs\Localization\NotSelectedFeaturesDlg.en-US.wxl" />
+    <EmbeddedResource Include="Dialogs\Localization\NotSelectedFeaturesDlg.ru-RU.wxl" />
+    <EmbeddedResource Include="Dialogs\Localization\WrongIISMessageDlg.en-US.wxl" />
+    <EmbeddedResource Include="Dialogs\Localization\WrongIISMessageDlg.ru-RU.wxl" />
+    <EmbeddedResource Include="Dialogs\Localization\WrongDotNetMessageDlg.en-US.wxl" />
+    <EmbeddedResource Include="Dialogs\Localization\WrongDotNetMessageDlg.ru-RU.wxl" />
+    <EmbeddedResource Include="Dialogs\Localization\WrongPowerShellMessageDlg.en-US.wxl" />
+    <EmbeddedResource Include="Dialogs\Localization\WrongPowerShellMessageDlg.ru-RU.wxl" />
+    <EmbeddedResource Include="Dialogs\Localization\StaticSiteIisDlgStrings.en-US.wxl" />
+    <EmbeddedResource Include="Dialogs\Localization\StaticSiteIisDlgStrings.ru-RU.wxl" />
+    <EmbeddedResource Include="Dialogs\Localization\StageDemoSiteIisDlgStrings.en-US.wxl" />
+    <EmbeddedResource Include="Dialogs\Localization\StageLiveDemoSiteIisDlgStrings.ru-RU.wxl" />
+    <EmbeddedResource Include="Dialogs\Localization\DatabaseModeDbDlgStrings.en-US.wxl" />
+    <EmbeddedResource Include="Dialogs\Localization\DatabaseModeDbDlgStrings.ru-RU.wxl" />
+    <EmbeddedResource Include="Dialogs\Localization\LiveDemoSiteIisDlgStrings.en-US.wxl" />
+    <EmbeddedResource Include="Dialogs\Localization\LiveDemoSiteIisDlgStrings.ru-RU.wxl" />
+    <EmbeddedResource Include="Dialogs\Localization\SiteIisDlgStrings.en-US.wxl" />
+    <EmbeddedResource Include="Dialogs\Localization\SiteIisDlgStrings.ru-RU.wxl" />
+    <EmbeddedResource Include="Dialogs\Localization\WebModeDbDlgStrings.en-US.wxl" />
+    <EmbeddedResource Include="Dialogs\Localization\WebModeDbDlgStrings.ru-RU.wxl" />
+    <EmbeddedResource Include="Localization\FeaturesStrings.en-US.wxl" />
+    <EmbeddedResource Include="Localization\FeaturesStrings.ru-RU.wxl" />
+    <EmbeddedResource Include="Localization\GlobalConditionsStrings.en-US.wxl" />
+    <EmbeddedResource Include="Localization\GlobalConditionsStrings.ru-RU.wxl" />
+    <EmbeddedResource Include="Localization\IisExtension.ru-RU.wxl" />
+    <EmbeddedResource Include="Localization\ProductStrings.en-US.wxl" />
+    <EmbeddedResource Include="Localization\ProductStrings.ru-RU.wxl" />
+    <EmbeddedResource Include="Localization\SqlExtension.ru-RU.wxl" />
+    <EmbeddedResource Include="Localization\UtilExtension.ru-RU.wxl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixUtilExtension">
+      <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
+      <Name>WixUtilExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixUIExtension">
+      <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
+      <Name>WixUIExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixSqlExtension">
+      <HintPath>$(WixExtDir)\WixSqlExtension.dll</HintPath>
+      <Name>WixSqlExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixNetFxExtension">
+      <HintPath>$(WixExtDir)\WixNetFxExtension.dll</HintPath>
+      <Name>WixNetFxExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixIIsExtension">
+      <HintPath>$(WixExtDir)\WixIIsExtension.dll</HintPath>
+      <Name>WixIIsExtension</Name>
+    </WixExtension>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dialogs" />
+    <Folder Include="Dialogs\Localization" />
+    <Folder Include="Localization" />
+    <Folder Include="Files" />
+    <Folder Include="deploy" />
+    <Folder Include="Transformation" />
+  </ItemGroup>
+  <Import Project="$(WixTargetsPath)" />
+  <!--
+	To modify your build process, add your task inside one of the targets below and uncomment it.
+	Other similar extension points exist, see Wix.targets.-->
+  <Target Name="BeforeBuild">
+    <PropertyGroup>
+      <BackendDirPath>$(SolutionDir)build\source\Backend</BackendDirPath>
+      <WinlogonDirPath>$(SolutionDir)build\source\Winlogon</WinlogonDirPath>
+      <ArticleSchedulerDirPath>$(SolutionDir)build\source\ArticleScheduler</ArticleSchedulerDirPath>
+      <CommonSchedulerDirPath>$(SolutionDir)build\source\CommonScheduler</CommonSchedulerDirPath>
+      <PluginsDirPath>$(SolutionDir)build\source\plugins</PluginsDirPath>
+      <SitesDirPath>$(SolutionDir)build\source\sites</SitesDirPath>
+      <SiteMapDirPath>$(SolutionDir)build\source\sitemap</SiteMapDirPath>
+      <DbDirPath>$(SolutionDir)build\source\db</DbDirPath>
+      <DemoSiteDirPath>$(SolutionDir)build\source\DemoSite</DemoSiteDirPath>
+      <StaticDirPath>$(SolutionDir)build\source\static</StaticDirPath>
+    </PropertyGroup>
+    <HeatDirectory NoLogo="$(HarvestDirectoryNoLogo)" SuppressAllWarnings="$(HarvestDirectorySuppressAllWarnings)" SuppressSpecificWarnings="$(HarvestDirectorySuppressSpecificWarnings)" ToolPath="$(WixToolPath)" TreatWarningsAsErrors="$(HarvestDirectoryTreatWarningsAsErrors)" TreatSpecificWarningsAsErrors="$(HarvestDirectoryTreatSpecificWarningsAsErrors)" VerboseOutput="$(HarvestDirectoryVerboseOutput)" AutogenerateGuids="$(HarvestDirectoryAutogenerateGuids)" GenerateGuidsNow="$(HarvestDirectoryGenerateGuidsNow)" OutputFile="Files\BackendFiles.wxs" SuppressFragments="$(HarvestDirectorySuppressFragments)" SuppressUniqueIds="$(HarvestDirectorySuppressUniqueIds)" Directory="$(BackendDirPath)" ComponentGroupName="BackendProductComponents" DirectoryRefId="BACKENDINSTALLFOLDER" KeepEmptyDirectories="false" PreprocessorVariable="var.BackendDirPath" SuppressCom="true" SuppressRootDirectory="true" SuppressRegistry="true">
+    </HeatDirectory>
+    <HeatDirectory NoLogo="$(HarvestDirectoryNoLogo)" SuppressAllWarnings="$(HarvestDirectorySuppressAllWarnings)" SuppressSpecificWarnings="$(HarvestDirectorySuppressSpecificWarnings)" ToolPath="$(WixToolPath)" TreatWarningsAsErrors="$(HarvestDirectoryTreatWarningsAsErrors)" TreatSpecificWarningsAsErrors="$(HarvestDirectoryTreatSpecificWarningsAsErrors)" VerboseOutput="$(HarvestDirectoryVerboseOutput)" AutogenerateGuids="$(HarvestDirectoryAutogenerateGuids)" GenerateGuidsNow="$(HarvestDirectoryGenerateGuidsNow)" OutputFile="Files\WinlogonFiles.wxs" SuppressFragments="$(HarvestDirectorySuppressFragments)" SuppressUniqueIds="$(HarvestDirectorySuppressUniqueIds)" Directory="$(WinlogonDirPath)" ComponentGroupName="WinlogonProductComponents" DirectoryRefId="WINLOGONINSTALLFOLDER" KeepEmptyDirectories="false" PreprocessorVariable="var.WinlogonDirPath" SuppressCom="true" SuppressRootDirectory="true" SuppressRegistry="true">
+    </HeatDirectory>
+    <HeatDirectory NoLogo="$(HarvestDirectoryNoLogo)" SuppressAllWarnings="$(HarvestDirectorySuppressAllWarnings)" SuppressSpecificWarnings="$(HarvestDirectorySuppressSpecificWarnings)" ToolPath="$(WixToolPath)" TreatWarningsAsErrors="$(HarvestDirectoryTreatWarningsAsErrors)" TreatSpecificWarningsAsErrors="$(HarvestDirectoryTreatSpecificWarningsAsErrors)" VerboseOutput="$(HarvestDirectoryVerboseOutput)" AutogenerateGuids="$(HarvestDirectoryAutogenerateGuids)" GenerateGuidsNow="$(HarvestDirectoryGenerateGuidsNow)" OutputFile="Files\ArticleSchedulerFiles.wxs" SuppressFragments="$(HarvestDirectorySuppressFragments)" SuppressUniqueIds="$(HarvestDirectorySuppressUniqueIds)" Transforms="Transformation\ArticleSchedulerHeatTransform.xslt" Directory="$(ArticleSchedulerDirPath)" ComponentGroupName="ArticleSchedulerProductComponents" DirectoryRefId="ARTICLESCHEDULERINSTALLFOLDER" KeepEmptyDirectories="false" PreprocessorVariable="var.ArticleSchedulerDirPath" SuppressCom="true" SuppressRootDirectory="true" SuppressRegistry="true">
+    </HeatDirectory>
+    <HeatDirectory NoLogo="$(HarvestDirectoryNoLogo)" SuppressAllWarnings="$(HarvestDirectorySuppressAllWarnings)" SuppressSpecificWarnings="$(HarvestDirectorySuppressSpecificWarnings)" ToolPath="$(WixToolPath)" TreatWarningsAsErrors="$(HarvestDirectoryTreatWarningsAsErrors)" TreatSpecificWarningsAsErrors="$(HarvestDirectoryTreatSpecificWarningsAsErrors)" VerboseOutput="$(HarvestDirectoryVerboseOutput)" AutogenerateGuids="$(HarvestDirectoryAutogenerateGuids)" GenerateGuidsNow="$(HarvestDirectoryGenerateGuidsNow)" OutputFile="Files\CommonSchedulerFiles.wxs" SuppressFragments="$(HarvestDirectorySuppressFragments)" SuppressUniqueIds="$(HarvestDirectorySuppressUniqueIds)" Directory="$(CommonSchedulerDirPath)" ComponentGroupName="CommonSchedulerProductComponents" DirectoryRefId="COMMONSCHEDULERINSTALLFOLDER" KeepEmptyDirectories="false" PreprocessorVariable="var.CommonSchedulerDirPath" SuppressCom="true" SuppressRootDirectory="true" SuppressRegistry="true">
+    </HeatDirectory>
+    <HeatDirectory NoLogo="$(HarvestDirectoryNoLogo)" SuppressAllWarnings="$(HarvestDirectorySuppressAllWarnings)" SuppressSpecificWarnings="$(HarvestDirectorySuppressSpecificWarnings)" ToolPath="$(WixToolPath)" TreatWarningsAsErrors="$(HarvestDirectoryTreatWarningsAsErrors)" TreatSpecificWarningsAsErrors="$(HarvestDirectoryTreatSpecificWarningsAsErrors)" VerboseOutput="$(HarvestDirectoryVerboseOutput)" AutogenerateGuids="$(HarvestDirectoryAutogenerateGuids)" GenerateGuidsNow="$(HarvestDirectoryGenerateGuidsNow)" OutputFile="Files\PluginsFiles.wxs" SuppressFragments="$(HarvestDirectorySuppressFragments)" SuppressUniqueIds="$(HarvestDirectorySuppressUniqueIds)" Directory="$(PluginsDirPath)" ComponentGroupName="PluginsProductComponents" DirectoryRefId="PLUGINSINSTALLFOLDER" KeepEmptyDirectories="false" PreprocessorVariable="var.PluginsDirPath" SuppressCom="true" SuppressRootDirectory="true" SuppressRegistry="true">
+    </HeatDirectory>
+    <HeatDirectory NoLogo="$(HarvestDirectoryNoLogo)" SuppressAllWarnings="$(HarvestDirectorySuppressAllWarnings)" SuppressSpecificWarnings="$(HarvestDirectorySuppressSpecificWarnings)" ToolPath="$(WixToolPath)" TreatWarningsAsErrors="$(HarvestDirectoryTreatWarningsAsErrors)" TreatSpecificWarningsAsErrors="$(HarvestDirectoryTreatSpecificWarningsAsErrors)" VerboseOutput="$(HarvestDirectoryVerboseOutput)" AutogenerateGuids="$(HarvestDirectoryAutogenerateGuids)" GenerateGuidsNow="$(HarvestDirectoryGenerateGuidsNow)" OutputFile="Files\SitesFiles.wxs" SuppressFragments="$(HarvestDirectorySuppressFragments)" SuppressUniqueIds="$(HarvestDirectorySuppressUniqueIds)" Directory="$(SitesDirPath)" ComponentGroupName="SitesProductComponents" DirectoryRefId="SITESINSTALLFOLDER" KeepEmptyDirectories="false" PreprocessorVariable="var.SitesDirPath" SuppressCom="true" SuppressRootDirectory="true" SuppressRegistry="true">
+    </HeatDirectory>
+    <HeatDirectory NoLogo="$(HarvestDirectoryNoLogo)" SuppressAllWarnings="$(HarvestDirectorySuppressAllWarnings)" SuppressSpecificWarnings="$(HarvestDirectorySuppressSpecificWarnings)" ToolPath="$(WixToolPath)" TreatWarningsAsErrors="$(HarvestDirectoryTreatWarningsAsErrors)" TreatSpecificWarningsAsErrors="$(HarvestDirectoryTreatSpecificWarningsAsErrors)" VerboseOutput="$(HarvestDirectoryVerboseOutput)" AutogenerateGuids="$(HarvestDirectoryAutogenerateGuids)" GenerateGuidsNow="$(HarvestDirectoryGenerateGuidsNow)" OutputFile="Files\SiteMapFiles.wxs" SuppressFragments="$(HarvestDirectorySuppressFragments)" SuppressUniqueIds="$(HarvestDirectorySuppressUniqueIds)" Directory="$(SiteMapDirPath)" ComponentGroupName="SiteMapProductComponents" DirectoryRefId="SITEMAPINSTALLFOLDER" KeepEmptyDirectories="false" PreprocessorVariable="var.SiteMapDirPath" SuppressCom="true" SuppressRootDirectory="true" SuppressRegistry="true">
+    </HeatDirectory>
+    <HeatDirectory NoLogo="$(HarvestDirectoryNoLogo)" SuppressAllWarnings="$(HarvestDirectorySuppressAllWarnings)" SuppressSpecificWarnings="$(HarvestDirectorySuppressSpecificWarnings)" ToolPath="$(WixToolPath)" TreatWarningsAsErrors="$(HarvestDirectoryTreatWarningsAsErrors)" TreatSpecificWarningsAsErrors="$(HarvestDirectoryTreatSpecificWarningsAsErrors)" VerboseOutput="$(HarvestDirectoryVerboseOutput)" AutogenerateGuids="$(HarvestDirectoryAutogenerateGuids)" GenerateGuidsNow="$(HarvestDirectoryGenerateGuidsNow)" OutputFile="Files\StageDemoSiteFiles.wxs" SuppressFragments="$(HarvestDirectorySuppressFragments)" SuppressUniqueIds="$(HarvestDirectorySuppressUniqueIds)" Directory="$(DemoSiteDirPath)" ComponentGroupName="StageDemoSiteProductComponents" DirectoryRefId="STAGEDEMOSITEINSTALLFOLDER" KeepEmptyDirectories="false" PreprocessorVariable="var.DemoSiteDirPath" SuppressCom="true" SuppressRootDirectory="true" SuppressRegistry="true">
+    </HeatDirectory>
+    <HeatDirectory NoLogo="$(HarvestDirectoryNoLogo)" SuppressAllWarnings="$(HarvestDirectorySuppressAllWarnings)" SuppressSpecificWarnings="$(HarvestDirectorySuppressSpecificWarnings)" ToolPath="$(WixToolPath)" TreatWarningsAsErrors="$(HarvestDirectoryTreatWarningsAsErrors)" TreatSpecificWarningsAsErrors="$(HarvestDirectoryTreatSpecificWarningsAsErrors)" VerboseOutput="$(HarvestDirectoryVerboseOutput)" AutogenerateGuids="$(HarvestDirectoryAutogenerateGuids)" GenerateGuidsNow="$(HarvestDirectoryGenerateGuidsNow)" OutputFile="Files\LiveDemoSiteFiles.wxs" SuppressFragments="$(HarvestDirectorySuppressFragments)" SuppressUniqueIds="$(HarvestDirectorySuppressUniqueIds)" Directory="$(DemoSiteDirPath)" ComponentGroupName="LiveDemoSiteProductComponents" DirectoryRefId="LIVEDEMOSITEINSTALLFOLDER" KeepEmptyDirectories="false" PreprocessorVariable="var.DemoSiteDirPath" SuppressCom="true" SuppressRootDirectory="true" SuppressRegistry="true">
+    </HeatDirectory>
+    <HeatDirectory NoLogo="$(HarvestDirectoryNoLogo)" SuppressAllWarnings="$(HarvestDirectorySuppressAllWarnings)" SuppressSpecificWarnings="$(HarvestDirectorySuppressSpecificWarnings)" ToolPath="$(WixToolPath)" TreatWarningsAsErrors="$(HarvestDirectoryTreatWarningsAsErrors)" TreatSpecificWarningsAsErrors="$(HarvestDirectoryTreatSpecificWarningsAsErrors)" VerboseOutput="$(HarvestDirectoryVerboseOutput)" AutogenerateGuids="$(HarvestDirectoryAutogenerateGuids)" GenerateGuidsNow="$(HarvestDirectoryGenerateGuidsNow)" OutputFile="Files\StaticFiles.wxs" SuppressFragments="$(HarvestDirectorySuppressFragments)" SuppressUniqueIds="$(HarvestDirectorySuppressUniqueIds)" Directory="$(StaticDirPath)" ComponentGroupName="StaticFilesComponents" DirectoryRefId="STATICINSTALLFOLDER" KeepEmptyDirectories="false" PreprocessorVariable="var.StaticDirPath" SuppressCom="true" SuppressRootDirectory="true" SuppressRegistry="true">
+    </HeatDirectory>
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent />
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent />
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include
+  xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <CustomAction Id="SetDbServerNameProperty"
+                Script="vbscript"
+                Return="ignore">
+    <![CDATA[
+      Session.Property("DB_SERVER_NAME") = Session.Property("SQL_SERVERS")
+    ]]>
+  </CustomAction>
+  <CustomAction Id="TestConnectionCA"
+               BinaryKey="NetCustomActions"
+               DllEntry="TestConnection"
+               Execute="immediate"
+               Return="ignore"/>
+
+  <CustomAction Id="TestConnectionWebModeCA"
+               BinaryKey="NetCustomActions"
+               DllEntry="TestConnectionWebMode"
+               Execute="immediate"
+               Return="ignore"/>
+  
+  <CustomAction Id="CheckDbDialogCA"
+               BinaryKey="NetCustomActions"
+               DllEntry="CheckDbDialog"
+               Execute="immediate"
+               Return="ignore"/>
+  
+  <CustomAction Id="CheckPowerShellCA"
+               BinaryKey="NetCustomActions"
+               DllEntry="CheckPowerShell"
+               Execute="immediate"
+               Return="ignore"/>
+  
+  <CustomAction Id="CheckSqlPowerShellCA"
+               BinaryKey="NetCustomActions"
+               DllEntry="CheckSqlPowerShell"
+               Execute="immediate"
+               Return="ignore"/>
+  
+  <CustomAction Id="CheckDbDialogWebModeCA"
+               BinaryKey="NetCustomActions"
+               DllEntry="CheckDbDialogWebMode"
+               Execute="immediate"
+               Return="ignore"/>
+  
+  <CustomAction Id="CheckIisSiteDialogCA"
+               BinaryKey="NetCustomActions"
+               DllEntry="CheckIisSiteDialog"
+               Execute="immediate"
+               Return="ignore"/>
+
+  <CustomAction Id="CheckIisLiveDemoSiteDialogCA"
+               BinaryKey="NetCustomActions"
+               DllEntry="CheckIisLiveDemoSiteDialog"
+               Execute="immediate"
+               Return="ignore"/>
+
+  <CustomAction Id="CheckIisStageDemoSiteDialogCA"
+               BinaryKey="NetCustomActions"
+               DllEntry="CheckIisStageDemoSiteDialog"
+               Execute="immediate"
+               Return="ignore"/>
+
+  <CustomAction Id="CheckIisStaticSiteDialogCA"
+              BinaryKey="NetCustomActions"
+              DllEntry="CheckIisStaticSiteDialog"
+              Execute="immediate"
+              Return="ignore"/>
+  
+  <CustomAction Id="FillSqlServersComboBoxCA"
+               BinaryKey="NetCustomActions"
+               DllEntry="FillSqlServersComboBox"
+               Execute="immediate"
+               Return="check"/>
+
+  <CustomAction Id="RunPowerShellScript_Sql"
+                BinaryKey="WixCA"
+                DllEntry="CAQuietExec"
+                Execute="deferred"
+                Return="check"
+                Impersonate="yes" />
+
+  <CustomAction Id="StartFooAppUsersWinService"
+                Directory="COMMONSCHEDULERINSTALLFOLDER"
+                ExeCommand='NET START FooApp.users'
+                Execute="deferred"
+                Impersonate="no"
+                Return="ignore" />
+  <CustomAction Id="StartFooAppNotificationWinService"
+                Directory="COMMONSCHEDULERINSTALLFOLDER"
+                ExeCommand='NET START FooApp.notification'
+                Execute="deferred"
+                Impersonate="no"
+                Return="ignore" />
+
+  <CustomAction Id="StopFooAppUsersWinService"
+                Directory="COMMONSCHEDULERINSTALLFOLDER"
+                ExeCommand='NET STOP FooApp.users'
+                Execute="deferred"
+                Impersonate="no"
+                Return="ignore" />
+  <CustomAction Id="StopFooAppNotificationWinService"
+                Directory="COMMONSCHEDULERINSTALLFOLDER"
+                ExeCommand='NET STOP FooApp.notification'
+                Execute="deferred"
+                Impersonate="no"
+                Return="ignore" />
+
+  <CustomAction Id="InstallCommonWinService"
+                Directory="COMMONSCHEDULERINSTALLFOLDER"
+                ExeCommand='[ASP_NET_4_0]installutil "[COMMONSCHEDULERINSTALLFOLDER]Quantumart.FooApp.Scheduler.Service.exe"'
+                Execute="deferred"
+                Impersonate="no"
+                Return="ignore" />
+
+  <CustomAction Id="UninstallCommonWinService"
+                Directory="COMMONSCHEDULERINSTALLFOLDER"
+                ExeCommand='[ASP_NET_4_0]installutil "[COMMONSCHEDULERINSTALLFOLDER]Quantumart.FooApp.Scheduler.Service.exe" /u'
+                Execute="deferred"
+                Impersonate="no"
+                Return="ignore" />
+
+  <CustomAction Id="CA.ConfigureBackendAppPool"
+                Return="ignore"
+                Execute="deferred"
+                Impersonate="no"
+                Directory="BACKENDINSTALLFOLDER"
+                ExeCommand='[SystemFolder]inetsrv\appcmd set apppool /apppool.name:"[FooApp_SITE_APP_POOL_NAME]" /enable32BitAppOnWin64:false' />
+
+  <CustomAction Id="CA.ConfigureLiveDemoSiteAppPool"
+               Return="ignore"
+               Execute="deferred"
+               Impersonate="no"
+               Directory="LIVEDEMOSITEINSTALLFOLDER"
+               ExeCommand='[SystemFolder]inetsrv\appcmd set apppool /apppool.name:"[LIVE_DEMO_SITE_APP_POOL_NAME]" /enable32BitAppOnWin64:false' />
+
+  <CustomAction Id="CA.ConfigureStageDemoSiteAppPool"
+               Return="ignore"
+               Execute="deferred"
+               Impersonate="no"
+               Directory="STAGEDEMOSITEINSTALLFOLDER"
+               ExeCommand='[SystemFolder]inetsrv\appcmd set apppool /apppool.name:"[STAGE_DEMO_SITE_APP_POOL_NAME]" /enable32BitAppOnWin64:false' />
+
+  <CustomAction Id="CA.ConfigureStaticSiteAppPool"
+               Return="ignore"
+               Execute="deferred"
+               Impersonate="no"
+               Directory="STATICINSTALLFOLDER"
+               ExeCommand='[SystemFolder]inetsrv\appcmd set apppool /apppool.name:"[STATIC_SITE_APP_POOL_NAME]" /enable32BitAppOnWin64:false' />
+
+  <CustomAction Id="CA.UnlockAnonymousAuthentication"
+                Return="ignore"
+                Execute="deferred"
+                Impersonate="no"
+                Directory="BACKENDINSTALLFOLDER"
+                ExeCommand='[SystemFolder]inetsrv\APPCMD unlock config /section:"system.webServer/security/authentication/anonymousAuthentication"' />
+
+  <CustomAction Id="CA.UnlockWindowsAuthentication"
+                Return="ignore"
+                Execute="deferred"
+                Impersonate="no"
+                Directory="BACKENDINSTALLFOLDER"
+                ExeCommand='[SystemFolder]inetsrv\APPCMD unlock config /section:"system.webServer/security/authentication/windowsAuthentication"' />
+
+  <CustomAction Id="BackendFeatureChangeStateSet3" Property="BackendFeatureChangeState" Value="3" Execute="immediate" />
+  <CustomAction Id="BackendFeatureChangeStateSet2" Property="BackendFeatureChangeState" Value="2" Execute="immediate" />
+
+  <CustomAction Id="DatabaseFeatureChangeStateSet3" Property="DatabaseFeatureChangeState" Value="3" Execute="immediate" />
+  <CustomAction Id="DatabaseFeatureChangeStateSet2" Property="DatabaseFeatureChangeState" Value="2" Execute="immediate" />
+
+  <CustomAction Id="DemoSiteFeatureChangeStateSet3" Property="DemoSiteFeatureChangeState" Value="3" Execute="immediate" />
+  <CustomAction Id="DemoSiteFeatureChangeStateSet2" Property="DemoSiteFeatureChangeState" Value="2" Execute="immediate" />
+
+  <CustomAction Id="ParseIisMagorVersionToIntCA"
+              BinaryKey="NetCustomActions"
+              DllEntry="ParseIisMagorVersionToInt"
+              Execute="immediate"
+              Return="ignore"/>
+</Include>

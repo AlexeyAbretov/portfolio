@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="en-us" xmlns="http://schemas.microsoft.com/wix/2006/localization" Codepage="utf-8">
+  <String Id="StaticSiteAppPoolNameLabel">Application pool name</String>
+  <String Id="StaticSiteWebAppNameLabel">Web site name</String>
+  <String Id="StaticSiteIisDlgTitle">Static site web settings [ProductName] [ProductVersion]</String>
+  <String Id="StaticSiteAppHeaderLabel">Host name</String>
+  <String Id="StaticSiteAppPortLabel">Port</String>
+  <String Id="StaticSiteAppIPLabel">IP</String>
+</WixLocalization>

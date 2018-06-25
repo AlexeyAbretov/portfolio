@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include
+  xmlns="http://schemas.microsoft.com/wix/2006/wi"
+  xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension"
+  xmlns:sql="http://schemas.microsoft.com/wix/SqlExtension"
+  xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+
+  <Component Id="FooAppSiteIisSettings"
+             Guid="{494AA1DE-942D-4894-A89D-9419409F374D}">
+    <iis:WebAppPool Id="FooAppSiteAppPool"
+                    Name="[FooApp_SITE_APP_POOL_NAME]"
+                    Identity="applicationPoolIdentity"
+                    ManagedRuntimeVersion="v4.0"
+                    ManagedPipelineMode="Integrated">
+    </iis:WebAppPool>
+    <iis:WebSite Id="FooAppSiteWebSite"
+                 Description="[FooApp_SITE_WEB_APP_NAME]"
+                 Directory="SITESINSTALLFOLDER"
+                 AutoStart="yes"
+                 StartOnInstall="yes">
+      <iis:WebApplication Id="FooAppSiteApp"
+                          Name="[FooApp_SITE_WEB_APP_NAME]"
+                          WebAppPool="FooAppSiteAppPool">
+      </iis:WebApplication>
+      <iis:WebAddress Id="SiteWebAddress"
+                      IP="[FooApp_SITE_IP]"
+                      Port="[FooApp_SITE_PORT]"
+                      Header="[FooApp_SITE_HEADER]"/>
+      <iis:WebVirtualDir Id='PluginsVirtualDir'
+                      Alias='Plugins'
+                      Directory='PLUGINSINSTALLFOLDER'>
+        <iis:WebDirProperties
+            Id="PluginsVirtualDirProperties"
+            AnonymousAccess="yes"/>
+      </iis:WebVirtualDir>
+
+      <!-- Child application Backend -->
+      <iis:WebVirtualDir Id='FooAppBackendVirtualDir'
+                      Alias='Backend'
+                      Directory='BACKENDINSTALLFOLDER'>
+        <iis:WebApplication Id='FooAppBackendSiteApp'
+                            Name='Backend'
+                            WebAppPool="FooAppSiteAppPool">
+        </iis:WebApplication>
+
+        <iis:WebDirProperties
+            Id="FooAppBackendVirtualDirProperties"
+            AnonymousAccess="yes"/>
+
+        <!-- Child application Winlogon -->
+        <iis:WebVirtualDir Id='FooAppWinlogonVirtualDir'
+                         Alias='Winlogon'
+                         Directory='WINLOGONINSTALLFOLDER'>
+          <iis:WebApplication Id='FooAppWinlogonSiteApp'
+                              Name='Winlogon'
+                              WebAppPool="FooAppSiteAppPool"/>
+          <iis:WebDirProperties
+            Id="FooAppWinlogonVirtualDirProperties"
+            BasicAuthentication="yes"
+            AnonymousAccess="yes"/>
+          <iis:WebVirtualDir Id='FooAppWinlogonContentVirtualDir'
+                         Alias='Content'
+                         Directory='SITESCONTENTINSTALLFOLDER'>
+          </iis:WebVirtualDir>
+          <iis:WebVirtualDir Id='FooAppWinlogonScriptsVirtualDir'
+                         Alias='Scripts'
+                         Directory='SITESSCRIPTSINSTALLFOLDER'>
+          </iis:WebVirtualDir>
+        </iis:WebVirtualDir>
+
+      </iis:WebVirtualDir>
+
+      <iis:WebVirtualDir Id='FooAppSiteMapVirtualDir'
+                     Alias='SiteMap'
+                     Directory='SITEMAPINSTALLFOLDER'>
+        <iis:WebApplication Id='FooAppSiteMapApp'
+                            Name='Backend'
+                            WebAppPool="FooAppSiteAppPool">
+        </iis:WebApplication>
+
+        <iis:WebDirProperties
+            Id="FooAppSiteMapVirtualDirProperties"
+            AnonymousAccess="yes"/>
+      </iis:WebVirtualDir>
+    </iis:WebSite>
+
+    <CreateFolder>
+    </CreateFolder>
+  </Component>
+
+  <Component Id="InstallFooAppRegistrySettings"
+             KeyPath="yes"
+             Guid="{F011BA37-BBA4-478E-8A3A-F1B8AF0659FC}">
+    <Condition><![CDATA[1]]></Condition>
+    <RegistryKey Id="InstallFooAppRegistryKey"
+                 Root="HKLM"
+                 Key="Software\Quantum Art\Q-Publishing"
+                 ForceCreateOnInstall="yes"
+                 ForceDeleteOnUninstall="no">
+      <RegistryKey Id="InstallFooAppVersionRegistryKey"
+                   Key="[ProductVersion]"
+                   ForceCreateOnInstall="yes"></RegistryKey>
+    </RegistryKey>
+  </Component>
+
+  <Component Id="UnistallFooAppRegistrySettings"
+             KeyPath="yes"
+             Guid="{0E726B6E-0F7E-4DCA-ABE8-8BACF3E890C4}">
+    <Condition><![CDATA[1]]></Condition>
+    <RemoveRegistryKey
+        Id="RemoveInstallFooAppRegistryKey"
+        Root="HKLM"
+        Key="Software\Quantum Art\Q-Publishing"
+        Action="removeOnUninstall"></RemoveRegistryKey>
+  </Component>
+
+  <Component Id="FooAppDemoSiteIisSettings"
+             Guid="{25E0C322-04A9-4DFB-BECE-A40C96E4A441}">
+    <iis:WebAppPool Id="LiveDemoSiteAppPool"
+                    Name="[LIVE_DEMO_SITE_APP_POOL_NAME]"
+                    Identity="applicationPoolIdentity"
+                    ManagedRuntimeVersion="v4.0"
+                    ManagedPipelineMode="Integrated">
+    </iis:WebAppPool>
+    <iis:WebSite Id="LiveDemoSiteWebSite"
+                 Description="[LIVE_DEMO_SITE_WEB_APP_NAME]"
+                 Directory="LIVEDEMOSITEINSTALLFOLDER"
+                 AutoStart="yes"
+                 StartOnInstall="yes">
+      <iis:WebApplication Id="LiveDemoSiteApp"
+                          Name="[LIVE_DEMO_SITE_WEB_APP_NAME]"
+                          WebAppPool="LiveDemoSiteAppPool">
+      </iis:WebApplication>
+      <iis:WebAddress Id="LiveDemoSiteWebAddress"
+                      IP="[LIVE_DEMO_SITE_IP]"
+                      Port="[LIVE_DEMO_SITE_PORT]"
+                      Header="[LIVE_DEMO_SITE_HEADER]"/>
+    </iis:WebSite>
+
+    <iis:WebAppPool Id="StageDemoSiteAppPool"
+                    Name="[STAGE_DEMO_SITE_APP_POOL_NAME]"
+                    Identity="applicationPoolIdentity"
+                    ManagedRuntimeVersion="v4.0"
+                    ManagedPipelineMode="Integrated">
+    </iis:WebAppPool>
+    <iis:WebSite Id="StageDemoSiteWebSite"
+                 Description="[STAGE_DEMO_SITE_WEB_APP_NAME]"
+                 Directory="STAGEDEMOSITEINSTALLFOLDER"
+                 AutoStart="yes"
+                 StartOnInstall="yes">
+      <iis:WebApplication Id="StageDemoSiteApp"
+                          Name="[STAGE_DEMO_SITE_WEB_APP_NAME]"
+                          WebAppPool="StageDemoSiteAppPool">
+      </iis:WebApplication>
+      <iis:WebAddress Id="StageDemoSiteWebAddress"
+                      IP="[STAGE_DEMO_SITE_IP]"
+                      Port="[STAGE_DEMO_SITE_PORT]"
+                      Header="[STAGE_DEMO_SITE_HEADER]"/>
+    </iis:WebSite>
+
+    <CreateFolder>
+    </CreateFolder>
+  </Component>
+
+  <Component Id="StaticSiteIisSettings"
+             Guid="{251BB3F4-2711-49C2-BEF7-DE62038E21F7}">
+    <iis:WebAppPool Id="StaticSiteAppPool"
+                    Name="[STATIC_SITE_APP_POOL_NAME]"
+                    Identity="applicationPoolIdentity"
+                    ManagedRuntimeVersion="v4.0"
+                    ManagedPipelineMode="Integrated">
+    </iis:WebAppPool>
+    <iis:WebSite Id="StaticSiteWebSite"
+                 Description="[STATIC_SITE_WEB_APP_NAME]"
+                 Directory="STATICINSTALLFOLDER"
+                 AutoStart="yes"
+                 StartOnInstall="yes">
+      <iis:WebApplication Id="StaticSiteApp"
+                          Name="[STATIC_SITE_WEB_APP_NAME]"
+                          WebAppPool="StaticSiteAppPool">
+      </iis:WebApplication>
+      <iis:WebAddress Id="StaticSiteWebAddress"
+                      IP="[STATIC_SITE_IP]"
+                      Port="[STATIC_SITE_PORT]"
+                      Header="[STATIC_SITE_HEADER]"/>
+    </iis:WebSite>
+
+    <CreateFolder>
+    </CreateFolder>
+  </Component>
+
+  <Component Id="StaticSiteRegistrySettings"
+             KeyPath="yes"
+             Guid="{2A81E4B2-516C-4B6F-97BD-D8FCB341571A}">
+    <RegistryValue Id="RegistryValueStaticSiteAppPool"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[STATIC_SITE_APP_POOL_NAME]"
+                   Name="StaticiteAppPool" />
+    <RegistryValue Id="RegistryValueStaticSiteName"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[STATIC_SITE_WEB_APP_NAME]"
+                   Name="StaticSiteName" />
+    <RegistryValue Id="RegistryValueStaticSiteIp"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[STATIC_SITE_IP]"
+                   Name="StaticSiteIP" />
+    <RegistryValue Id="RegistryValueStaticSitePort"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[STATIC_SITE_PORT]"
+                   Name="StaticSitePort" />
+    <RegistryValue Id="RegistryValueStaticSiteHostName"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[STATIC_SITE_HEADER]"
+                   Name="StaticSiteHostName" />
+  </Component>
+
+  <Component Id="SiteRegistrySettings"
+             KeyPath="yes"
+             Guid="{37ED5AF2-971A-4E4C-9E41-843E0A24524C}">
+    <RegistryValue Id="RegistryValueSiteAppPool"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[FooApp_SITE_APP_POOL_NAME]"
+                   Name="SiteAppPool" />
+    <RegistryValue Id="RegistryValueSiteName"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[FooApp_SITE_WEB_APP_NAME]"
+                   Name="SiteName" />
+    <RegistryValue Id="RegistryValueSiteIp"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[FooApp_SITE_IP]"
+                   Name="SiteIP" />
+    <RegistryValue Id="RegistryValueSitePort"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[FooApp_SITE_PORT]"
+                   Name="SitePort" />
+    <RegistryValue Id="RegistryValueSiteHostName"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[FooApp_SITE_HEADER]"
+                   Name="SiteHostName" />
+  </Component>
+
+  <Component Id="DbRegistrySettings"
+             KeyPath="yes"
+             Guid="{2159F06E-9ED3-4666-B3CB-B92368C89CF7}">
+    <RegistryValue Id="RegistryValueDbLogin"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[DB_LOGIN]"
+                   Name="DbLoginName" />
+    <RegistryValue Id="RegistryValueDbName"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[DB_NAME]"
+                   Name="DbName" />
+    <RegistryValue Id="RegistryValueDbServerName"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[DB_SERVER_NAME]"
+                   Name="DbServerName" />
+  </Component>
+
+  <Component Id="DemoSiteRegistrySettings"
+             KeyPath="yes"
+             Guid="{C73298FA-E2AA-45E5-9174-78F7074A559D}">
+    <RegistryValue Id="RegistryValueLiveDemoSiteAppPool"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[LIVE_DEMO_SITE_APP_POOL_NAME]"
+                   Name="LiveDemoSiteAppPool" />
+    <RegistryValue Id="RegistryValueLiveDemoSiteName"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[LIVE_DEMO_SITE_WEB_APP_NAME]"
+                   Name="LiveDemoSiteName" />
+    <RegistryValue Id="RegistryValueLiveDemoSiteIp"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[LIVE_DEMO_SITE_IP]"
+                   Name="LiveDemoSiteIP" />
+    <RegistryValue Id="RegistryValueLiveDemoSitePort"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[LIVE_DEMO_SITE_PORT]"
+                   Name="LiveDemoSitePort" />
+    <RegistryValue Id="RegistryValueLiveDemoSiteHostName"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[LIVE_DEMO_SITE_HEADER]"
+                   Name="LiveDemoSiteHostName" />
+
+    <!-- Stage -->
+
+    <RegistryValue Id="RegistryValueStageDemoSiteAppPool"
+                  Root="HKLM"
+                  Key="Software\Quantum Art\Q-Publishing"
+                  Type="string"
+                  Value="[STAGE_DEMO_SITE_APP_POOL_NAME]"
+                  Name="StageDemoSiteAppPool" />
+    <RegistryValue Id="RegistryValueStageDemoSiteName"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[STAGE_DEMO_SITE_WEB_APP_NAME]"
+                   Name="StageDemoSiteName" />
+    <RegistryValue Id="RegistryValueStageDemoSiteIp"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[STAGE_DEMO_SITE_IP]"
+                   Name="StageDemoSiteIP" />
+    <RegistryValue Id="RegistryValueStageDemoSitePort"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[STAGE_DEMO_SITE_PORT]"
+                   Name="StageDemoSitePort" />
+    <RegistryValue Id="RegistryValueStageDemoSiteHostName"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[STAGE_DEMO_SITE_HEADER]"
+                   Name="StageDemoSiteHostName" />
+  </Component>
+
+  <Component Id="FooAppublishingConfigurationXmlRegistrySettings"
+             KeyPath="yes"
+             Guid="{4175EF5F-01BE-4C9A-9FB9-61B841704474}">
+    <RegistryValue Id="FooAppublishingConfigurationXmlRegistryValue"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[FooApp_CONFIGURATION_FILE]"
+                   Name="Configuration File" />
+    <Condition><![CDATA[NOT Installed]]></Condition>
+  </Component>
+
+  <Component Id="FooAppublishingConfigurationXmlFirstInstallAndUpdateRegistrySettings"
+             KeyPath="yes"
+             Guid="{95A6FFF9-15CA-4B20-A21D-9E0218196A4E}">
+    <RegistryValue Id="FooAppublishingConfigurationXmlFirstInstallAndUpdateRegistryValue"
+                   Root="HKLM"
+                   Key="Software\Quantum Art\Q-Publishing"
+                   Type="string"
+                   Value="[INSTALLFOLDER]Q-Publishing Configuration.xml"
+                   Name="Configuration File" />
+    <Condition><![CDATA[NOT Installed]]></Condition>
+  </Component>
+
+  <Component Id="cmpFooAppTempFile"
+             KeyPath="yes"
+             Guid="{B373FB9D-EE83-4B06-8965-3EA13273DBB0}">
+    <util:XmlConfig Id='FooAppublishingConfigurationTempDirectory'
+                File='[INSTALLFOLDER]Q-Publishing Configuration.xml'
+                Action='create'
+                Node='value'
+                ElementPath="//app_vars/app_var[\[]@app_var_name='TempDirectory'[\]]"
+                Value="[TEMPINSTALLFOLDER]"
+                On='install'
+                PreserveModifiedDate='yes'
+                VerifyPath="//app_vars/app_var[\[]@app_var_name='TempDirectory'[\]]"/>
+    <Condition><![CDATA[NOT Installed]]></Condition>
+  </Component>
+
+  <Component Id="cmpLogsDirBackend"
+             KeyPath="yes"
+             Guid="{223667A8-FF73-43B5-9B6C-895236A3B056}">
+    <util:XmlFile Id='LogsDirBackendNlog'
+                File='[BACKENDINSTALLFOLDER]NLog.config'
+                Action='setValue'
+                ElementPath="//nlog/variable[\[]@name='defaultLogDir'[\]]"
+                Name="value"
+                Value="[LOGSINSTALLFOLDER]${appName}"
+                PreserveModifiedDate='yes' />
+    <util:XmlFile Id='LogsDirBackendNlog1'
+                File='[BACKENDINSTALLFOLDER]bin\NLog.config'
+                Action='setValue'
+                ElementPath="//nlog/variable[\[]@name='defaultLogDir'[\]]"
+                Name="value"
+                Value="[LOGSINSTALLFOLDER]${appName}"
+                PreserveModifiedDate='yes' />
+    <Condition><![CDATA[NOT Installed]]></Condition>
+  </Component>
+
+  <Component Id="cmpLogsDirSiteMap"
+             KeyPath="yes"
+             Guid="{C0156AAF-E6B5-4D34-B2AC-9C1D737E55FF}">
+    <util:XmlFile Id='LogsDirSiteMapNlog'
+                File='[SITEMAPINSTALLFOLDER]NLog.config'
+                Action='setValue'
+                ElementPath="//nlog/variable[\[]@name='defaultLogDir'[\]]"
+                Name="value"
+                Value="[LOGSINSTALLFOLDER]${appName}"
+                PreserveModifiedDate='yes' />
+    <util:XmlFile Id='LogsDirSiteMapNlog1'
+                File='[SITEMAPINSTALLFOLDER]bin\NLog.config'
+                Action='setValue'
+                ElementPath="//nlog/variable[\[]@name='defaultLogDir'[\]]"
+                Name="value"
+                Value="[LOGSINSTALLFOLDER]${appName}"
+                PreserveModifiedDate='yes' />
+    <Condition><![CDATA[NOT Installed]]></Condition>
+  </Component>
+
+  <Component Id="cmpLogsDirArticleService"
+             KeyPath="yes"
+             Guid="{A3263D86-62D8-4B22-9BD7-370AA447DEC6}">
+    <util:XmlFile Id='LogsDirArticleServiceNlog'
+                File='[ARTICLESCHEDULERINSTALLFOLDER]NLog.config'
+                Action='setValue'
+                ElementPath="//nlog/variable[\[]@name='defaultLogDir'[\]]"
+                Name="value"
+                Value="[LOGSINSTALLFOLDER]${appName}"
+                PreserveModifiedDate='yes' />
+    <Condition><![CDATA[NOT Installed]]></Condition>
+  </Component>
+
+  <Component Id="cmpLogsDirCommonService"
+             KeyPath="yes"
+             Guid="{9A931484-BA62-4D25-821E-3F030BABDBD8}">
+    <util:XmlFile Id='LogsDirCommonServiceNlog'
+                File='[COMMONSCHEDULERINSTALLFOLDER]NLog.config'
+                Action='setValue'
+                ElementPath="//nlog/variable[\[]@name='defaultLogDir'[\]]"
+                Name="value"
+                Value="[LOGSINSTALLFOLDER]${appName}"
+                PreserveModifiedDate='yes' />
+    <Condition><![CDATA[NOT Installed]]></Condition>
+  </Component>
+
+  <Component Id="WebModeConfigurationSettings"
+             KeyPath="yes"
+             Guid="{B8A5BF18-F8BB-42BF-945F-B364A995CD62}">
+    <util:XmlConfig Id='FooAppublishingConfigurationConnectionStandardDelete'
+             File='[INSTALLFOLDER]Q-Publishing Configuration.xml'
+             Action='delete'
+             Node='element'
+             ElementPath="//customers"
+             On='install'
+             PreserveModifiedDate='yes'
+             VerifyPath="//customers/customer[\[]@customer_name='publishing'[\]]"
+             Sequence="1" />
+    
+    <util:XmlConfig Id='FooAppublishingConfigurationConnectionDelete'
+              File='[INSTALLFOLDER]Q-Publishing Configuration.xml'
+              Action='delete'
+              Node='element'
+              ElementPath="//customers"
+              On='install'
+              PreserveModifiedDate='yes'
+              VerifyPath="//customers/customer[\[]@customer_name='[DB_NAME]'[\]]"
+              Sequence="2" />
+    
+    <util:XmlConfig
+                Id='FooAppublishingConfigurationConnection'
+                File='[INSTALLFOLDER]Q-Publishing Configuration.xml'
+                Action='create'
+                Name='customer'
+                Node='element'
+                ElementPath="//customers"
+                On='install'
+                PreserveModifiedDate='yes'
+                Sequence='3'>
+      <util:XmlConfig
+                Id='FooAppublishingConfigurationConnection2'
+                File='[INSTALLFOLDER]Q-Publishing Configuration.xml'
+                Name='customer_name'
+                Value='[DB_NAME]'
+                ElementId='FooAppublishingConfigurationConnection'>
+      </util:XmlConfig>
+    </util:XmlConfig>
+
+    <util:XmlConfig
+                Id='FooAppublishingConfigurationConnection3'
+                File='[INSTALLFOLDER]Q-Publishing Configuration.xml'
+                Action='create'
+                Node='element'
+                Name='db'
+                Value="Provider=SQLOLEDB;Initial Catalog=[DB_NAME];Data Source=[DB_SERVER_NAME];User ID=[DB_LOGIN];Password=[DB_PASSWORD]"
+                On='install'
+                PreserveModifiedDate='yes'
+                ElementPath="//customers/customer[\[]@customer_name='[DB_NAME]'[\]]"
+                Sequence='4'>
+    </util:XmlConfig>
+
+    <!--<util:XmlConfig
+                Id='FooAppublishingConfigurationConnectionStandard'
+                File='[INSTALLFOLDER]Q-Publishing Configuration.xml'
+                Action='create'
+                Name='customer'
+                Node='element'
+                ElementPath="//customers"
+                On='install'
+                PreserveModifiedDate='yes'
+                Sequence='5'>
+      <util:XmlConfig
+                Id='FooAppublishingConfigurationConnectionStandard1'
+                File='[INSTALLFOLDER]Q-Publishing Configuration.xml'
+                Name='customer_name'
+                Value='publishing'
+                ElementId='FooAppublishingConfigurationConnectionStandard'>
+      </util:XmlConfig>
+    </util:XmlConfig>
+
+    <util:XmlConfig
+                Id='FooAppublishingConfigurationConnectionStandard2'
+                File='[INSTALLFOLDER]Q-Publishing Configuration.xml'
+                Action='create'
+                Node='element'
+                Name='db'
+                Value="Provider=SQLOLEDB;Initial Catalog=[DB_NAME];Data Source=[DB_SERVER_NAME];User ID=[DB_LOGIN];Password=[DB_PASSWORD]"
+                On='install'
+                PreserveModifiedDate='yes'
+                ElementPath="//customers/customer[\[]@customer_name='publishing'[\]]"
+                Sequence='6'>
+    </util:XmlConfig>-->
+
+    <util:XmlConfig
+        Id='BackendConfigPath'
+        File='[BACKENDINSTALLFOLDER]web.config'
+        Action='create'
+        Node='value'
+        Name='FooAppConfigPath'
+        Value="[INSTALLFOLDER]Q-Publishing Configuration.xml"
+        On='install'
+        ElementPath="//configuration/FooAppublishing"
+        Sequence='5'>
+    </util:XmlConfig>
+
+    <Condition><![CDATA[NOT Installed]]></Condition>
+  </Component>
+
+  <Component Id="DemoSiteSettings"
+             KeyPath="yes"
+             Guid="{17F768EB-E9FC-4329-A832-0E40AAA2A52A}">
+    <util:XmlFile Id='LiveDemoSiteConnection'
+                File='[LIVEDEMOSITEINSTALLFOLDER]web.config'
+                Action='setValue'
+                ElementPath="//connectionStrings/add[\[]@name='FooApp_database'[\]]"
+                Name="connectionString"
+                Value="MultipleActiveResultSets=true;Initial Catalog=[DB_NAME];Data Source=[DB_SERVER_NAME];User ID=[DB_LOGIN];Password=[DB_PASSWORD]"
+                PreserveModifiedDate='yes' />
+    <util:XmlFile Id='LiveDemoSiteStageProperty'
+                File='[LIVEDEMOSITEINSTALLFOLDER]web.config'
+                Action='setValue'
+                ElementPath="//appSettings/add[\[]@key='Mode.IsStage'[\]]"
+                Name="value"
+                Value="false"
+                PreserveModifiedDate='yes' />
+    <util:XmlFile Id='LiveDemoSiteStageProperty2'
+                File='[LIVEDEMOSITEINSTALLFOLDER]web.config'
+                Action='setValue'
+                ElementPath="//appSettings/add[\[]@key='IsStage'[\]]"
+                Name="value"
+                Value="false"
+                PreserveModifiedDate='yes' />
+    <util:XmlFile Id='LogsDirLiveDemoSiteNlog'
+                File='[LIVEDEMOSITEINSTALLFOLDER]NLog.config'
+                Action='setValue'
+                ElementPath="//nlog/targets/target[\[]@name='file'[\]]"
+                Name="fileName"
+                Value="[LOGSINSTALLFOLDER]QaLiveDemoSite\log.Web_${shortdate}.txt"
+                PreserveModifiedDate='yes' />
+    <util:XmlFile Id='LogsDirLiveDemoSiteNlog2'
+                File='[LIVEDEMOSITEINSTALLFOLDER]NLog.config'
+                Action='setValue'
+                ElementPath="//nlog/targets/target[\[]@name='infoFile'[\]]"
+                Name="fileName"
+                Value="[LOGSINSTALLFOLDER]QaLiveDemoSite\log.Info.Web_${shortdate}.txt"
+                PreserveModifiedDate='yes' />
+    <util:XmlFile Id='LogsDirLiveDemoSiteNlog3'
+                File='[LIVEDEMOSITEINSTALLFOLDER]NLog.config'
+                Action='setValue'
+                ElementPath="//nlog/targets/target[\[]@name='mnp'[\]]"
+                Name="fileName"
+                Value="[LOGSINSTALLFOLDER]QaLiveDemoSite\log.Info.Mnp_${shortdate}.txt"
+                PreserveModifiedDate='yes' />
+
+    <util:XmlFile Id='StageDemoSiteConnection'
+                File='[STAGEDEMOSITEINSTALLFOLDER]web.config'
+                Action='setValue'
+                ElementPath="//connectionStrings/add[\[]@name='FooApp_database'[\]]"
+                Name="connectionString"
+                Value="MultipleActiveResultSets=true;Initial Catalog=[DB_NAME];Data Source=[DB_SERVER_NAME];User ID=[DB_LOGIN];Password=[DB_PASSWORD]"
+                PreserveModifiedDate='yes' />
+    <util:XmlFile Id='StageDemoSiteStageProperty'
+                File='[STAGEDEMOSITEINSTALLFOLDER]web.config'
+                Action='setValue'
+                ElementPath="//appSettings/add[\[]@key='Mode.IsStage'[\]]"
+                Name="value"
+                Value="true"
+                PreserveModifiedDate='yes' />
+    <util:XmlFile Id='StageDemoSiteStageProperty2'
+                File='[STAGEDEMOSITEINSTALLFOLDER]web.config'
+                Action='setValue'
+                ElementPath="//appSettings/add[\[]@key='IsStage'[\]]"
+                Name="value"
+                Value="true"
+                PreserveModifiedDate='yes' />
+    <util:XmlFile Id='LogsDirStageDemoSiteNlog'
+                File='[STAGEDEMOSITEINSTALLFOLDER]NLog.config'
+                Action='setValue'
+                ElementPath="//nlog/targets/target[\[]@name='file'[\]]"
+                Name="fileName"
+                Value="[LOGSINSTALLFOLDER]QaStageDemoSite\log.Web_${shortdate}.txt"
+                PreserveModifiedDate='yes' />
+    <util:XmlFile Id='LogsDirStageDemoSiteNlog2'
+                File='[STAGEDEMOSITEINSTALLFOLDER]NLog.config'
+                Action='setValue'
+                ElementPath="//nlog/targets/target[\[]@name='infoFile'[\]]"
+                Name="fileName"
+                Value="[LOGSINSTALLFOLDER]QaStageDemoSite\log.Info.Web_${shortdate}.txt"
+                PreserveModifiedDate='yes' />
+    <util:XmlFile Id='LogsDirStageDemoSiteNlog3'
+                File='[STAGEDEMOSITEINSTALLFOLDER]NLog.config'
+                Action='setValue'
+                ElementPath="//nlog/targets/target[\[]@name='mnp'[\]]"
+                Name="fileName"
+                Value="[LOGSINSTALLFOLDER]QaStageDemoSite\log.Info.Mnp_${shortdate}.txt"
+                PreserveModifiedDate='yes' />
+
+    <Condition><![CDATA[NOT Installed]]></Condition>
+  </Component>
+</Include>

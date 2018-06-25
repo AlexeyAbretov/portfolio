@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <!-- Минимальная версия инсталлятора -->
+  <?define InstallerVersion="200" ?>
+  <!-- Признак сжатия файлов -->
+  <?define Compressed="yes" ?>
+  <!-- Тип установки -->
+  <?define InstallScope="perMachine" ?>
+  <!-- Уровень сжатия файлов -->
+  <?define CompressionLevel="high" ?>
+  <!-- Признак включения файлов внутрь msi -->
+  <?define EmbedCab="yes" ?>
+</Include>

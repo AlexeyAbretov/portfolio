@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="ru-RU" xmlns="http://schemas.microsoft.com/wix/2006/localization" Codepage="1251">
+  <String Id="NotSelectedFeaturesDlgTitle">Не выбраны компоненты для установки</String>
+  <String Id="NotSelectedFeaturesDlgInstallTitle">Ошибка</String>
+  <String Id="NotSelectedFeaturesDlgErrorMessage">Не выбраны компоненты для установки.</String>
+</WixLocalization>

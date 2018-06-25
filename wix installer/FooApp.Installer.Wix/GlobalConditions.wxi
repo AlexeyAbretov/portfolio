@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <PropertyRef Id="NETFRAMEWORK45"/>
+  <PropertyRef Id="IISMAJORVERSION"/>
+  <PropertyRef Id="IISMINORVERSION"/>
+
+  <Condition Message='!(loc.WindowsVersionIncorrectText)'>
+    <![CDATA[(NOT Installed AND VersionNT > 600) OR Installed]]>
+  </Condition>
+</Include>

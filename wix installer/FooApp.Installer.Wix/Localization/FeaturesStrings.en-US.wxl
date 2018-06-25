@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="en-US" xmlns="http://schemas.microsoft.com/wix/2006/localization" Codepage="utf-8">
+  <String Id="WebFeatureTitle">Web installation</String>
+  <String Id="PluginsFeatureTitle">Plugins</String>
+  <String Id="SitesFeatureTitle">Sites</String>
+  <String Id="WinlogonFeatureTitle">Winlogon installation</String>
+  <String Id="SiteMapFeatureTitle">SiteMap installation</String>
+  <String Id="BackendFeatureTitle">Backend installation</String>
+  <String Id="ArticleSchedulerFeatureTitle">Article Schedule Service installation</String>
+  <String Id="CommonSchedulerFeatureTitle">Common Scheduler Service installation</String>
+  <String Id="DatabaseFeatureTitle">Database installation</String>
+  <String Id="UpgradeFooAppFeatureTitle">Upgrade FooApp to latest version</String>
+</WixLocalization>

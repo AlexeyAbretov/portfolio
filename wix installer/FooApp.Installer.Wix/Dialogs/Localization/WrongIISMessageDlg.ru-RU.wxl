@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="ru-RU" xmlns="http://schemas.microsoft.com/wix/2006/localization" Codepage="1251">
+  <String Id="WrongIISDlgTitle">Не установлен IIS</String>
+  <String Id="WrongIISDlgInstallTitle">Error</String>
+  <String Id="WrongIISDlgErrorMessage">Не установлена полная версия IIS не ниже 7 версии.</String>
+</WixLocalization>

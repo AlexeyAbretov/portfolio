@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="PLUGINSINSTALLFOLDER">
+            <Directory Id="dirD63F35E9581D0751C2C7588EDF912083" Name="common">
+                <Component Id="cmp8C8E97096D964501681A670EFCDB4AFA" Guid="*">
+                    <File Id="fil202851FEB87C8FFB325B3862AA8B3A22" KeyPath="yes" Source="$(var.PluginsDirPath)\common\translit.js" />
+                </Component>
+                <Component Id="cmp2092C036201AC62D316D510DD31D5005" Guid="*">
+                    <File Id="fil4E3D01FE8FD4BB23BB8A99B265436076" KeyPath="yes" Source="$(var.PluginsDirPath)\common\widgets.js" />
+                </Component>
+                <Directory Id="dir200239B36E024D9BFFC2C2DE21D01835" Name="tags">
+                    <Component Id="cmp0BAEE0D33287193E9F997251582494A1" Guid="*">
+                        <File Id="filE0D3F7A1123E8E2C01D4D579A161FFEA" KeyPath="yes" Source="$(var.PluginsDirPath)\common\tags\plugin.js" />
+                    </Component>
+                    <Component Id="cmp394BFA17845716791C31DB7E63A3A6BA" Guid="*">
+                        <File Id="fil1609B0EFE97DD39A5734CCC2CE992CD9" KeyPath="yes" Source="$(var.PluginsDirPath)\common\tags\plugins.css" />
+                    </Component>
+                    <Directory Id="dir826D405E089E5B364ABDE857B51CE7EC" Name="Images">
+                        <Component Id="cmp8D6D3FFFDE224B1F0F7229CD37AA6C0B" Guid="*">
+                            <File Id="filF72A30ADF062526D2157C0B4A33DB2A3" KeyPath="yes" Source="$(var.PluginsDirPath)\common\tags\Images\tag_plus.png" />
+                        </Component>
+                    </Directory>
+                </Directory>
+            </Directory>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="PluginsProductComponents">
+            <ComponentRef Id="cmp8C8E97096D964501681A670EFCDB4AFA" />
+            <ComponentRef Id="cmp2092C036201AC62D316D510DD31D5005" />
+            <ComponentRef Id="cmp0BAEE0D33287193E9F997251582494A1" />
+            <ComponentRef Id="cmp394BFA17845716791C31DB7E63A3A6BA" />
+            <ComponentRef Id="cmp8D6D3FFFDE224B1F0F7229CD37AA6C0B" />
+        </ComponentGroup>
+    </Fragment>
+</Wix>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="ru-RU" xmlns="http://schemas.microsoft.com/wix/2006/localization" Codepage="1251">
+  <String Id="StageDemoSiteAppPoolNameLabel">Имя пула веб-приложений</String>
+  <String Id="StageDemoSiteWebAppNameLabel">Имя веб-приложения</String>
+  <String Id="StageDemoSiteIisDlgTitle">Настройка веб-параметров Stage-версии Demo сайта [ProductName] [ProductVersion]</String>
+  <String Id="StageDemoSiteAppHeaderLabel">Заголовок</String>
+  <String Id="StageDemoSiteAppPortLabel">Порт</String>
+  <String Id="StageDemoSiteAppIPLabel">IP</String>
+</WixLocalization>

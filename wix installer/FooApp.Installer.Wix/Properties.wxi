@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include
+  xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Property Id="IISROOTFOLDER">
+    <RegistrySearch Id="IISROOT"
+                    Type="directory"
+                    Root="HKLM"
+                    Key="Software\Microsoft\InetStp"
+                    Name="PathWWWRoot" />
+  </Property>
+
+  <Property Id="FooApp_CONFIGURATION_FILE">
+    <RegistrySearch Id="FooAppConfigurationFileSearch"
+                    Type="raw"
+                    Root="HKLM"
+                    Key="Software\Quantum Art\Q-Publishing"
+                    Name="Configuration File" />
+  </Property>
+
+  <Property Id='ASP_NET_4_0' Secure='yes'>
+    <RegistrySearch Id='ASP_NET_4_0_InstallDir' Type='directory' Root='HKLM'
+                    Key='SOFTWARE\Microsoft\ASP.NET\4.0.30319.0'
+                    Name='Path'/>
+  </Property>
+
+  <Property Id="POWERSHELLEXE"></Property>
+  <Property Id="SQLPS"></Property>
+  
+  <Property Id='DB_CONNECTION_SUCCESS' Value='0'></Property>
+
+  <Property Id="SQL_SERVERS"
+                Secure="yes"></Property>
+
+  <Property Id="DB_DIALOG_SUCCESS"
+            Value="1">
+  </Property>
+
+  <Property Id="DB_LOGIN_FIXED">
+  </Property>
+
+  <Property Id="SQLSERVERPATH"
+            Value="null">
+  </Property>
+
+  <Property Id="IIS_DIALOG_SUCCESS"
+            Value="1">
+  </Property>
+  
+  <Property Id="IISMAJORVERSION_INT"
+            Value="0">
+  </Property>
+
+  <SetProperty Id="RunPowerShellScript_Sql"
+           Before ="InstallFiles"
+           Sequence="execute"
+           Value ="&quot;[POWERSHELLEXE]&quot; &quot;&amp; '[#ExecuteSql]' -sqlPath '[#UpdateDbFile]' -configPath '[INSTALLFOLDER]Q-Publishing Configuration.xml'; exit $$($Error.Count)&quot;" />
+</Include>

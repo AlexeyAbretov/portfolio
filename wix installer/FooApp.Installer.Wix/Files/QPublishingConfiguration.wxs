@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+    <DirectoryRef Id="INSTALLFOLDER">
+      <Component Id="cmpFooAppConfigurationXmlFile" Guid="{B89D44B4-8847-465d-8199-7B811E118526}"
+                 Permanent="yes">
+        <File Id="filFooAppConfigurationXmlFile"
+              KeyPath="yes"
+              Name="Q-Publishing Configuration.xml"
+              Source="$(var.SolutionDir)build\source\qa\sample_config.xml" />
+        <Condition><![CDATA[NOT Installed]]></Condition>
+      </Component>
+    </DirectoryRef>
+    <ComponentGroup Id="FooAppConfigurationXmlFileComponents">
+      <ComponentRef Id="cmpFooAppConfigurationXmlFile" />
+    </ComponentGroup>
+	</Fragment>
+</Wix>

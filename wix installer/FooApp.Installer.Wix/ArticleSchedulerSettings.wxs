@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <DirectoryRef Id="ARTICLESCHEDULERINSTALLFOLDER">
+      <Component Id='ArticleSchedulerServiceInstaller'
+                 Guid='{716C4C62-E5B0-4372-B6C3-A5BA3962E0D4}'>
+        <File Id='fil716C4C62E5B04372B6C3A5BA3962E0D4'
+              Source='$(var.ArticleSchedulerDirPath)\Quantumart.FooApp.ArticleScheduler.WinService.exe'
+              DiskId='1'
+              KeyPath='yes' />
+        <ServiceInstall Id="ArticleSchedulerService"
+                        Type="ownProcess"
+                        Name="ArticleSchedulerService"
+                        DisplayName="FooApp Article Scheduler Service"
+                        Description="FooApp Article Scheduler Service"
+                        Start="auto"
+                        Account="LocalSystem"
+                        ErrorControl="normal">
+        </ServiceInstall>
+        <ServiceControl Id="ArticleSchedulerService"
+                        Start="install"
+                        Stop="both"
+                        Remove="both"
+                        Name="ArticleSchedulerService"
+                        Wait="yes" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+</Wix>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Include
+  xmlns="http://schemas.microsoft.com/wix/2006/wi"
+  xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension">
+  <InstallUISequence>
+    <Custom Action="BackendFeatureChangeStateSet3" After="CostFinalize">
+      <![CDATA[!BackendFeature=3]]>
+    </Custom>
+    <Custom Action="BackendFeatureChangeStateSet2" After="CostFinalize">
+      <![CDATA[!BackendFeature=2]]>
+    </Custom>
+
+    <Custom Action="DatabaseFeatureChangeStateSet3" After="CostFinalize">
+      <![CDATA[!DatabaseFeature=3]]>
+    </Custom>
+    <Custom Action="DatabaseFeatureChangeStateSet2" After="CostFinalize">
+      <![CDATA[!DatabaseFeature=2]]>
+    </Custom>
+
+    <Custom Action="DemoSiteFeatureChangeStateSet3" After="CostFinalize">
+      <![CDATA[!DemoSiteFeature=3]]>
+    </Custom>
+    <Custom Action="DemoSiteFeatureChangeStateSet2" After="CostFinalize">
+      <![CDATA[!DemoSiteFeature=2]]>
+    </Custom>
+    
+    <Custom Action="ParseIisMagorVersionToIntCA" After="AppSearch">
+      <![CDATA[1]]>
+    </Custom>
+  </InstallUISequence>
+</Include>

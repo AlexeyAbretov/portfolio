@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="ru-RU" xmlns="http://schemas.microsoft.com/wix/2006/localization" Codepage="1251">
+  <String Id="StaticSiteAppPoolNameLabel">Имя пула веб-приложений</String>
+  <String Id="StaticSiteWebAppNameLabel">Имя веб-приложения</String>
+  <String Id="StaticSiteIisDlgTitle">Настройка веб-параметров Static сайта [ProductName] [ProductVersion]</String>
+  <String Id="StaticSiteAppHeaderLabel">Имя хоста</String>
+  <String Id="StaticSiteAppPortLabel">Порт</String>
+  <String Id="StaticSiteAppIPLabel">IP</String>
+</WixLocalization>

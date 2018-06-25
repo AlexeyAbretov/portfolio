@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include
+     xmlns:sql="http://schemas.microsoft.com/wix/SqlExtension"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+
+  <!-- Подключение к sql серверу для восстановления БД -->
+  <sql:SqlDatabase Id='SqlDatabase'
+                   Database='master' Server='[DB_SERVER_NAME]'></sql:SqlDatabase>
+  <!-- Подключение к sql серверу для обновления БД -->
+  <sql:SqlDatabase Id='ConnectSqlDatabase'
+                   Database='[DB_NAME]' Server='[DB_SERVER_NAME]' User='SQLUser'></sql:SqlDatabase>
+  <!-- Пользователь для подключения ConnectSqlDatabase -->
+  <util:User
+    Id="SQLUser"
+    Name="[DB_LOGIN]"
+    Password="[DB_PASSWORD]"/>
+
+  <DirectoryRef Id="DATABASEINSTALLFOLDER">
+    <!-- Компонент восстановления БД -->
+    <!-- Восстанавливается в дефолтный путь sql сервера.
+  Путь хранится в переменной SQLSERVERPATH. Заполняется в кастомном действии CheckDbDialog (.NET). -->
+    <Component Id="cmpRestoreDB"
+               KeyPath="yes"
+               Guid="{CF8081BE-A55E-48C8-9BAE-F20C48B2D03C}">
+      <sql:SqlString Id="RestoreDB"
+                      ExecuteOnInstall ="yes"
+                      ContinueOnError="no"
+                      Sequence="1"
+                      SqlDb="SqlDatabase"
+                      SQL="RESTORE DATABASE [DB_NAME]
+                        from disk='[DATABASEINSTALLFOLDER]demo_FooApp.bak'
+                        WITH
+                        MOVE 'publishing_Data' TO '[SQLSERVERPATH]\[DB_NAME].mdf',
+                        MOVE 'publishing_Log' TO '[SQLSERVERPATH]\[DB_NAME].ldf',
+                        MOVE 'ftrow_FooAppublishingFullTextCatalog' TO '[SQLSERVERPATH]\[DB_NAME]_ftrow_FooAppublishingFullTextCatalog.ndf'
+
+                        IF @@ERROR = 0
+                        begin
+	                        CREATE LOGIN [DB_LOGIN_FIXED]
+		                        WITH PASSWORD = '[DB_PASSWORD]'
+	
+	                        IF @@ERROR = 0
+	                        begin
+		                        declare @sql varchar(500)
+		                        select @sql = 'USE [DB_NAME];' + Char(10) + Char(13) + 'CREATE USER [DB_LOGIN_FIXED] FOR LOGIN [DB_LOGIN_FIXED];'
+			                        + Char(10) + Char(13) + 
+		                        'exec sp_addrolemember ''db_owner'', ''[DB_LOGIN]'''
+		                        print @sql
+		                        EXEC sp_sqlexec @sql
+	                        end
+                        end" />
+      <!-- ВЫполнять только при первой установке. -->
+      <Condition><![CDATA[NOT Installed AND WIX_UPGRADE_DETECTED = ""]]></Condition>
+    </Component>
+
+    <!-- Обновление путей демо сайта. Ид. 52. -->
+    <Component Id="UpdateDemoSitePaths"
+               KeyPath="yes"
+               Guid="{B128B54C-B988-4721-9991-DAC195B44ADE}">
+      <sql:SqlString Id="UpdateDemoSitePathsSqlString"
+                      ExecuteOnInstall ="yes"
+                      ContinueOnError="no"
+                      Sequence="1"
+                      SqlDb="ConnectSqlDatabase"
+                      SQL="UPDATE Site 
+                    set Upload_Url_Prefix=('http://[STATIC_SITE_HEADER]' + (case when '[STATIC_SITE_PORT]'='80' then '' else ':' + '[STATIC_SITE_PORT]' end)),
+                    Upload_Dir = '[STATICINSTALLFOLDER]',
+                    Live_Directory = '[TEMPINSTALLFOLDER]live',
+                    Stage_Directory = '[TEMPINSTALLFOLDER]stage',
+                    Assembly_Path = '[TEMPINSTALLFOLDER]live\bin',
+                    Stage_Assembly_Path = '[TEMPINSTALLFOLDER]stage\bin'
+                    WHERE SITE_ID=52
+                    
+                     UPDATE CUSTOM_ACTION
+                     set URL = (('http://[STAGE_DEMO_SITE_HEADER]' + (case when '[STAGE_DEMO_SITE_PORT]'='80' then '' else ':' + '[STAGE_DEMO_SITE_PORT]' end)) + '/msk')
+                     where NAME = 'OnScreen'" />
+      <!-- Выполнять только при отметке чекбокса cbUpdateDbDemoSite
+        (свойство UPDATEDEMOSITEPATHS, диалог WebModeDbDlg).
+      -->
+      <Condition><![CDATA[UPDATEDEMOSITEPATHS]]></Condition>
+    </Component>
+  </DirectoryRef>
+</Include>
