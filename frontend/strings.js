@@ -47,3 +47,31 @@ export const hasOnlyRepeatingDigits = ({
 
     return new Set(str.split('')).size === 1;
 };
+
+/** Проверяет, что строка содержит только цифры
+ *
+ * @param {string} value строка
+ *
+ * @returns {boolean} true - если строка содержит только цифры, иначе false
+ *
+ * */
+export const hasOnlyDigits = ({
+    value = '',
+} = {}) => /^\d+$/.test(value);
+
+/** Получает из строки число
+ *
+ * @param {string} value строка
+ *
+ * @returns {string} строка, содержащая число
+ *
+ * */
+export const extractNumber = ({
+    value = '',
+} = {}) => {
+    if (!value) {
+        return value;
+    }
+
+    return String(value).replace(/[^\d.-]/g, '');
+};
