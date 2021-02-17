@@ -1,0 +1,236 @@
+@media screen and (max-width: 767px) {
+    .download {
+        width: 100%;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        display: block;
+        max-width: 284px;
+    }
+
+    .logo_big, .hidden-mobile {
+        display: none;
+    }
+
+    .container {
+        max-width: 940px;
+    }
+
+    .content_types_left_row_texts_note {
+        max-width: 350px;
+    }
+
+    .content_mobile {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        min-height: 328px;
+    }
+
+    .hidden-web {
+        display: block;
+        background-color: #52AE30;
+        border-radius: 24px;
+        padding: 12px 0;
+        color: white;
+        font-weight: 400;
+        margin-top: 24px;
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: bold;
+    }
+}
+
+@media screen and (max-width: 870px) {
+    .content_types_left_row_texts_note {
+        max-width: 250px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .content_mobile_title {
+        font-size: 20px;
+    }
+
+    .banner {
+        background: url('../img/banner_768.png') top center no-repeat;
+    }
+
+    .container {
+        max-width: 704px;
+        padding: 0;
+    }
+
+    .content_mobile {
+        padding: 32px 121px;
+        min-height: 210px;
+    }
+
+    .content_types_iphone {
+        width: 284px;
+        height: 514px;
+    }
+}
+
+@media screen and (max-width: 710px) {
+    .container {
+        padding: 0 32px;
+    }
+
+    .content {
+       display: flex;
+       flex-direction: column;
+       margin-top: 20px;
+    }
+
+    .content_mobile {
+        padding: 32px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .content_types_iphone {
+        margin-right: 0px;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .content_types_iphone {
+        width: 223px;
+        height: 404px;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .title {
+        margin-top: 20px;
+    }
+
+    .content_types {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mobile_apps.mobile_apps_bottom img {
+        width: 116px;
+        height: 34px;
+    }
+
+    .container {
+        padding: 0 24px;
+    }
+
+    .content_types_left_row_texts_note {
+        max-width: 447px;
+    }
+
+    .mobile_apps img {
+        width: 132px;
+        height: 39px;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .content_mobile {
+        align-items: center;
+    }
+    
+    .content_mobile_info {
+        flex-direction: column;
+    }
+
+    .mobile_apps.mobile_apps_bottom {
+        margin-right:  0px;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .mobile_apps.mobile_apps_bottom {
+        flex-direction: row;
+        height: auto;
+        justify-content: space-between;
+        margin-right: 0px;
+    }
+
+    .content_mobile_info_qr {
+        display: none;
+    }
+
+    .banner {
+        background: url('../img/banner_320.png') top center no-repeat;
+        max-height: 504px;
+        height: 504px;
+        padding-top: 24px;
+    }
+
+    .content_types_left_row {
+        flex-direction: column;
+    }
+
+    .logo {
+        margin: 0px auto;
+        position: relative;
+        display: block;
+    }
+
+    .title {
+        font-size: 32px;
+        line-height: 40px;
+        margin-top: 70px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 24px;
+    }
+
+    .footer_contacts {
+        flex-direction: column;
+    }
+
+    .footer_content_social {
+        margin-top: 10px;
+    }
+
+    .mobile_apps.mobile_apps_bottom a:first-child {
+        margin-right: 7px;
+    }
+
+    .content {
+        margin-top: 32px;
+        margin-bottom: 32px;
+    }
+
+    .content_mobile {
+        padding: 24px 16px;
+        min-height: 210px;
+        flex-direction: column;
+    }
+
+    .content_mobile_title {
+        font-size: 20px;
+        line-height: 32px;
+    }
+
+    .content_mobile_subtitle {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .content_types_left_row_texts_note {
+        font-size: 16px;
+        max-width: 447px;
+    }
+
+    .content_mobile_subtitle_second {
+        display: none;
+    }
+
+    .mobile_apps.mobile_apps_bottom a:first-child {
+        margin-bottom:  0px;
+    }
+}
