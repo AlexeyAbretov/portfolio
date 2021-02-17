@@ -1,0 +1,254 @@
+body {
+    background-color: #FFFFFF;
+    color: #1B1F27;
+    font-family: Source Sans Pro;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.banner {
+    background: url('../img/banner.jpg') top center no-repeat;
+    max-height: 556px;
+    height: 556px;
+    position: relative;
+    padding-top: 36px;
+    overflow: hidden;
+}
+
+.logo_big {
+    position: absolute;
+    z-index: -1;
+    margin-top: 240px;
+    margin-left: -22vw;
+}
+
+.container {
+    max-width: 1120px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    padding: 0 32px;
+}
+
+.title {
+    font-family: Squad;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 48px;
+
+    margin-top: 120px;
+
+    color: #FFFFFF;
+}
+
+.mobile_apps {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.mobile_apps a:first-child {
+    margin-right: 15px;
+}
+
+.subtitle {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32px;
+
+    margin-top: 16px;
+
+    margin-bottom: 32px;
+
+    color: #FFFFFF;
+}
+
+.content {
+    margin-top: 64px;
+    margin-bottom: 32px;
+}
+
+.content_title {
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.content_types {
+    display: flex;
+    margin-top: 10px;
+    max-width: 1070px;
+    justify-content: space-between;
+}
+
+.content_types_iphone {
+    max-height: 607px;
+    margin-right: 28px;
+}
+
+.content_types_left {
+    display: flex;
+    flex-direction: column;
+}
+
+.content_types_left_row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 24px;
+}
+
+.content_types_left_row_texts {
+    display: flex;
+    flex-direction: column;
+    padding-top: 25px;
+    justify-content: flex-end;
+}
+
+.content_types_left_row_img {
+    margin-right: 25px;
+}
+
+.content_types_left_row_texts_title {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 32px;
+}
+
+.content_types_left_row_texts_note {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    max-width: 479px;
+}
+
+.content_mobile {
+    background: #EFF2F9;
+    border-radius: 32px;
+    min-height: 204px;
+    margin-top: 32px;
+    padding: 0px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content_mobile_titles {
+    display: flex;
+    flex-direction: column;
+}
+
+.content_mobile_title {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 10px;
+}
+
+.mobile_apps.mobile_apps_bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    height: 140px;
+    justify-content: center;
+    margin-right: 50px;
+}
+
+.mobile_apps.mobile_apps_bottom a:first-child {
+    margin-right: 0px;
+    margin-bottom: 15px;
+}
+
+.content_mobile_info {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 705px;
+}
+
+.content_mobile_subtitle {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 25px;
+    margin-right: 15px;
+}
+
+.footer {
+    background: #EFF2F9;
+    min-height: 90px;
+    padding-top: 25px;
+}
+
+.footer_text {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    color: #6E7482;
+}
+
+.footer_phone_container {
+    display: flex;
+    align-items: center;
+}
+
+.footer_phone_license {
+    margin-top: 10px;
+}
+
+.footer_text_phone_number {
+    margin-left: 10px;
+}
+
+.footer_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer_contacts {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer_content_social {
+    display: flex;
+    justify-content: space-between;
+    width: 140px;
+}
+
+.footer_social_icon {
+    margin-left: 3px;
+    width: 24px;
+    height: 24px;
+    background: url(../img/socials.png) no-repeat;
+}
+
+.footer_social_icon_vk {
+    background-position: 0 0;
+}
+
+.footer_social_icon_odnoklassniki {
+    background-position: -28px 0;
+}
+
+.footer_social_icon_fb {
+    background-position: -56px 0;
+}
+
+.footer_social_icon_tw {
+    background-position: -84px 0;
+}
+
+.footer_social_icon_youtube {
+    background-position: -112px 0;
+}
+
+.download {
+    display: none;
+}
