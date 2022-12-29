@@ -8,10 +8,10 @@
   "devDependencies": {
     "numeral": "1.5.3",
     "rimraf": "2.6.1",
-    "ts-loader": "0.9.5",
+    "ts-loader": "9.4.2",
     "typescript": "2.0.6",
     "typings": "1.4.0",
-    "webpack": "1.13.3"
+    "webpack": "5.75.0"
   },
   "dependencies": {
     "classnames": "2.2.5",
